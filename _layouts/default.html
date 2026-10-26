@@ -67,8 +67,8 @@ try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.docu
         <a href="{{ '/' | append: subj.id | append: '/theory/' | relative_url }}"{% if page.mode == 'theory' %} aria-current="page"{% endif %}>이론</a>
         <a href="{{ '/' | append: subj.id | append: '/quiz/' | relative_url }}"{% if page.mode == 'quiz' %} aria-current="page"{% endif %}>문제</a>
       </nav>
-      {%- if page.mode == 'theory' %}{% include guide.html %}{% endif %}
       </div>
+      {%- if page.mode == 'theory' %}{% include guide.html %}{% endif %}
     </div>
 {{ content }}
   </main>

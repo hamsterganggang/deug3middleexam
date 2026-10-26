@@ -1,19 +1,13 @@
-{%- comment %} "무엇을 공부해야 하나요?" 버튼과 팝업. 내용은 _data/<과목>/guide.yml {% endcomment -%}
+{%- comment %} "무엇을 공부해야 하나요?" 아코디언 (기본은 닫힘). 내용은 _data/<과목>/guide.yml {% endcomment -%}
 {%- assign guide = site.data[page.subject].guide -%}
 {%- if guide %}
-<button class="guide-btn" type="button" aria-haspopup="dialog" aria-controls="guide">
-  <span class="q-icon" aria-hidden="true">?</span>{{ guide.title }}
-</button>
-<dialog class="guide" id="guide" aria-labelledby="guide-title"><div class="guide-in">
-  <div class="guide-head">
-    <div>
-      <h2 id="guide-title">{{ guide.title }}</h2>
-      <p>{{ guide.note }}</p>
-    </div>
-    <button class="icon-btn guide-close" type="button" aria-label="닫기">
-      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-    </button>
-  </div>
+<details class="guide">
+  <summary>
+    <span class="q-icon" aria-hidden="true">?</span>
+    <span class="guide-title">{{ guide.title }}</span>
+    <span class="guide-note">{{ guide.note }}</span>
+    <svg class="chev" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </summary>
   <ol class="guide-list">
     {%- for c in guide.chapters %}
     <li>
@@ -31,14 +25,5 @@
     </li>
     {%- endfor %}
   </ol>
-</div></dialog>
-<script>
-(function(){
-  const d=document.getElementById('guide'), b=document.querySelector('.guide-btn');
-  if(!d||!d.showModal){ if(b) b.hidden=true; return; }
-  b.onclick=()=>d.showModal();
-  d.querySelector('.guide-close').onclick=()=>d.close();
-  d.addEventListener('click',e=>{ if(e.target===d||e.target.closest('a')) d.close(); });
-})();
-</script>
+</details>
 {%- endif %}
