@@ -13,7 +13,7 @@ try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.docu
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="preload" href="{{ '/assets/fonts/Paperlogy-4Regular.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
 {%- if page.math %}
