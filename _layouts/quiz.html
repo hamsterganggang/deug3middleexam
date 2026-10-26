@@ -15,11 +15,12 @@ layout: default
 {{ content }}
 
 <div class="actions"><div>
+  <div class="score" id="score"></div>
   {%- unless quiz.type == 'qa' %}
-  <button class="primary" id="grade">채점하기</button>
+  <button class="primary" id="grade">채점<span class="lg">하기</span></button>
   {%- endunless %}
-  <button id="wrong" aria-pressed="false">{% if quiz.type == 'qa' %}맞힌 문제 숨기기{% else %}틀린 문제만{% endif %}</button>
-  <button id="reveal" aria-pressed="false">정답 모두 보기</button>
+  <button id="wrong" aria-pressed="false">{% if quiz.type == 'qa' %}맞힌 <span class="lg">문제 </span>숨기기{% else %}틀린 <span class="lg">문제</span>만{% endif %}</button>
+  <button id="reveal" aria-pressed="false">정답<span class="lg"> 모두 보기</span></button>
   <button id="reset">초기화</button>
 </div></div>
 

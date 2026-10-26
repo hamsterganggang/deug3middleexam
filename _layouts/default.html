@@ -16,12 +16,9 @@
 {%- endif %}
 </head>
 <body class="mode-{{ page.mode | default: 'home' }}">
-<header id="top">
+<header class="site">
   <div class="bar">
     <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
-    {%- if page.mode == 'quiz' and quiz %}
-    <div class="score" id="score"></div>
-    {%- endif %}
   </div>
 
   <nav class="subjects" aria-label="과목">
@@ -36,29 +33,43 @@
     <a href="{{ '/' | append: subj.id | append: '/quiz/' | relative_url }}"{% if page.mode == 'quiz' %} aria-current="page"{% endif %}>문제</a>
   </nav>
   {%- endif %}
+</header>
 
-  {%- if page.mode == 'theory' and page.toc %}
+{%- comment %} 스크롤해도 따라오는 건 섹션 바로가기 줄만 (모바일에서 화면을 덜 가리도록) {% endcomment %}
+{%- if page.mode == 'theory' and page.toc %}
+<div class="subnav" id="top">
   <nav class="tabs" aria-label="바로가기">
     {%- for t in page.toc %}<a href="#{{ t.id }}">{{ t.label }}</a>{% endfor %}
   </nav>
-  {%- elsif page.mode == 'quiz' and quiz %}
+</div>
+{%- elsif page.mode == 'quiz' and quiz %}
+<div class="subnav" id="top">
   <nav class="tabs" aria-label="바로가기">
-    {%- for s in quiz.sections %}<a href="#{{ s.id }}">{{ s.title }}</a>{% endfor %}
+    {%- for s in quiz.sections %}<a href="#{{ s.id }}">{{ s.title | split: ' · ' | first }}</a>{% endfor %}
   </nav>
   <div class="track"><i id="prog"></i></div>
-  {%- endif %}
-</header>
+</div>
+{%- endif %}
 
 <main id="main">
 {{ content }}
 </main>
 
+{%- if page.mode == 'theory' %}
+<a class="to-top" href="#" aria-label="맨 위로" hidden>↑</a>
+{%- endif %}
+
 <script>
-// 고정 헤더 높이만큼 앵커 이동 위치 보정
+// 따라오는 바로가기 줄 높이만큼 앵커 이동 위치 보정, 맨 위로 버튼 표시
 (function(){
   const h=document.getElementById('top');
-  const fit=()=>document.documentElement.style.scrollPaddingTop=(h.offsetHeight+8)+'px';
+  const fit=()=>document.documentElement.style.scrollPaddingTop=((h?h.offsetHeight:0)+8)+'px';
   fit(); addEventListener('resize',fit);
+  const up=document.querySelector('.to-top');
+  if(up){
+    addEventListener('scroll',()=>{up.hidden=scrollY<600},{passive:true});
+    up.onclick=e=>{e.preventDefault();scrollTo(0,0)};
+  }
 })();
 </script>
 </body>
