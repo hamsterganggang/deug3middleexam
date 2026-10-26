@@ -1,0 +1,9 @@
+---
+layout: default
+---
+{%- assign body = content | strip -%}
+{%- if body == "" -%}
+{% include coming-soon.html %}
+{%- else -%}
+{{ content }}
+{%- endif -%}

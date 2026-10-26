@@ -1,0 +1,203 @@
+---
+layout: theory
+subject: ml
+mode: theory
+permalink: /ml/theory/
+toc:
+  - { id: t1, label: 01 카드 소비 }
+  - { id: t2, label: 02 생존율 1 }
+  - { id: t3, label: 03 생존율 2 }
+  - { id: t4, label: 개념 체크 }
+---
+<p class="intro">교재 Ch10 강의자료와 실습 노트북 3개를 기준으로 정리했습니다. 맨 아래 <b>개념 체크</b>는 눌러서 답을 확인할 수 있습니다.</p>
+
+<section id="t1">
+<h2>Section 01 · 카드 소비 데이터 분석</h2>
+
+<div class="card key">
+<h3>목표와 데이터</h3>
+<p>BC카드 소비 데이터를 정제해서 서울시 거주·비거주 고객의 소비, 편의점 소비를 분석하고, 코로나19 전후(2019년 6월과 2020년 3월) 소매점 매출 차이를 비교합니다.</p>
+<ul>
+<li>원본 파일: <code>bc_card.txt</code> (2019년 6월 소비 데이터 일부)</li>
+<li>용량 13,179KB, 레코드 100,002개, 컬럼 23개</li>
+<li>응용 데이터: <code>bc_card_out2020_03.txt</code> (2020년 3월)</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>꼭 알아야 할 컬럼</h3>
+<div class="tbl"><table>
+<tr><th>컬럼</th><th>의미</th></tr>
+<tr><td><code>REG_YYMM</code></td><td>기준 연월 (예: 201906)</td></tr>
+<tr><td><code>MEGA_CTY_NM</code> / <code>CTY_RGN_NM</code></td><td>가맹점이 있는 시도 / 시군구 (소비한 곳)</td></tr>
+<tr><td><code>CSTMR_MEGA_CTY_NM</code> / <code>CSTMR_CTY_RGN_NM</code></td><td>고객이 거주하는 시도 / 시군구</td></tr>
+<tr><td><code>TP_BUZ_NO</code></td><td>업종 코드. <b>4010 = 편의점</b></td></tr>
+<tr><td><code>SEX_CTGO_CD</code></td><td>성별. <b>1 = 남성, 2 = 여성</b></td></tr>
+<tr><td><code>AMT</code></td><td>이용 금액 합계 (소비액)</td></tr>
+<tr><td><code>CNT</code></td><td>이용 건수 합계</td></tr>
+</table></div>
+<p>가맹점 위치 컬럼과 고객 거주지 컬럼을 구분하는 게 핵심입니다. "거주지 내 소비"는 두 값이 같은 행입니다.</p>
+</div>
+
+<div class="card">
+<h3>전처리 과정</h3>
+<ol>
+<li><b>작업용 파일 생성:</b> 코랩에 드라이브를 마운트하고 <code>bc_card.txt</code>를 업로드한 뒤, 바이너리(<code>'rb'</code>)로 읽어 <code>cp949</code>로 디코딩해서 <code>bc_card_output.txt</code>로 저장합니다. cp949는 윈도우 한글 인코딩입니다.</li>
+<li><b>탭으로 분리:</b> <code>split('\t')</code>로 나눈 뒤 전체 개수를 23으로 나눈 나머지를 확인합니다. 0이 아니면 구분이 깨진 것입니다.</li>
+<li><b>깨진 이유:</b> 레코드 사이에 탭이 없어서 앞 레코드의 마지막 값(CNT)과 다음 레코드의 첫 값(201906)이 붙어 있습니다.</li>
+<li><b>복구:</b> 헤더의 <code>'CNT'</code> 위치(260) 뒤에 탭을 넣고, 이후 레코드마다 <code>find('201906')</code>로 위치를 찾아 탭을 넣습니다. 헤더는 23개 단위, 반복 주기는 <code>Cycle=22</code>입니다.</li>
+<li><b>DataFrame 저장:</b> <code>join</code>으로 합쳤다가 다시 <code>split</code>하고, 23개씩 잘라 2차원 리스트로 만든 뒤 첫 행을 컬럼명으로 DataFrame을 만들고 CSV로 저장합니다.</li>
+</ol>
+</div>
+
+<div class="card">
+<h3>분석 내용과 사용 함수</h3>
+<div class="tbl"><table>
+<tr><th>분석</th><th>방법</th></tr>
+<tr><td>서울 거주/비거주 고객 수</td><td>조건으로 인덱스를 구해 <code>drop</code> 후 <code>len</code></td></tr>
+<tr><td>총 소비액</td><td><code>AMT</code> 열의 <code>sum(axis=0)</code></td></tr>
+<tr><td>성별 소비액</td><td><code>pivot_table(index=['SEX_CTGO_CD'], aggfunc='sum')</code></td></tr>
+<tr><td>카드 이용 건수</td><td><code>CNT</code> 열의 합계</td></tr>
+<tr><td>편의점 소비액</td><td><code>TP_BUZ_NO == 4010</code>인 행의 AMT 합계</td></tr>
+<tr><td>강남구 편의점</td><td>편의점이면서 <code>CTY_RGN_NM == '강남구'</code>, 거주/비거주는 <code>CSTMR_CTY_RGN_NM</code>으로 구분</td></tr>
+<tr><td>거주지 소재 편의점 소비 (응용)</td><td><code>CTY_RGN_NM == CSTMR_CTY_RGN_NM</code>이면 거주지 내, 다르면 거주지 외</td></tr>
+</table></div>
+<p><code>drop</code>으로 행을 지우면 인덱스 번호가 비게 되므로 <code>reset_index(drop=True, inplace=True)</code>로 0부터 다시 매깁니다. <code>drop=True</code>는 기존 인덱스를 열로 남기지 않는다는 뜻입니다.</p>
+</div>
+</section>
+
+<section id="t2">
+<h2>Section 02 · sklearn 기본 (생존율 예측 1)</h2>
+
+<div class="card key">
+<h3>최종 데이터 titanic_df1</h3>
+<p>7장 전처리를 적용한 데이터입니다. 컬럼은 <code>survived, pclass, sex, age, title, fare, num_family</code>이며, survived가 정답(종속변수)이고 나머지 6개가 입력(독립변수)입니다.</p>
+<ol>
+<li>sex를 숫자로: <b>female 0, male 1</b></li>
+<li>이름에서 호칭 추출 → Master, Don, Rev는 Special(1), 나머지는 0</li>
+<li><code>sibpar = sibsp + parch</code> (동반자 수)</li>
+<li><code>n_family = sibpar + 1</code>로 0 나누기를 방지하고, 1인당 요금 <code>fare / n_family</code></li>
+<li>컬럼명 정리 후 <code>dropna()</code>로 age 결측 행 삭제</li>
+</ol>
+</div>
+
+<div class="card">
+<h3>의사결정나무 (Decision Tree)</h3>
+<p>데이터 사이의 패턴을 예측 가능한 규칙의 조합으로 나타내고, 입력값 조합에 따른 결과를 트리 구조 그래프로 표현하는 모델입니다.</p>
+<div class="tbl"><table>
+<tr><th>파라미터</th><th>의미</th></tr>
+<tr><td><code>criterion='entropy'</code></td><td>노드를 나누는 기준(불순도). 기본값은 gini</td></tr>
+<tr><td><code>max_depth=3</code></td><td>트리의 최대 깊이. 너무 깊으면 과적합</td></tr>
+<tr><td><code>min_samples_leaf=5</code></td><td>리프 노드에 있어야 하는 최소 샘플 수</td></tr>
+</table></div>
+<p><code>export_graphviz</code>로 트리를 그림으로 볼 수 있습니다.</p>
+</div>
+
+<div class="card">
+<h3>평가 방법</h3>
+<ul>
+<li><code>score(X, y)</code> / <code>accuracy_score(y_test, y_pred)</code>: 정확도 = 맞힌 개수 ÷ 전체</li>
+<li><code>confusion_matrix(y_test, y_pred)</code>: 혼동행렬. 행은 실제값, 열은 예측값입니다.</li>
+<li><code>predict_proba([Tom])</code>: 클래스별 확률 <code>[사망(0) 확률, 생존(1) 확률]</code></li>
+</ul>
+<div class="tbl"><table>
+<tr><th></th><th>예측 0</th><th>예측 1</th></tr>
+<tr><th>실제 0</th><td>TN (맞음)</td><td>FP</td></tr>
+<tr><th>실제 1</th><td>FN</td><td>TP (맞음)</td></tr>
+</table></div>
+</div>
+
+<div class="card">
+<h3>로지스틱 회귀분석</h3>
+<p>종속변수가 0과 1처럼 두 범주로 나뉠 때 많이 쓰는 분류 모델입니다. 이름은 회귀지만 확률을 계산해 분류합니다.</p>
+<ul>
+<li><code>fit</code>으로 회귀계수를 추정하고, 그 계수로 <code>predict</code>해서 예측값(pred)을 구합니다.</li>
+<li><code>solver='liblinear'</code>: 최적화 알고리즘. <code>C=10.</code>: 규제 강도의 역수로, 클수록 규제가 약합니다.</li>
+<li><code>random_state=13</code>: 결과 재현을 위한 난수 고정</li>
+<li><code>coef_</code>: 변수별 회귀계수. 부호가 +면 생존 확률을 높이는 방향입니다.</li>
+</ul>
+</div>
+
+<div class="card key">
+<h3>정규화와 표준화</h3>
+<p>age나 fare처럼 값의 범위가 큰 변수가 있으면 모델이 그 변수에 끌려가므로 범위를 맞춰줍니다. 박스플롯(<code>sns.boxplot</code>)으로 변환 전후를 비교합니다.</p>
+<div class="tbl"><table>
+<tr><th></th><th>정규화</th><th>표준화</th></tr>
+<tr><td>클래스</td><td><code>MinMaxScaler</code></td><td><code>StandardScaler</code></td></tr>
+<tr><td>결과</td><td>0 ~ 1 범위</td><td>평균 0, 표준편차 1</td></tr>
+<tr><td>공식</td><td>(x − 최솟값) ÷ (최댓값 − 최솟값)</td><td>(x − 평균) ÷ 표준편차</td></tr>
+</table></div>
+<p><code>fit</code>은 기준(최솟값·최댓값 또는 평균·표준편차)을 계산하고, <code>transform</code>은 그 기준으로 실제 변환합니다.</p>
+</div>
+
+<div class="card">
+<h3>데이터 분할</h3>
+<ul>
+<li>처음 실습: numpy 배열로 바꾼 뒤 앞 100개는 학습, 나머지는 테스트. 각 행의 0번째 값이 y, 나머지가 X</li>
+<li>이후 실습: <code>train_test_split(X, y, test_size=0.2, random_state=13)</code>으로 8:2 분할</li>
+<li><code>np.unique(y_train, return_counts=True)</code>로 학습 데이터의 생존/사망 수 확인</li>
+</ul>
+</div>
+</section>
+
+<section id="t3">
+<h2>Section 03 · sklearn 활용 (생존율 예측 2)</h2>
+
+<div class="card key">
+<h3>데이터와 전처리</h3>
+<p>타이타닉 1309명 엑셀(<code>sheet_name='total'</code>)에서 앞 1000명은 학습용, 뒤 309명은 테스트용입니다. 생존 이후에 생기는 정보라 정답을 그대로 드러내는 <code>boat</code>(구명보트), <code>body</code>(시신 번호)와 <code>home.dest</code>는 삭제합니다.</p>
+<div class="tbl"><table>
+<tr><th>컬럼</th><th>처리</th></tr>
+<tr><td>title</td><td>정규식으로 호칭 추출. Mr 1, Miss 2, Mrs 3, Master 4, Special 5 (Mlle·Ms는 Miss, Mme는 Mrs). 결측은 0</td></tr>
+<tr><td>age</td><td>결측을 <b>호칭별 중앙값</b>으로 채운 뒤 0~6 구간으로 나눔</td></tr>
+<tr><td>sex</td><td><b>male 0, female 1</b> (Section 02와 반대)</td></tr>
+<tr><td>embarked</td><td>결측을 'S'로 채운 뒤 S 0, C 1, Q 2</td></tr>
+<tr><td>sibpar, n_alone</td><td>sibsp + parch. 동반자가 없으면 n_alone = 1</td></tr>
+<tr><td>fare</td><td>결측을 <b>pclass별 중앙값</b>으로 채운 뒤 1~5 구간</td></tr>
+<tr><td>fare_person</td><td>fare ÷ (sibpar + 1), 정수로 변환</td></tr>
+</table></div>
+<p>최종 입력 컬럼 8개: <code>pclass, sex, age, embarked, title, sibpar, n_alone, fare_person</code></p>
+</div>
+
+<div class="card">
+<h3>머신러닝 모델 8가지</h3>
+<div class="tbl"><table>
+<tr><th>모델</th><th>원리</th><th>교재 설정</th></tr>
+<tr><td>의사결정나무</td><td>질문(규칙)으로 데이터를 계속 나누는 트리</td><td>기본값</td></tr>
+<tr><td>랜덤 포레스트</td><td>의사결정나무 여러 개를 만들어 다수결로 예측하는 앙상블</td><td><code>n_estimators=100</code> (트리 100개)</td></tr>
+<tr><td>로지스틱 회귀</td><td>확률을 계산해 0/1로 분류</td><td>기본값</td></tr>
+<tr><td>나이브 베이즈</td><td>베이즈 정리 기반, 특성끼리 독립이라고 가정. Gaussian은 정규분포 가정</td><td><code>GaussianNB()</code></td></tr>
+<tr><td>KNN</td><td>가장 가까운 k개 이웃의 다수결</td><td><code>n_neighbors=3</code></td></tr>
+<tr><td>SVM</td><td>두 클래스 사이 간격(마진)이 최대가 되는 경계선을 찾음</td><td><code>LinearSVC()</code></td></tr>
+<tr><td>퍼셉트론</td><td>가장 단순한 인공신경망. 입력의 가중합으로 판단하고 틀리면 가중치 수정</td><td><code>max_iter=5</code></td></tr>
+<tr><td>확률적 경사하강법</td><td>데이터를 하나씩(일부씩) 보며 기울기 방향으로 가중치를 조금씩 갱신</td><td><code>max_iter=5, tol=None</code></td></tr>
+</table></div>
+<p>모든 모델은 <code>fit</code> → <code>predict</code> → <code>score</code> 순서이고, 정확도는 <code>round(score*100, 2)</code>로 백분율 소수점 둘째 자리까지 표시합니다.</p>
+</div>
+
+<div class="card key">
+<h3>모델 비교와 교차검증</h3>
+<ul>
+<li>8개 모델의 학습·테스트 정확도를 DataFrame으로 만들고 <code>train_Score</code> 기준 내림차순 정렬</li>
+<li>가장 높은 정확도: <b>랜덤 포레스트와 의사결정나무</b></li>
+<li>학습 정확도만 높고 테스트 정확도가 낮으면 과적합을 의심합니다.</li>
+</ul>
+<p><b>교차검증</b>은 학습 데이터를 여러 개로 나누어 여러 번 학습하는 방식입니다. <code>cv=10</code>이면 10개로 나눠 한 조각씩 돌아가며 검증용으로 쓰고, 점수 10개가 나옵니다. <code>mean()</code>은 평균 성능, <code>std()</code>는 점수가 얼마나 흔들리는지(작을수록 안정적)를 봅니다.</p>
+</div>
+</section>
+
+<section id="t4">
+<h2>개념 체크</h2>
+<details><summary>bc_card.txt를 읽을 때 왜 'rb'로 열고 cp949로 디코딩하나요?</summary>원본이 윈도우 한글 인코딩(cp949)으로 저장돼 있어서, 바이너리로 읽은 뒤 cp949로 디코딩해야 한글이 깨지지 않습니다.</details>
+<details><summary>split 후 23으로 나눈 나머지가 0이 아닌 이유는?</summary>레코드 사이에 탭이 없어 앞 레코드의 CNT 값과 다음 레코드의 연월(201906)이 하나로 붙어 있기 때문입니다.</details>
+<details><summary>편의점 업종 코드와 성별 코드는?</summary>편의점은 TP_BUZ_NO = 4010, 성별은 SEX_CTGO_CD에서 1 남성, 2 여성입니다.</details>
+<details><summary>CTY_RGN_NM과 CSTMR_CTY_RGN_NM의 차이는?</summary>CTY_RGN_NM은 가맹점(소비한 곳)의 구, CSTMR_CTY_RGN_NM은 고객이 사는 구입니다.</details>
+<details><summary>정규화와 표준화의 차이는?</summary>정규화(MinMaxScaler)는 0~1 범위로, 표준화(StandardScaler)는 평균 0·표준편차 1로 바꿉니다.</details>
+<details><summary>로지스틱 회귀는 언제 쓰나요?</summary>종속변수가 0, 1처럼 두 범주로 나뉘는 분류 문제에 씁니다.</details>
+<details><summary>predict_proba 결과 [0.3, 0.7]의 의미는?</summary>사망(0)일 확률 30%, 생존(1)일 확률 70%입니다.</details>
+<details><summary>랜덤 포레스트와 의사결정나무의 관계는?</summary>랜덤 포레스트는 의사결정나무를 여러 개(n_estimators) 만들어 결과를 다수결로 합치는 앙상블 모델입니다.</details>
+<details><summary>Section 03에서 정확도가 가장 높았던 모델은?</summary>랜덤 포레스트와 의사결정나무입니다.</details>
+<details><summary>교차검증이란?</summary>학습 데이터를 여러 개로 나누어 여러 번 학습·검증하는 방식입니다. cv=10이면 10번 수행해 점수 10개의 평균과 표준편차를 봅니다.</details>
+<details><summary>Section 02와 03의 성별 인코딩 차이는?</summary>Section 02는 female 0 · male 1, Section 03은 male 0 · female 1입니다.</details>
+<details><summary>age와 fare 결측치는 각각 무엇으로 채웠나요? (Section 03)</summary>age는 호칭(title)별 중앙값, fare는 객실 등급(pclass)별 중앙값입니다.</details>
+</section>

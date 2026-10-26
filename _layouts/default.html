@@ -1,0 +1,62 @@
+{%- assign subj = site.data.subjects | where: "id", page.subject | first -%}
+{%- assign quiz = site.data[page.subject].quiz -%}
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'ko' }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{% if subj %}{{ subj.name }} {% if page.mode == 'quiz' %}문제{% else %}이론{% endif %} · {% endif %}{{ site.title }}</title>
+<meta name="description" content="{{ site.description }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+</head>
+<body class="mode-{{ page.mode | default: 'home' }}">
+<header id="top">
+  <div class="bar">
+    <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+    {%- if page.mode == 'quiz' and quiz %}
+    <div class="score" id="score"></div>
+    {%- endif %}
+  </div>
+
+  <nav class="subjects" aria-label="과목">
+    {%- for s in site.data.subjects %}
+    <a href="{{ '/' | append: s.id | append: '/theory/' | relative_url }}"{% if s.id == page.subject %} aria-current="page"{% endif %}>{{ s.name }}{% unless s.ready %}<small>준비 중</small>{% endunless %}</a>
+    {%- endfor %}
+  </nav>
+
+  {%- if subj %}
+  <nav class="modes" aria-label="메뉴">
+    <a href="{{ '/' | append: subj.id | append: '/theory/' | relative_url }}"{% if page.mode == 'theory' %} aria-current="page"{% endif %}>이론</a>
+    <a href="{{ '/' | append: subj.id | append: '/quiz/' | relative_url }}"{% if page.mode == 'quiz' %} aria-current="page"{% endif %}>문제</a>
+  </nav>
+  {%- endif %}
+
+  {%- if page.mode == 'theory' and page.toc %}
+  <nav class="tabs" aria-label="바로가기">
+    {%- for t in page.toc %}<a href="#{{ t.id }}">{{ t.label }}</a>{% endfor %}
+  </nav>
+  {%- elsif page.mode == 'quiz' and quiz %}
+  <nav class="tabs" aria-label="바로가기">
+    {%- for s in quiz.sections %}<a href="#{{ s.id }}">{{ s.title }}</a>{% endfor %}
+  </nav>
+  <div class="track"><i id="prog"></i></div>
+  {%- endif %}
+</header>
+
+<main id="main">
+{{ content }}
+</main>
+
+<script>
+// 고정 헤더 높이만큼 앵커 이동 위치 보정
+(function(){
+  const h=document.getElementById('top');
+  const fit=()=>document.documentElement.style.scrollPaddingTop=(h.offsetHeight+8)+'px';
+  fit(); addEventListener('resize',fit);
+})();
+</script>
+</body>
+</html>

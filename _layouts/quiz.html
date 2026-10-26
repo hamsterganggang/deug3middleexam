@@ -1,0 +1,27 @@
+---
+layout: default
+---
+{%- assign quiz = site.data[page.subject].quiz -%}
+{%- if quiz -%}
+<p class="intro">빈칸에 들어갈 코드를 입력하고 아래 <b>채점하기</b>를 누르세요. Enter를 누르면 다음 빈칸으로 넘어갑니다. 따옴표는 안 써도 됩니다. 입력한 내용은 이 브라우저에 저장됩니다.</p>
+<div id="quiz"></div>
+{{ content }}
+
+<div class="actions"><div>
+  <button class="primary" id="grade">채점하기</button>
+  <button id="wrong" aria-pressed="false">틀린 문제만</button>
+  <button id="reveal" aria-pressed="false">정답 모두 보기</button>
+  <button id="reset">초기화</button>
+</div></div>
+
+<script>
+window.QUIZ={
+  key:"quiz-{{ page.subject }}-v1",
+  answers:{{ quiz.answers | jsonify }},
+  sections:{{ quiz.sections | jsonify }}
+};
+</script>
+<script src="{{ '/assets/js/quiz.js' | relative_url }}"></script>
+{%- else -%}
+{% include coming-soon.html %}
+{%- endif -%}

@@ -1,0 +1,13 @@
+title: 중간고사 대비
+description: 머신러닝 · 빅데이터 이론 정리와 빈칸 문제
+lang: ko
+baseurl: "/deug3middleexam"
+url: "https://hamsterganggang.github.io"
+
+markdown: kramdown
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor

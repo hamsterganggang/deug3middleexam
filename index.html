@@ -1,0 +1,16 @@
+---
+layout: default
+---
+<p class="intro">과목을 고르고 <b>이론</b>으로 정리하거나 <b>문제</b>로 빈칸 연습을 하세요.</p>
+<div class="home-grid">
+{%- for s in site.data.subjects %}
+  <div class="card key{% unless s.ready %} off{% endunless %}">
+    <h3>{{ s.name }}</h3>
+    <p>{{ s.desc }}</p>
+    <div class="links">
+      <a href="{{ '/' | append: s.id | append: '/theory/' | relative_url }}">이론</a>
+      <a href="{{ '/' | append: s.id | append: '/quiz/' | relative_url }}">문제</a>
+    </div>
+  </div>
+{%- endfor %}
+</div>
