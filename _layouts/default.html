@@ -65,6 +65,19 @@
   const h=document.getElementById('top');
   const fit=()=>document.documentElement.style.scrollPaddingTop=((h?h.offsetHeight:0)+8)+'px';
   fit(); addEventListener('resize',fit);
+  // 휴대폰에서 화면보다 넓은 표(머리행 있는 것)는 행 단위 카드로 바꿈
+  const stack=()=>{
+    document.querySelectorAll('.tbl').forEach(box=>{
+      box.classList.remove('stack');
+      const t=box.querySelector('table'), head=t&&t.rows[0];
+      if(!head||!head.querySelector('th')||innerWidth>520||t.scrollWidth<=box.clientWidth+2) return;
+      const labels=[...head.cells].map(c=>c.textContent.trim());
+      [...t.rows].slice(1).forEach(r=>[...r.cells].forEach((c,i)=>{if(labels[i]) c.dataset.label=labels[i]}));
+      box.classList.add('stack');
+    });
+    fit();
+  };
+  stack(); addEventListener('resize',stack);
   const up=document.querySelector('.to-top');
   if(up){
     addEventListener('scroll',()=>{up.hidden=scrollY<600},{passive:true});
