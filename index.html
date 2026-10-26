@@ -1,16 +1,22 @@
 ---
 layout: default
 ---
-<p class="intro">과목을 고르고 <b>이론</b>으로 정리하거나 <b>문제</b>로 빈칸 연습을 하세요.</p>
-<div class="home-grid">
+<section class="hero">
+  <p class="eyebrow">Midterm Notes</p>
+  <h1>{{ site.title }}</h1>
+  <p>강의 내용을 위키처럼 정리한 <b>이론</b>과, 직접 풀어 보며 확인하는 <b>문제</b>를 과목별로 모았습니다.</p>
+</section>
+
+<div class="subject-grid">
 {%- for s in site.data.subjects %}
-  <div class="card key{% unless s.ready %} off{% endunless %}">
-    <h3>{{ s.name }}</h3>
-    <p>{{ s.desc }}</p>
+  <article class="subject{% unless s.ready %} off{% endunless %}">
+    <p class="num">{{ forloop.index | prepend: '0' }}</p>
+    <h2>{{ s.name }}</h2>
+    <p class="desc">{{ s.desc }}</p>
     <div class="links">
-      <a href="{{ '/' | append: s.id | append: '/theory/' | relative_url }}">이론</a>
-      <a href="{{ '/' | append: s.id | append: '/quiz/' | relative_url }}">문제</a>
+      <a class="primary" href="{{ '/' | append: s.id | append: '/theory/' | relative_url }}">이론 읽기 <span aria-hidden="true">→</span></a>
+      <a href="{{ '/' | append: s.id | append: '/quiz/' | relative_url }}">문제 풀기</a>
     </div>
-  </div>
+  </article>
 {%- endfor %}
 </div>

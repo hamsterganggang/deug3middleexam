@@ -19,7 +19,7 @@ layout: default
   {%- unless quiz.type == 'qa' %}
   <button class="primary" id="grade">채점<span class="lg">하기</span></button>
   {%- endunless %}
-  <button id="wrong" aria-pressed="false">{% if quiz.type == 'qa' %}맞힌 <span class="lg">문제 </span>숨기기{% else %}틀린 <span class="lg">문제</span>만{% endif %}</button>
+  <button id="wrong" aria-pressed="false">{% if quiz.type == 'qa' %}<span class="lg">맞힌 문제 숨기기</span><span class="sm">틀린 것만</span>{% else %}<span class="lg">틀린 문제만</span><span class="sm">오답만</span>{% endif %}</button>
   <button id="reveal" aria-pressed="false">정답<span class="lg"> 모두 보기</span></button>
   <button id="reset">초기화</button>
 </div></div>
