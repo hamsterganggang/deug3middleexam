@@ -35,7 +35,6 @@
 :root{
   --font:"Paperlogy","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
   --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
-  --doc:760px; --side:248px;
 }
 
 /* ───────── 기본 ───────── */
@@ -52,7 +51,7 @@ button:focus-visible,a:focus-visible,textarea:focus-visible{outline:2px solid va
 header.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 86%,transparent);
   -webkit-backdrop-filter:saturate(180%) blur(12px);backdrop-filter:saturate(180%) blur(12px);
   border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
-.top-in{max-width:1180px;margin:0 auto;height:58px;padding:0 24px;display:flex;align-items:center;gap:8px}
+.top-in{height:58px;padding:0 32px;display:flex;align-items:center;gap:8px}
 .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1rem;color:var(--ink);text-decoration:none;letter-spacing:-.02em;margin-right:auto}
 .brand .mark{width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 45%,#9b6bff))}
 .top-subjects{display:flex;gap:2px;margin-right:8px}
@@ -63,14 +62,20 @@ header.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--b
   border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
 .icon-btn:hover{background:var(--surface)}
 .theme-btn .sun{display:var(--sun)} .theme-btn .moon{display:var(--moon)}
-.menu-btn{display:none;margin-left:-6px;border-color:transparent}
+.menu-btn{width:auto;gap:8px;padding:0 14px 0 10px;margin-right:6px;font:inherit;font-size:.9rem;font-weight:600}
+.menu-btn[aria-expanded="true"]{background:var(--accent-soft);border-color:color-mix(in srgb,var(--accent) 30%,var(--line));color:var(--accent)}
 .track{height:3px;background:transparent}
 .track i{display:block;height:100%;width:0;background:var(--accent);transition:width .3s}
 
-/* ───────── 문서 레이아웃 (사이드바 + 본문) ───────── */
-.wrap{max-width:1180px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:var(--side) minmax(0,1fr);gap:64px}
-.side{position:sticky;top:59px;align-self:start;max-height:calc(100vh - 59px);overflow-y:auto;padding:36px 4px 48px 0;
+/* ───────── 문서 레이아웃 (본문은 화면 폭 전체, 목차는 "목차" 버튼으로 여는 서랍) ───────── */
+.wrap{padding:0 32px}
+.side{position:fixed;z-index:30;top:0;left:0;bottom:0;width:min(86vw,340px);overflow-y:auto;padding:calc(24px + env(safe-area-inset-top,0px)) 16px 32px;
+  background:var(--bg);border-right:1px solid var(--line);transform:translateX(-102%);transition:transform .25s ease;box-shadow:var(--shadow);
   scrollbar-width:thin;scrollbar-color:var(--line) transparent}
+body.nav-open .side{transform:none}
+body.nav-open{overflow:hidden}
+.scrim{position:fixed;inset:0;z-index:25;background:rgba(10,12,16,.4)}
+.scrim[hidden]{display:none}
 .side-subjects{display:none}
 .side-label{margin:0 0 10px 12px;font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .toc ol{list-style:none;margin:0;padding:0}
@@ -83,9 +88,8 @@ header.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--b
 .toc li.open ol{display:block}
 .toc li ol a{font-size:.84rem;color:var(--muted);padding:3px 10px}
 .toc li ol a.on{color:var(--accent);background:none}
-.scrim{display:none}
 
-main.doc{min-width:0;max-width:var(--doc);padding:44px 0 96px}
+main.doc{min-width:0;padding:40px 0 96px}
 .page-head{padding-bottom:28px;margin-bottom:8px;border-bottom:1px solid var(--line)}
 .crumb{margin:0 0 10px;font-size:.84rem;color:var(--muted);display:flex;gap:8px}
 .crumb a{color:var(--muted);text-decoration:none} .crumb a:hover{color:var(--ink)}
@@ -141,7 +145,7 @@ details[open] summary{margin-bottom:8px}
 :root{--cds-chart-axis:var(--muted);--cds-chart-grid:var(--line);--cds-chart-categorical-1:var(--accent);
   --cds-chart-muted:var(--comment);--cds-chart-status-critical:var(--bad);--cds-text-primary:var(--ink);--cds-text-secondary:var(--muted)}
 .fig{margin:8px 0 18px;padding:16px;border:1px solid var(--line);border-radius:12px;background:var(--bg)}
-.fig svg{display:block;width:100%;height:auto;font-family:inherit}
+.fig svg{display:block;width:100%;max-width:960px;height:auto;margin:0 auto;font-family:inherit}
 .fig figcaption{font-size:.82rem;color:var(--muted);margin-top:8px;text-align:center}
 
 /* ───────── 코드 / 빈칸 문제 ───────── */
@@ -198,7 +202,7 @@ button[aria-pressed="true"]{border-color:var(--accent);color:var(--accent);backg
 .tips li{margin:3px 0}
 
 /* ───────── 홈 ───────── */
-main.home{max-width:1080px;margin:0 auto;padding:88px 24px 96px}
+main.home{max-width:1200px;margin:0 auto;padding:88px 24px 96px}
 .hero{max-width:680px;margin-bottom:56px}
 .eyebrow{margin:0 0 14px;font-family:var(--mono);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
 .hero h1{margin:0 0 16px;font-size:clamp(2.2rem,5vw,3.3rem);line-height:1.15;letter-spacing:-.04em;font-weight:800}
@@ -227,21 +231,15 @@ main.home{max-width:1080px;margin:0 auto;padding:88px 24px 96px}
 
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 
-/* ───────── 태블릿 이하: 사이드바 → 서랍 ───────── */
+/* ───────── 태블릿 이하: 과목 전환도 서랍으로 ───────── */
 @media (max-width:1023px){
-  .menu-btn{display:inline-flex}
   .top-subjects{display:none}
-  .wrap{display:block;padding:0 24px}
-  main.doc{margin:0 auto;padding-top:32px}
-  .side{position:fixed;z-index:30;top:0;left:0;bottom:0;width:min(86vw,320px);max-height:none;padding:calc(20px + env(safe-area-inset-top,0px)) 16px 32px;
-    background:var(--bg);border-right:1px solid var(--line);transform:translateX(-102%);transition:transform .25s ease;box-shadow:var(--shadow)}
-  body.nav-open .side{transform:none}
-  body.nav-open{overflow:hidden}
-  .scrim{display:block;position:fixed;inset:0;z-index:25;background:rgba(10,12,16,.4)}
-  .scrim[hidden]{display:none}
+  .wrap{padding:0 24px}
+  main.doc{padding-top:32px}
   .side-subjects{display:flex;gap:4px;padding:4px;margin:0 0 20px;background:var(--surface);border:1px solid var(--line);border-radius:12px}
   .side-subjects a{flex:1;text-align:center;padding:8px;border-radius:9px;text-decoration:none;color:var(--muted);font-weight:600;font-size:.92rem}
   .side-subjects a[aria-current="page"]{background:var(--bg);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+}
 }
 
 /* 터치 기기: iOS 입력 확대 방지(16px 이상), 터치 영역 키우기 */
@@ -255,6 +253,8 @@ main.home{max-width:1080px;margin:0 auto;padding:88px 24px 96px}
 @media (max-width:520px){
   body{font-size:15.5px;line-height:1.72}
   .top-in{height:54px;padding:0 12px}
+  .menu-btn{width:38px;padding:0;margin-right:2px;border-color:transparent}
+  .menu-btn .lbl{display:none}
   .wrap{padding:0 16px}
   main.doc{padding:24px 0 72px}
   .page-head{padding-bottom:22px}
@@ -297,4 +297,40 @@ main.home{max-width:1080px;margin:0 auto;padding:88px 24px 96px}
   .subject{padding:22px}
   .subject .num{margin-bottom:18px}
   .to-top{right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px))}
+}
+
+/* ───────── "무엇을 공부해야 하나요?" 버튼 · 팝업 ───────── */
+.head-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px}
+.guide-btn{display:inline-flex;align-items:center;gap:8px;padding:7px 14px 7px 8px;border-radius:11px;border:1px solid color-mix(in srgb,var(--accent) 30%,var(--line));
+  background:var(--accent-soft);color:var(--accent);font-weight:600;font-size:.92rem}
+.guide-btn:hover{background:color-mix(in srgb,var(--accent) 14%,var(--bg))}
+.q-icon{width:24px;height:24px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;
+  background:var(--accent);color:var(--accent-ink);font-weight:800;font-size:.85rem;line-height:1}
+dialog.guide{width:min(680px,calc(100vw - 32px));max-height:min(86vh,900px);padding:0;border:1px solid var(--line);border-radius:18px;
+  background:var(--bg);color:var(--ink);box-shadow:0 24px 64px rgba(0,0,0,.28);overflow:hidden}
+dialog.guide::backdrop{background:rgba(10,12,16,.5);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
+dialog.guide[open]{display:flex}
+.guide-in{display:flex;flex-direction:column;width:100%;max-height:inherit;overflow-y:auto;padding:26px 28px 28px}
+.guide-head{display:flex;gap:16px;align-items:flex-start;justify-content:space-between;margin-bottom:18px}
+.guide-head h2{margin:0 0 4px;font-size:1.4rem;letter-spacing:-.02em}
+.guide-head p{margin:0;color:var(--muted);font-size:.9rem}
+.guide-close{flex:0 0 auto}
+.guide-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.guide-list>li{border:1px solid var(--line);border-radius:14px;padding:14px 18px 14px}
+.guide-ch{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin-bottom:6px}
+.guide-ch .num{font-family:var(--mono);font-size:.78rem;font-weight:600;color:var(--accent);background:var(--accent-soft);border-radius:6px;padding:1px 8px}
+.guide-ch h3{margin:0;font-size:1.02rem;font-weight:700}
+.guide-ch .tag{font-size:.75rem;font-weight:600;color:var(--bad);background:var(--bad-bg);border-radius:999px;padding:1px 9px}
+.guide-ch .go{margin-left:auto;font-size:.84rem;font-weight:600;text-decoration:none}
+.guide-ch .go:hover{text-decoration:underline}
+.guide-list ul{margin:0;padding-left:1.2em;font-size:.94rem;line-height:1.65}
+.guide-list ul li{margin:3px 0}
+.guide-list ul li::marker{color:var(--muted)}
+@media (max-width:520px){
+  .head-row .seg{flex:1 1 100%}
+  .guide-btn{width:100%;justify-content:center}
+  dialog.guide{width:100vw;max-width:100vw;max-height:88vh;margin:auto 0 0;border-radius:18px 18px 0 0;border-bottom:0}
+  .guide-in{padding:20px 16px calc(24px + env(safe-area-inset-bottom,0px))}
+  .guide-head h2{font-size:1.2rem}
+  .guide-list>li{padding:12px 14px}
 }

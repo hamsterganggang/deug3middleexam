@@ -25,7 +25,7 @@ try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.docu
   <div class="top-in">
     {%- if subj %}
     <button class="icon-btn menu-btn" type="button" aria-label="목차 열기" aria-controls="side" aria-expanded="false">
-      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span class="lbl">목차</span>
     </button>
     {%- endif %}
     <a class="brand" href="{{ '/' | relative_url }}"><span class="mark" aria-hidden="true"></span>{{ site.title }}</a>
@@ -62,10 +62,13 @@ try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.docu
       <p class="crumb"><a href="{{ '/' | relative_url }}">홈</a><span aria-hidden="true">/</span>{{ subj.name }}</p>
       <h1>{{ subj.name }} <span>{% if page.mode == 'quiz' %}문제{% else %}이론{% endif %}</span></h1>
       <p class="lede">{{ subj.desc }}</p>
+      <div class="head-row">
       <nav class="seg" aria-label="메뉴">
         <a href="{{ '/' | append: subj.id | append: '/theory/' | relative_url }}"{% if page.mode == 'theory' %} aria-current="page"{% endif %}>이론</a>
         <a href="{{ '/' | append: subj.id | append: '/quiz/' | relative_url }}"{% if page.mode == 'quiz' %} aria-current="page"{% endif %}>문제</a>
       </nav>
+      {%- if page.mode == 'theory' %}{% include guide.html %}{% endif %}
+      </div>
     </div>
 {{ content }}
   </main>
