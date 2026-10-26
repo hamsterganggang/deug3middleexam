@@ -118,6 +118,9 @@ details[open] summary{margin-bottom:6px}
 .card ul.check li{padding-left:1.6em;position:relative}
 .card ul.check li::before{content:"☐";position:absolute;left:0;color:var(--muted)}
 
+.card .math{overflow-x:auto;overflow-y:hidden;margin:0 0 10px;padding:2px 0}
+.card .math .katex-display{margin:.4em 0}
+
 /* 노트 그림 (SVG) */
 :root{--cds-chart-axis:var(--muted);--cds-chart-grid:var(--line);--cds-chart-categorical-1:var(--accent);
   --cds-chart-muted:var(--comment);--cds-chart-status-critical:var(--bad);--cds-text-primary:var(--ink);--cds-text-secondary:var(--muted)}
