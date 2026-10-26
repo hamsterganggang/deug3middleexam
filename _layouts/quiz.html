@@ -2,14 +2,21 @@
 layout: default
 ---
 {%- assign quiz = site.data[page.subject].quiz -%}
+{%- assign engine = quiz.type | default: 'blank' -%}
 {%- if quiz -%}
+{%- if quiz.type == 'qa' -%}
+<p class="intro">먼저 답을 떠올리거나 적어 본 뒤 <b>정답 보기</b>로 확인하고, <b>○ 맞음 / × 틀림</b>을 표시하세요. 표시한 내용은 이 브라우저에 저장됩니다.</p>
+{%- else -%}
 <p class="intro">빈칸에 들어갈 코드를 입력하고 아래 <b>채점하기</b>를 누르세요. Enter를 누르면 다음 빈칸으로 넘어갑니다. 따옴표는 안 써도 됩니다. 입력한 내용은 이 브라우저에 저장됩니다.</p>
+{%- endif %}
 <div id="quiz"></div>
 {{ content }}
 
 <div class="actions"><div>
+  {%- unless quiz.type == 'qa' %}
   <button class="primary" id="grade">채점하기</button>
-  <button id="wrong" aria-pressed="false">틀린 문제만</button>
+  {%- endunless %}
+  <button id="wrong" aria-pressed="false">{% if quiz.type == 'qa' %}맞힌 문제 숨기기{% else %}틀린 문제만{% endif %}</button>
   <button id="reveal" aria-pressed="false">정답 모두 보기</button>
   <button id="reset">초기화</button>
 </div></div>
@@ -17,11 +24,13 @@ layout: default
 <script>
 window.QUIZ={
   key:"quiz-{{ page.subject }}-v1",
+  {%- if quiz.answers %}
   answers:{{ quiz.answers | jsonify }},
+  {%- endif %}
   sections:{{ quiz.sections | jsonify }}
 };
 </script>
-<script src="{{ '/assets/js/quiz.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/' | append: engine | append: '.js' | relative_url }}"></script>
 {%- else -%}
 {% include coming-soon.html %}
 {%- endif -%}

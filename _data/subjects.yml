@@ -2,9 +2,9 @@
 # ready: false 이면 "준비 중"으로 표시됩니다.
 - id: ml
   name: 머신러닝
-  desc: Ch10 · 카드 소비 데이터 분석, sklearn 생존율 예측
+  desc: 딥러닝 입문 강의 노트 챕터 1~8 · 예상 문제 47개
   ready: true
 - id: bigdata
   name: 빅데이터
-  desc: 준비 중
-  ready: false
+  desc: Ch10 · 카드 소비 데이터 분석, sklearn 생존율 예측 · 코드 빈칸 77개
+  ready: true

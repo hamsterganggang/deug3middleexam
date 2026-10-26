@@ -110,6 +110,34 @@ details{border:1px solid var(--line);border-radius:8px;padding:8px 12px;margin:6
 details summary{cursor:pointer;font-weight:600}
 details[open] summary{margin-bottom:6px}
 
+.card blockquote{margin:0 0 10px;padding:8px 14px;border-left:3px solid var(--line);color:var(--muted);background:var(--code-bg);border-radius:0 6px 6px 0}
+.card blockquote p:last-child{margin:0}
+.card pre.code{margin:0 0 10px;border:1px solid var(--line);border-radius:8px;line-height:1.6;white-space:pre}
+.card pre.code code{background:none;border:0;padding:0;font-size:inherit}
+.card ul.check{list-style:none;padding-left:0}
+.card ul.check li{padding-left:1.6em;position:relative}
+.card ul.check li::before{content:"☐";position:absolute;left:0;color:var(--muted)}
+
+/* 노트 그림 (SVG) */
+:root{--cds-chart-axis:var(--muted);--cds-chart-grid:var(--line);--cds-chart-categorical-1:var(--accent);
+  --cds-chart-muted:var(--comment);--cds-chart-status-critical:var(--bad);--cds-text-primary:var(--ink);--cds-text-secondary:var(--muted)}
+.fig{margin:6px 0 12px;padding:0}
+.fig svg{display:block;width:100%;height:auto;font-family:inherit}
+.fig figcaption{font-size:.8rem;color:var(--muted);margin-top:4px;text-align:center}
+
+/* 주관식 문제 */
+.qa-body{padding:10px 14px 12px;display:flex;flex-direction:column;gap:8px}
+.qa-body textarea{font:inherit;font-size:.9rem;color:var(--ink);background:var(--input-bg);border:1.5px solid var(--line);border-radius:6px;padding:6px 8px;resize:vertical;width:100%}
+.qa-body textarea:focus{outline:none;border-color:var(--accent)}
+.qa-row{display:flex;gap:6px;flex-wrap:wrap}
+.qa-row button{font-size:.85rem;padding:5px 12px}
+.qa-row .mark.ok[aria-pressed="true"]{border-color:var(--ok);color:var(--ok);background:var(--ok-bg)}
+.qa-row .mark.bad[aria-pressed="true"]{border-color:var(--bad);color:var(--bad);background:var(--bad-bg)}
+.qa-ans{font-size:.92rem;padding:8px 12px;border-radius:6px;background:var(--code-bg);border:1px solid var(--line)}
+.qa-ans b{color:var(--accent);margin-right:6px}
+.q.marked-ok{border-color:var(--ok)}
+.q.marked-bad{border-color:var(--bad)}
+
 /* 홈 · 준비 중 */
 .home-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
 .home-grid .card{display:flex;flex-direction:column;gap:10px;margin:0}

@@ -1,0 +1,92 @@
+// 주관식 문제 엔진. 페이지에 window.QUIZ = {key, sections:[{id,title,items:[{q,a}]}]} 가 있어야 합니다.
+// 답을 적고(선택) 정답을 확인한 뒤 스스로 맞음/틀림을 표시합니다.
+(function(){
+const Q=window.QUIZ; if(!Q) return;
+const KEY=Q.key;
+
+let saved={notes:{},marks:{}};
+try{const s=JSON.parse(localStorage.getItem(KEY)||'null'); if(s&&s.notes&&s.marks) saved=s}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(saved))}catch(e){}};
+
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+
+const quiz=document.getElementById('quiz');
+let qn=0;
+Q.sections.forEach(sec=>{
+  const s=document.createElement('section'); s.id=sec.id;
+  s.innerHTML=`<h2>${esc(sec.title)}</h2>`;
+  sec.items.forEach(({q,a})=>{
+    const n=++qn;
+    const d=document.createElement('div'); d.className='q qa'; d.dataset.n=n;
+    d.innerHTML=`<p><span>${n}</span>${esc(q)}</p>
+<div class="qa-body">
+  <textarea rows="2" placeholder="내 답 (선택)" aria-label="${n}번 내 답" spellcheck="false">${esc(saved.notes[n]||'')}</textarea>
+  <div class="qa-row">
+    <button type="button" class="show" aria-expanded="false">정답 보기</button>
+    <button type="button" class="mark ok" aria-pressed="false">○ 맞음</button>
+    <button type="button" class="mark bad" aria-pressed="false">× 틀림</button>
+  </div>
+  <div class="qa-ans" hidden><b>정답</b> ${esc(a)}</div>
+</div>`;
+    s.appendChild(d);
+  });
+  quiz.appendChild(s);
+});
+
+const cards=[...document.querySelectorAll('.q.qa')];
+const total=cards.length;
+const scoreEl=document.getElementById('score');
+
+function paint(card){
+  const m=saved.marks[card.dataset.n];
+  card.classList.toggle('marked-ok',m==='ok');
+  card.classList.toggle('marked-bad',m==='bad');
+  card.classList.toggle('allok',m==='ok');
+  card.querySelector('.mark.ok').setAttribute('aria-pressed',m==='ok');
+  card.querySelector('.mark.bad').setAttribute('aria-pressed',m==='bad');
+}
+function setOpen(card,open){
+  card.querySelector('.qa-ans').hidden=!open;
+  const b=card.querySelector('.show');
+  b.setAttribute('aria-expanded',open); b.textContent=open?'정답 숨기기':'정답 보기';
+}
+function tally(){
+  const marks=Object.values(saved.marks);
+  const ok=marks.filter(m=>m==='ok').length, done=marks.length;
+  scoreEl.innerHTML=done?`<b>${ok}</b> / ${total} 맞음 · ${done}개 확인`:`문제 <b>${total}</b>개`;
+  document.getElementById('prog').style.width=(done/total*100)+'%';
+}
+
+cards.forEach(card=>{
+  const n=card.dataset.n;
+  paint(card);
+  card.querySelector('textarea').addEventListener('input',e=>{saved.notes[n]=e.target.value; save();});
+  card.querySelector('.show').onclick=()=>setOpen(card,card.querySelector('.qa-ans').hidden);
+  card.querySelectorAll('.mark').forEach(b=>b.onclick=()=>{
+    const v=b.classList.contains('ok')?'ok':'bad';
+    if(saved.marks[n]===v) delete saved.marks[n]; else saved.marks[n]=v;
+    save(); paint(card); setOpen(card,true); tally();
+  });
+});
+tally();
+
+const wrongBtn=document.getElementById('wrong');
+wrongBtn.onclick=()=>{
+  const on=document.body.classList.toggle('only-wrong');
+  wrongBtn.setAttribute('aria-pressed',on);
+};
+const revBtn=document.getElementById('reveal');
+revBtn.onclick=()=>{
+  const on=revBtn.getAttribute('aria-pressed')!=='true';
+  revBtn.setAttribute('aria-pressed',on);
+  cards.forEach(c=>setOpen(c,on));
+};
+document.getElementById('reset').onclick=()=>{
+  if(!confirm('적은 답과 맞음/틀림 표시를 모두 지울까요?')) return;
+  saved={notes:{},marks:{}}; save();
+  cards.forEach(c=>{c.querySelector('textarea').value=''; paint(c); setOpen(c,false);});
+  document.body.classList.remove('only-wrong');
+  wrongBtn.setAttribute('aria-pressed','false'); revBtn.setAttribute('aria-pressed','false');
+  tally(); window.scrollTo(0,0);
+};
+})();

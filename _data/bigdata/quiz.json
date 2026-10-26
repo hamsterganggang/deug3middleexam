@@ -1,0 +1,436 @@
+{
+  "answers": {
+    "1": [
+      "rb"
+    ],
+    "2": [
+      "decode"
+    ],
+    "3": [
+      "split"
+    ],
+    "4": [
+      "find"
+    ],
+    "5": [
+      "join"
+    ],
+    "6": [
+      "i+No_Column",
+      "i + No_Column"
+    ],
+    "7": [
+      "range"
+    ],
+    "8": [
+      "columns"
+    ],
+    "9": [
+      "to_csv"
+    ],
+    "10": [
+      "index_col"
+    ],
+    "11": [
+      "index"
+    ],
+    "12": [
+      "drop"
+    ],
+    "13": [
+      "reset_index"
+    ],
+    "14": [
+      "sum"
+    ],
+    "15": [
+      "pivot_table"
+    ],
+    "16": [
+      "sum"
+    ],
+    "17": [
+      "&"
+    ],
+    "18": [
+      "sep"
+    ],
+    "19": [
+      "inplace"
+    ],
+    "20": [
+      "map",
+      "apply"
+    ],
+    "21": [
+      "apply",
+      "map"
+    ],
+    "22": [
+      "rename"
+    ],
+    "23": [
+      "dropna"
+    ],
+    "24": [
+      "values"
+    ],
+    "25": [
+      "sheet_name"
+    ],
+    "26": [
+      "iloc"
+    ],
+    "27": [
+      "extract"
+    ],
+    "28": [
+      "fillna"
+    ],
+    "29": [
+      "groupby"
+    ],
+    "30": [
+      "transform"
+    ],
+    "31": [
+      "loc"
+    ],
+    "32": [
+      "astype"
+    ],
+    "33": [
+      "sort_values"
+    ],
+    "34": [
+      "ascending"
+    ],
+    "35": [
+      "set_index"
+    ],
+    "36": [
+      "tree"
+    ],
+    "37": [
+      "criterion"
+    ],
+    "38": [
+      "max_depth"
+    ],
+    "39": [
+      "min_samples_leaf"
+    ],
+    "40": [
+      "fit"
+    ],
+    "41": [
+      "score"
+    ],
+    "42": [
+      "export_graphviz"
+    ],
+    "43": [
+      "metrics"
+    ],
+    "44": [
+      "predict"
+    ],
+    "45": [
+      "y_test"
+    ],
+    "46": [
+      "y_pred"
+    ],
+    "47": [
+      "predict_proba"
+    ],
+    "48": [
+      "linear_model"
+    ],
+    "49": [
+      "solver"
+    ],
+    "50": [
+      "preprocessing"
+    ],
+    "51": [
+      "MinMaxScaler"
+    ],
+    "52": [
+      "StandardScaler"
+    ],
+    "53": [
+      "fit"
+    ],
+    "54": [
+      "transform"
+    ],
+    "55": [
+      "model_selection"
+    ],
+    "56": [
+      "X_train"
+    ],
+    "57": [
+      "X_test"
+    ],
+    "58": [
+      "y_train"
+    ],
+    "59": [
+      "y_test"
+    ],
+    "60": [
+      "test_size"
+    ],
+    "61": [
+      "coef_"
+    ],
+    "62": [
+      "ensemble"
+    ],
+    "63": [
+      "n_estimators"
+    ],
+    "64": [
+      "n_neighbors"
+    ],
+    "65": [
+      "naive_bayes"
+    ],
+    "66": [
+      "svm"
+    ],
+    "67": [
+      "SGDClassifier"
+    ],
+    "68": [
+      "round"
+    ],
+    "69": [
+      "2"
+    ],
+    "70": [
+      "cross_val_score"
+    ],
+    "71": [
+      "cv"
+    ],
+    "72": [
+      "scoring"
+    ],
+    "73": [
+      "mean"
+    ],
+    "74": [
+      "std"
+    ],
+    "75": [
+      "unique"
+    ],
+    "76": [
+      "return_counts"
+    ],
+    "77": [
+      "boxplot"
+    ]
+  },
+  "sections": [
+    {
+      "id": "a",
+      "title": "A. 파일 처리 · 문자열",
+      "items": [
+        {
+          "desc": "원본 파일을 바이너리 읽기 모드로 열기",
+          "code": "with open('bc_card.txt', mode='[[1]]') as f:"
+        },
+        {
+          "desc": "바이트 데이터를 한글 인코딩으로 변환",
+          "code": "data = data.[[2]]('cp949')"
+        },
+        {
+          "desc": "탭 기준으로 나눠 리스트로 만들기",
+          "code": "split_data = data.[[3]]('\\t')"
+        },
+        {
+          "desc": "'CNT' 문자열이 처음 나오는 위치 찾기",
+          "code": "data.[[4]]('CNT')"
+        },
+        {
+          "desc": "리스트를 탭으로 이어 붙여 하나의 문자열로",
+          "code": "join_split_data = '\\t'.[[5]](split_data)"
+        },
+        {
+          "desc": "23개씩 잘라 2차원 리스트 만들기",
+          "code": "total = [joined_splited_data[i : [[6]]]\n         for i in [[7]](0, len(joined_splited_data), No_Column)]"
+        }
+      ]
+    },
+    {
+      "id": "b",
+      "title": "B. pandas",
+      "items": [
+        {
+          "desc": "첫 행을 컬럼명으로 DataFrame 생성",
+          "code": "total_df = pd.DataFrame(total[1:], [[8]]=total[0])"
+        },
+        {
+          "desc": "CSV 저장 후 첫 열을 인덱스로 읽기",
+          "code": "total_df.[[9]]('201906.csv', encoding='utf-8')\nbc_card = pd.read_csv('201906.csv', encoding='utf-8', [[10]]=0)"
+        },
+        {
+          "desc": "서울 거주가 아닌 행의 인덱스를 구해 삭제",
+          "code": "index1 = bc_card[bc_card['CSTMR_MEGA_CTY_NM'] != '서울특별시'].[[11]]\nseoul_bc_card = bc_card.[[12]](index1)\nseoul_bc_card.[[13]](drop=True, inplace=True)"
+        },
+        {
+          "desc": "소비액 합계",
+          "code": "seoul_bc_card['AMT'].[[14]](axis=0)"
+        },
+        {
+          "desc": "성별로 묶어서 합계 구하기",
+          "code": "pd.[[15]](seoul_bc_card, index=['SEX_CTGO_CD'], aggfunc='[[16]]')"
+        },
+        {
+          "desc": "두 조건을 모두 만족하는 행 (편의점이면서 강남구)",
+          "code": "bc_card[(bc_card['TP_BUZ_NO']==4010) [[17]] (bc_card['CTY_RGN_NM']=='강남구')]"
+        },
+        {
+          "desc": "탭으로 구분된 txt 파일 읽기",
+          "code": "df = pd.read_csv('bc_card_out2020_03.txt', [[18]]='\\t', encoding='utf-8')"
+        },
+        {
+          "desc": "원본을 바로 수정하며 열 삭제",
+          "code": "titanic_df1.drop(columns='sex', [[19]]=True)"
+        },
+        {
+          "desc": "함수를 열의 각 값에 적용 (lambda / 정의한 함수)",
+          "code": "titanic_df1['title'] = titanic_df1['name'].[[20]](condition)\ntitanic_df1['special_title'] = titanic_df1['title'].[[21]](convert_title)"
+        },
+        {
+          "desc": "컬럼명 바꾸기",
+          "code": "titanic_df1.[[22]](columns={'gender':'sex'}, inplace=True)"
+        },
+        {
+          "desc": "결측치(NaN)가 있는 행 삭제",
+          "code": "titanic_df1 = titanic_df1.[[23]]()"
+        },
+        {
+          "desc": "DataFrame을 numpy 배열로 변환",
+          "code": "np_raw = raw.[[24]]"
+        },
+        {
+          "desc": "엑셀의 특정 시트 읽기",
+          "code": "titanic = pd.read_excel(titanic_url, [[25]]='total')"
+        },
+        {
+          "desc": "위치 기반으로 앞 1000행 자르기",
+          "code": "train_1000 = titanic.[[26]][:1000]"
+        },
+        {
+          "desc": "정규식으로 호칭 추출",
+          "code": "dataset['title'] = dataset.name.str.[[27]]('([A-Za-z]+)\\.', expand=False)"
+        },
+        {
+          "desc": "결측치를 0으로 채우기",
+          "code": "dataset['title'] = dataset['title'].[[28]](0)"
+        },
+        {
+          "desc": "호칭별 나이 중앙값으로 결측치 채우기",
+          "code": "train_df['age'].fillna(train_df.[[29]]('title')['age'].[[30]]('median'), inplace=True)"
+        },
+        {
+          "desc": "조건에 맞는 행의 특정 열 값 바꾸기",
+          "code": "dataset1.[[31]][dataset1['age'] <= 11, 'age'] = 0"
+        },
+        {
+          "desc": "정수형으로 변환",
+          "code": "dataset1['age'] = dataset1['age'].[[32]](int)"
+        },
+        {
+          "desc": "train_Score 기준 내림차순 정렬 후 Model을 인덱스로",
+          "code": "result_df = results.[[33]](by='train_Score', [[34]]=False)\nresult_df = result_df.[[35]]('Model')"
+        }
+      ]
+    },
+    {
+      "id": "c",
+      "title": "C. scikit-learn",
+      "items": [
+        {
+          "desc": "의사결정나무 불러오기 및 생성",
+          "code": "from sklearn.[[36]] import DecisionTreeClassifier\nmodel = DecisionTreeClassifier([[37]]='entropy', [[38]]=3, [[39]]=5)"
+        },
+        {
+          "desc": "학습 후 정확도",
+          "code": "model.[[40]](X_train, y_train)\nmodel.[[41]](X_test, y_test)"
+        },
+        {
+          "desc": "트리 시각화용 함수",
+          "code": "from sklearn.tree import [[42]]"
+        },
+        {
+          "desc": "평가 지표 (accuracy_score 인자 순서 주의)",
+          "code": "from sklearn.[[43]] import accuracy_score, confusion_matrix\ny_pred = model.[[44]](X_test)\naccuracy_score([[45]], [[46]])"
+        },
+        {
+          "desc": "생존/사망 확률 예측",
+          "code": "model.[[47]]([Tom])"
+        },
+        {
+          "desc": "로지스틱 회귀",
+          "code": "from sklearn.[[48]] import LogisticRegression\nlog_reg = LogisticRegression(random_state=13, [[49]]='liblinear', C=10.)"
+        },
+        {
+          "desc": "정규화 / 표준화",
+          "code": "from sklearn.[[50]] import MinMaxScaler, StandardScaler\nMMS = [[51]]()   # 0~1 범위로 정규화\nSS  = [[52]]()   # 평균 0, 표준편차 1로 표준화\nSS.[[53]](X)\nX_ss = SS.[[54]](X)"
+        },
+        {
+          "desc": "학습/테스트 데이터 분할 (테스트 20%)",
+          "code": "from sklearn.[[55]] import train_test_split\n[[56]], [[57]], [[58]], [[59]] = train_test_split(X, y, [[60]]=0.2, random_state=13)"
+        },
+        {
+          "desc": "회귀계수 확인",
+          "code": "log_reg.[[61]]"
+        },
+        {
+          "desc": "랜덤포레스트 (트리 100개)",
+          "code": "from sklearn.[[62]] import RandomForestClassifier\nrandom_forest = RandomForestClassifier([[63]]=100)"
+        },
+        {
+          "desc": "KNN (이웃 3개)",
+          "code": "from sklearn.neighbors import KNeighborsClassifier\nknn = KNeighborsClassifier([[64]]=3)"
+        },
+        {
+          "desc": "나이브 베이즈 / SVM",
+          "code": "from sklearn.[[65]] import GaussianNB\nfrom sklearn.[[66]] import SVC, LinearSVC"
+        },
+        {
+          "desc": "확률적 경사하강법",
+          "code": "sgd = linear_model.[[67]](max_iter=5, tol=None)"
+        },
+        {
+          "desc": "정확도를 백분율, 소수점 둘째 자리로",
+          "code": "train_acc = [[68]](model.score(X_train, y_train)*100, [[69]])"
+        },
+        {
+          "desc": "10겹 교차검증",
+          "code": "from sklearn.model_selection import [[70]]\nscores = cross_val_score(rf, X_train, y_train, [[71]]=10, [[72]]=\"accuracy\")\nscores.[[73]]()   # 평균\nscores.[[74]]()   # 표준편차"
+        }
+      ]
+    },
+    {
+      "id": "d",
+      "title": "D. numpy · seaborn",
+      "items": [
+        {
+          "desc": "클래스별 개수 세기",
+          "code": "np.[[75]](y_train, [[76]]=True)"
+        },
+        {
+          "desc": "박스플롯 그리기",
+          "code": "sns.[[77]](data=X_mms_pd[['pclass','sex','age','title','fare','num_family']])"
+        }
+      ]
+    }
+  ]
+}
