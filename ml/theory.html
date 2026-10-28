@@ -5,7 +5,7 @@ mode: theory
 permalink: /ml/theory/
 math: true
 toc:
-  - { id: s2, label: "시험 가이드" }
+  - { id: s2, label: "한눈에 보기" }
   - { id: s3, label: "1장" }
   - { id: s4, label: "2장" }
   - { id: s5, label: "3장" }
@@ -14,35 +14,27 @@ toc:
   - { id: s8, label: "6장" }
   - { id: s9, label: "7장" }
   - { id: s10, label: "8장" }
+  - { id: s12, label: "계산 풀이" }
   - { id: s11, label: "총정리" }
 ---
 <!-- 원본: 딥러닝 입문 강의 노트 (챕터 1~8). 그림은 _includes/ml/fig/*.svg, 수식은 KaTeX로 미리 렌더링 -->
-<p class="intro">딥러닝 입문 강의(챕터 1~8)를 정리한 노트입니다. 예상 문제는 위의 <b>문제</b> 메뉴에 있습니다.</p>
+<p class="intro">머신러닝 중간고사 정리(1~8장)입니다. <span class="star">★</span> 표시는 무조건 나오는 부분이고, 각 장의 <b>꼭 기억할 것</b> 박스 → 본문 → 계산 문제 풀이 순서로 보면 됩니다.</p>
 
 <section id="s2">
-<h2>시험 대비 가이드 (교수님 출제 포인트)</h2>
+<h2>시험 포인트 한눈에 보기</h2>
 <div class="card">
-<p>시험은 40문제 전후, 챕터 1~8 범위. 아래 표가 교수님이 직접 짚은 포인트이고, 오른쪽 칸만 확실히 외우면 대부분 커버됨. 계산 문제는 기울기·최솟값, 최소제곱법, 평균제곱오차가 유력함.</p>
-<div class="tbl"><table><tr><th>챕터</th><th>교수님 출제 포인트</th><th>반드시 외울 것</th></tr><tr><td>1</td><td>AI·머신러닝·딥러닝 집합 관계, 실행 3요소</td><td>AI ⊃ 머신러닝 ⊃ 딥러닝 · 데이터, 컴퓨터, 프로그램 (데이터가 가장 중요)</td></tr><tr><td>2</td><td>일반 프로그래밍 vs 머신러닝 차이, 신규 데이터 예측, 코드 단계, 데이터 구조 용어, 텐서플로 + 케라스, 층을 쌓아 고도화</td><td>프로그래밍: 데이터 + 규칙 → 답 · 머신러닝: 데이터 + 답 → 규칙 → 새 데이터 예측 · 환경 준비 → 데이터 준비 → 구조 결정 → 모델 실행 · 속성(X), 클래스(y), 입력층·은닉층·출력층 · Sequential, Dense, compile, fit, epochs, batch_size · 텐서플로 = 전투기, 케라스 = 조종사</td></tr><tr><td>3</td><td>기울기, 간단한 최솟값 계산, 그래프 문제, 편미분 용어, 시그모이드</td><td>기울기 = y 증가량 ÷ x 증가량 · 2차함수 꼭짓점 = 최솟값 = 미분값 0 · 편미분 = 변수 하나만 미분 · 시그모이드 = 1/(1 + e⁻ˣ), S자, 출력 0~1, x = 0이면 0.5</td></tr><tr><td>4</td><td>선형회귀 정의, 독립·종속변수, 최소제곱법, 평균제곱오차 (계산 가능)</td><td>x = 독립변수, y = 종속변수 · 최소제곱법 a, b 공식과 계산 순서 · MSE = 오차 제곱의 평균</td></tr><tr><td>5</td><td>경사하강법, 단순 vs 다중 선형회귀</td><td>미분해서 기울기 반대 방향으로 이동, 미분값 0에 수렴 · 학습률 크면 발산 · 단순 = 독립변수 1개(직선), 다중 = 2개 이상(평면)</td></tr><tr><td>6</td><td>로지스틱 회귀 개념·용어, 어떤 함수를 왜 쓰는지, 오차, 옵티마이저 용어</td><td>참/거짓 판단 → 시그모이드(S자, 0~1) · 오차 = 교차 엔트로피 · activation='sigmoid', optimizer='sgd'(경사하강법), loss='binary_crossentropy'</td></tr><tr><td>7</td><td>퍼셉트론이란, 가중합</td><td>뇌 뉴런을 본뜬 단위 · 가중합 = 입력 × 가중치의 합 + 바이어스 → 활성화 함수</td></tr><tr><td>8</td><td>다층 퍼셉트론이 왜 나왔는지</td><td>단일 퍼셉트론은 AND·OR만 가능, XOR 불가 → 은닉층을 추가해 해결</td></tr></table></div>
-</div>
-<div class="card">
-<h3>계산 문제 빠른 대비</h3>
-<p><b>기울기와 절편</b></p>
-<ul><li>두 점 (x₁, y₁), (x₂, y₂)를 지나는 직선의 기울기 = (y₂ − y₁) ÷ (x₂ − x₁)</li><li>예: (1, 4)와 (3, 10) → 기울기 = 6 ÷ 2 = 3 → 4 = 3 × 1 + b → b = 1 → <b>y = 3x + 1</b></li></ul>
-<p><b>2차함수 최솟값 (두 가지 방법)</b></p>
-<ul><li>꼴이 y = a(x − p)² + q면 바로 읽음: <b>x = p일 때 최솟값 q</b> (a &gt; 0)<ul><li>예: y = (x − 3)² + 2 → x = 3일 때 최솟값 2</li></ul></li><li>꼴이 y = x² + bx + c면 미분해서 0으로 놓음<ul><li>예: y = x² − 6x + 10 → 미분 2x − 6 = 0 → x = 3 → y = 9 − 18 + 10 = <b>1</b></li></ul></li></ul>
-<p><b>최소제곱법 계산 순서</b></p>
-<ol><li>x 평균, y 평균 구하기</li><li>각 점마다 (x − x 평균), (y − y 평균) 구하기</li><li>분자 = 두 편차를 곱해서 모두 더하기, 분모 = x 편차를 제곱해서 모두 더하기</li><li>a = 분자 ÷ 분모</li><li>b = y 평균 − a × x 평균</li></ol>
-<p><b>평균제곱오차 계산 순서</b></p>
-<ol><li>각 점의 예측값 구하기 (직선에 x 대입)</li><li>오차 = 실제값 − 예측값</li><li>오차를 각각 제곱해서 모두 더하기</li><li>데이터 개수 n으로 나누기</li></ol>
-<p>강의 예제 숫자(2.3, 79, MSE 11)는 챕터 4에 계산표가 있으니 손으로 한 번 다시 풀어볼 것. 예상 문제는 문제 메뉴에 있음.</p>
+<p>범위 1~8장 · 머신러닝 <b>30문제 전후</b>. 시험은 아래 내용 안에서 나옴.</p>
+<p><span class="star">★</span> = 교수님이 <b>꼭 기억</b>하라고 짚은 부분 (무조건 출제). 각 장 맨 위의 <b>꼭 기억할 것</b> 박스를 먼저 외우고, 계산 문제는 <a href="#s12">계산 문제 풀이</a> 단원에서 순서를 익힐 것. 예상 문제는 <b>문제</b> 메뉴에 있음.</p>
+<div class="tbl"><table><tr><th>장</th><th>꼭 기억할 것</th><th>계산</th></tr><tr><td><a href="#s3">1장</a></td><td>AI ⊃ 머신러닝 ⊃ 딥러닝 / 3요소: 데이터·컴퓨터·프로그램</td><td>-</td></tr><tr><td><a href="#s4">2장</a></td><td>일반 프로그래밍 vs 머신러닝 / 신규 데이터 예측 / 코드 4단계 / 속성 X·클래스 y / 층 쌓기</td><td>층 개수</td></tr><tr><td><a href="#s5">3장</a></td><td>기울기·절편 / 최솟값(미분=0) / 편미분 / 시그모이드</td><td>○</td></tr><tr><td><a href="#s6">4장</a></td><td><span class="star">★</span> 선형회귀 정의 / <span class="star">★</span> 독립·종속변수 / <span class="star">★</span> 최소제곱법 / <span class="star">★</span> 평균제곱오차</td><td>◎ 최우선</td></tr><tr><td><a href="#s7">5장</a></td><td><span class="star">★</span> 경사하강법 / 학습률 / 하이퍼파라미터 / <span class="star">★</span> 단순 vs 다중</td><td>△</td></tr><tr><td><a href="#s8">6장</a></td><td><span class="star">★</span> 로지스틱 회귀 / 시그모이드를 쓰는 이유 / 교차 엔트로피 / 옵티마이저 용어</td><td>-</td></tr><tr><td><a href="#s9">7장</a></td><td>퍼셉트론 / 가중합 = x₁w₁ + x₂w₂ + b / 활성화 함수</td><td>○</td></tr><tr><td><a href="#s10">8장</a></td><td><span class="star">★</span> 다층 퍼셉트론이 나온 이유 = XOR / 은닉층</td><td>○</td></tr></table></div>
+<p class="legend">계산: ◎ 최우선 · ○ 나올 수 있음 · △ 이해용</p>
 </div>
 </section>
 
 <section id="s3">
 <h2>챕터 1. 딥러닝 시작을 위한 준비 운동</h2>
-<div class="card">
-<p>이 챕터의 핵심은 두 가지임. AI, 머신러닝, 딥러닝의 포함 관계, 그리고 딥러닝에 필요한 3요소 중 데이터가 가장 중요하다는 점.</p>
+<div class="card key">
+<h3>꼭 기억할 것</h3>
+<ul class="keylist"><li class="must"><span class="star">★</span> <b>포함 관계</b>: 인공지능(AI) ⊃ 머신러닝 ⊃ 딥러닝 (가장 큰 범주가 AI)</li><li>인공지능: 사람처럼 판단하는 기계</li><li>머신러닝: 데이터로 규칙을 찾아 예측. 데이터를 어떻게 쓸지는 사람이 정함</li><li>딥러닝: 머신러닝 중 가장 고도화된 방식. 사람이 하던 수작업까지 학습으로 처리</li><li class="must"><span class="star">★</span> <b>딥러닝 실행 3요소</b>: ① 데이터 ② 컴퓨터(CPU/GPU) ③ 프로그램(파이썬 + 텐서플로 + 넘파이)</li><li>3요소 중 가장 중요한 것 = <b>데이터</b> (양이 많고 질이 좋아야 함. 컴퓨터·프로그램은 만들어진 것을 가져다 씀)</li></ul>
 </div>
 <div class="card">
 <h3>1-1. 인공지능, 머신러닝, 딥러닝의 관계</h3>
@@ -58,8 +50,9 @@ toc:
 
 <section id="s4">
 <h2>챕터 2. 미지를 예측하는 원리와 첫 딥러닝 코드</h2>
-<div class="card">
-<p>이 챕터의 핵심은 두 가지임. 머신러닝은 데이터와 답 사이의 규칙을 찾아 새 데이터의 답을 예측한다는 원리, 그리고 모든 딥러닝 코드가 따르는 4단계 구조(환경 준비 → 데이터 준비 → 구조 결정 → 모델 실행).</p>
+<div class="card key">
+<h3>꼭 기억할 것</h3>
+<ul class="keylist"><li>일반 프로그래밍: 데이터 + 규칙(코드) → 답 / 머신러닝(딥러닝): 데이터 + 답 → 규칙(패턴)</li><li class="must"><span class="star">★</span> 찾아낸 규칙으로 처음 보는 <b>신규 데이터</b>의 답을 예측하는 것이 딥러닝이 하는 일</li><li>예: 폐암 수술 환자 속성 16개 → 수술 1년 후 생존(1) / 사망(0) 예측</li><li><b>학습</b> = 데이터가 들어가 패턴이 분석되는 과정 / <b>모델</b> = 그 결과 만들어져 새 데이터를 예측하는 것</li><li class="must"><span class="star">★</span> <b>코드 4단계</b>: 환경 준비 → 데이터 준비(X, y 분리) → 구조 결정(층 쌓기, 가장 핵심) → 모델 실행(compile → fit)</li><li>데이터 용어: <b>속성</b>(attribute) = 입력, 대문자 X / <b>클래스</b>(class) = 결과, 소문자 y / <b>샘플</b> = 한 줄(환자 한 명)</li><li>입력층 = 데이터가 처음 들어옴 / 은닉층 = 입력층과 출력층 사이 / 출력층 = 최종 결과를 내보냄</li><li>텐서플로 = 전투기, 케라스 = 조종사 (케라스는 텐서플로를 쉽게 쓰게 해주는 도구)</li><li>Sequential = 모델을 만들겠다는 선언 / Dense = 층 하나</li><li class="must"><span class="star">★</span> <b>고도화</b>: <code>model.add(Dense(...))</code>로 층을 계속 쌓아 나감. 단, 층이 너무 두꺼우면(휴지 비유) 학습이 잘 안 될 수 있음</li><li>compile = loss(손실 함수)·optimizer(옵티마이저) 등 설정 / fit = 실제 학습</li><li>epochs = 전체 데이터 반복 횟수(책 5번 정독) / batch_size = 한 번에 학습하는 양(16쪽씩)</li><li>Dense가 2개면 층 2개(은닉층 1 + 출력층 1). <code>input_dim=16</code> = 입력값 16개를 첫 층에 전달 → <a href="#calc13">풀이 ⑬</a></li></ul>
 </div>
 <div class="card">
 <h3>2-1. 미지를 예측하는 원리</h3>
@@ -132,8 +125,9 @@ history = model.fit(X, y, epochs=5, batch_size=16)</code></pre>
 
 <section id="s5">
 <h2>챕터 3. 딥러닝을 위한 기초 수학</h2>
-<div class="card">
-<p>이 챕터에서 꼭 깊이 알아야 할 건 세 개뿐임: 1차함수(y = ax + b), 2차함수(최솟값 = 오차 최소), 시그모이드 함수. 편미분 등 나머지는 "이런 함수들로 딥러닝이 설계됐구나" 정도만 이해하면 된다고 강사가 직접 말함.</p>
+<div class="card key">
+<h3>꼭 기억할 것</h3>
+<ul class="keylist"><li>딥러닝 = 원하는 y를 얻는 가장 좋은 a(기울기), b(절편)를 찾는 일</li><li>1차함수 y = ax + b : a = (y 증가량) ÷ (x 증가량), b = y절편(y축과 만나는 점) → <a href="#calc1">풀이 ①</a></li><li>2차함수는 포물선, 꼭짓점 = 최솟값. 꼭짓점에서 미분값(접선의 기울기) = 0 → <a href="#calc2">풀이 ②</a></li><li>미분 공식: 상수 → 0 / x → 1 / ax → a / xⁿ → n·xⁿ⁻¹ / 합성함수 → 연쇄적으로 곱함</li><li class="must"><span class="star">★</span> <b>편미분</b>: 변수가 여러 개일 때 한 변수만 미분하고 나머지는 상수로 취급 (기호 ∂) → <a href="#calc3">풀이 ③</a></li><li class="must"><span class="star">★</span> <b>시그모이드</b>: f(x) = 1 / (1 + e⁻ˣ), S자 곡선, 출력은 항상 0~1, x = 0이면 0.5 → <a href="#calc4">풀이 ④</a></li><li>x가 클수록 1에, 작을수록 0에 가까워짐. 활성화 함수의 하나로 예/아니오 판단에 씀 → 6장</li></ul>
 </div>
 <div class="card">
 <h3>3-1. 1차함수, 기울기, 절편</h3>
@@ -175,14 +169,14 @@ history = model.fit(X, y, epochs=5, batch_size=16)</code></pre>
 <div class="tbl"><table><tr><th>번호</th><th>함수</th><th>미분 결과</th></tr><tr><td>1</td><td>f(x) = a (상수)</td><td>0</td></tr><tr><td>2</td><td>f(x) = x</td><td>1</td></tr><tr><td>3</td><td>f(x) = ax</td><td>a</td></tr><tr><td>4</td><td>f(x) = xⁿ</td><td>n·xⁿ⁻¹</td></tr><tr><td>5</td><td>f(g(x)) (합성함수)</td><td>f′(g(x)) · g′(x)</td></tr></table></div>
 </div>
 <div class="card">
-<h3>3-4. 편미분</h3>
+<h3><span class="star">★</span> 3-4. 편미분</h3>
 <ul><li>미분과 편미분 모두 "미분하라"는 의미는 같음</li><li>차이: 식 안에 변수가 여러 개(x, y 등)일 때, <b>모든 변수를 미분하는 게 아니라 원하는 한 가지 변수만 미분</b>하고 나머지는 상수로 취급함</li><li>수학 전공이 아니면 접할 일이 거의 없음</li></ul>
 <p><b>예시</b></p>
 <div class="math">{% raw %}<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.9474em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:1em;"></span><span class="mopen">(</span><span class="mord mathnormal">a</span><span class="mord text"><span class="mord hangul_fallback">는</span><span class="mord"> </span><span class="mord hangul_fallback">상수</span></span><span class="mclose">)</span></span></span></span></span>{% endraw %}</div>
 <ul><li><b>x에 대해 편미분</b>: y는 상수와 다를 바 없음 → 상수 a는 소거, x²의 지수가 내려와 2x, yx는 y → 결과 <b>2x + y</b></li><li><b>y에 대해 편미분</b>: 이번엔 x가 상수 취급 → x²와 a는 소거, yx는 x → 결과 <b>x</b></li><li>핵심: <b>어느 변수를 기준으로 미분할 것이냐</b>가 편미분의 기본 개념</li><li>당장은 몰라도 괜찮다고 함 (뒤 챕터 경사하강법에서 a와 b로 각각 편미분할 때 쓰임)</li></ul>
 </div>
 <div class="card key">
-<h3>3-5. 시그모이드 함수 (중요)</h3>
+<h3><span class="star">★</span> 3-5. 시그모이드 함수 (중요)</h3>
 <ul><li>딥러닝 내부를 보면 입력받은 신호를 얼마나 출력할지 계산하는 과정이 무수히 반복됨</li><li>입력이 여러 층을 거칠 때, 얼마나 내보낼지를 계산하는 함수 = <b>활성화 함수(activation function)</b></li><li>시그모이드 함수는 활성화 함수의 한 종류이고, 활성화 함수 중 <b>가장 먼저 배우는 함수</b></li><li>활성화 함수는 딥러닝 발전에 따라 여러 형태로 개발돼 왔음</li></ul>
 <p><b>정의</b></p>
 <ul><li>밑이 <b>자연상수 e</b>인 지수함수를 이용함</li><li>e = 자연로그의 밑, 오일러 수라고 부름. 약 2.718</li><li>이 지수함수가 분모에 들어가면 시그모이드 함수가 됨:</li></ul>
@@ -200,15 +194,16 @@ history = model.fit(X, y, epochs=5, batch_size=16)</code></pre>
 
 <section id="s6">
 <h2>챕터 4. 가장 훌륭한 예측선: 선형회귀, 최소제곱법, 평균제곱오차</h2>
-<div class="card">
-<p>이 챕터의 결론: 공부 시간과 성적 데이터로 최소제곱법을 쓰면 가장 좋은 직선 y = 2.3x + 79가 나오지만, 변수가 많아지면 이 공식을 못 씀. 그래서 아무 선이나 긋고 평균제곱오차(MSE)로 평가하며 고쳐나가는 방식이 딥러닝의 핵심 원리가 됨.</p>
+<div class="card key">
+<h3>꼭 기억할 것</h3>
+<ul class="keylist"><li class="must"><span class="star">★</span> <b>선형회귀</b>: 독립변수 x로 종속변수 y를 예측하는, 데이터에 가장 잘 맞는 직선(y = ax + b)을 찾는 방법</li><li class="must"><span class="star">★</span> <b>독립변수 x</b> = 원인이 되는 정보(공부 시간) / <b>종속변수 y</b> = x의 영향을 받는 결과(성적)</li><li>독립변수 1개 = 단순 선형회귀, 2개 이상 = 다중 선형회귀</li><li class="must"><span class="star">★</span> <b>최소제곱법</b>: a = Σ(x − x̄)(y − ȳ) ÷ Σ(x − x̄)²,  b = ȳ − a·x̄  (직선을 <b>구하는</b> 방법) → <a href="#calc5">풀이 ⑤</a> <a href="#calc6">⑥</a></li><li class="must"><span class="star">★</span> <b>평균제곱오차(MSE)</b> = (1/n) × Σ(실제값 − 예측값)²  (직선을 <b>평가하는</b> 방법, 작을수록 좋음) → <a href="#calc7">풀이 ⑦</a> <a href="#calc8">⑧</a></li><li>제곱하는 이유: 오차의 +, −가 서로 상쇄되지 않게 / 마지막에 n으로 나누는 것 잊지 말기</li></ul>
 </div>
 <div class="card">
 <h3>4-1. 개요</h3>
 <ul><li>이 챕터에서 다루는 것: <b>선형회귀</b>(여러 정보로 결과를 예측), <b>최소제곱법</b>과 <b>평균제곱오차</b>(내가 만든 예측 방식이 제대로 됐는지 검증하는 방법)</li><li>딥러닝은 자그마한 통계 결과들이 무수히 얽혀 이루어지는 복잡한 연산의 결정체임</li><li>우리 몸을 알려면 세포를 알아야 하듯, 딥러닝을 알려면 기본 원리 두 가지를 알아야 함: <b>선형회귀</b>와 <b>로지스틱 회귀</b></li><li><b>회귀 = 예측하다</b>로 생각할 것 (과거로 돌아간다는 뜻 아님)</li><li>이 둘을 중고등학교 수준에서 공부하긴 쉽지 않지만, 우리가 아는 y = ax + b(1차 방정식)로 시작할 수 있음</li><li>직선을 어떻게 긋느냐에 따라 O와 X를 분류할 수 있고, 다음에 들어오는 좌표가 O인지 X인지 예측할 수 있음. 즉 <b>미래를 예측하는 게 가능</b>함</li><li>"가장 훌륭한 예측선"은 선형회귀를 이용하는 방식을 말함. 머신러닝은 제대로 된 선을 긋는 작업부터 시작하고, 선의 방향을 잘 정하면 미래를 예측할 수 있음</li></ul>
 </div>
 <div class="card">
-<h3>4-2. 선형회귀의 정의</h3>
+<h3><span class="star">★</span> 4-2. 선형회귀의 정의</h3>
 <ul><li>문장 1: "학생들의 중간고사 성적이 다 다르다" → 너무 제한적. 학생마다 성적이 다르다는 당연한 사실 외에 알 수 있는 게 없음</li><li>문장 2: "학생들의 중간고사 성적이 [   ]에 따라 다 다르다" → 괄호에 시험 성적을 좌우할 만한 것이 들어가면 더 많은 사실을 전달함<ul><li>예: 공부한 시간, 시험 당일 컨디션, 사교육비 지출액 등</li><li>무엇이 들어가든 성적의 이유를 나름 타당하게 설명할 수 있고, 성적 차이와 이유를 나타내는 데 문장 1보다 효과적임</li></ul></li><li>이 괄호에 들어갈 내용 = <b>정보</b>. 머신러닝과 딥러닝은 모두 이 정보를 필요로 함</li></ul>
 <p><b>수학적 표현</b></p>
 <div class="math">{% raw %}<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">a</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span></span>{% endraw %}</div>
@@ -224,7 +219,7 @@ history = model.fit(X, y, epochs=5, batch_size=16)</code></pre>
 <ul><li>잘 그은 선으로 표에 없는 내용을 <b>예측</b>할 수 있음. 예: 표에 없는 다른 학생이 3시간 공부했을 때 성적이 어디쯤 갈지</li><li>실제 결과와 차이가 있으면 그 직선의 a와 b를 다시 수정함</li><li>딥러닝을 포함한 머신러닝의 예측도 결국 이 방식과 크게 다르지 않음: 기존 데이터로 선을 그리고, 아직 답이 나오지 않은 것을 그 선에 대입해보는 것</li></ul>
 </div>
 <div class="card">
-<h3>4-4. 최소제곱법</h3>
+<h3><span class="star">★</span> 4-4. 최소제곱법</h3>
 <ul><li>가장 정확한 선을 긋는 게 목표 = a와 b를 알아내면 됨</li><li><b>최소제곱법</b>을 쓰면 a와 b를 바로 구할 수 있음</li></ul>
 <p><b>공식</b></p>
 <div class="math">{% raw %}<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.363em;vertical-align:-0.936em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.5678em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">x</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2222em;"><span class="mord">ˉ</span></span></span></span></span></span></span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.5678em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal">x</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.2222em;"><span class="mord">ˉ</span></span></span></span></span></span></span><span class="mclose">)</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.5678em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1944em;"><span class="mord">ˉ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1944em;"><span></span></span></span></span></span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>{% endraw %}</div>
@@ -267,7 +262,7 @@ b = my - (mx * a)        # 79.0</code></pre>
 <ul><li><b>넘파이를 쓰는 이유</b>: 일반 파이썬 리스트(대괄호로 감싸고 쉼표로 구분)는 원소끼리 계산이 안 돼서 코드가 복잡해짐. 넘파이 배열로 바꾸면 행렬 계산이 가능함. 예를 들어 x + y를 하면 알아서 원소별로 더해줌. 수학 계산을 편하게 하려고 만든 모듈</li><li><code>**2</code>는 파이썬에서 제곱</li><li>분모 계산은 x값을 하나씩 넣어 평균을 빼고 제곱하는 걸 4번 반복하는 것 (편차 계산)</li><li>결과: 기울기 2.3, 절편 79로 수작업 결과와 동일함</li></ul>
 </div>
 <div class="card">
-<h3>4-6. 평균제곱오차 (MSE)</h3>
+<h3><span class="star">★</span> 4-6. 평균제곱오차 (MSE)</h3>
 <p><b>최소제곱법의 한계</b></p>
 <ul><li>최소제곱법으로 a와 b를 편하게 구했지만, 이 공식만으로는 모든 상황을 해결하기 어려움</li><li>이유: <b>입력이 여러 개면 처리하기 무리</b>. 지금은 변수가 공부 시간 하나뿐이지만, 맨 처음 폐암 환자 예제는 독립변수 x가 16개, y가 1개인 다중 선형회귀라서 이 공식이 적합하지 않음</li></ul>
 <p><b>대안: 일단 긋고 조금씩 수정하기</b></p>
@@ -306,11 +301,13 @@ print(mse(y, np.array(predict_result)))    # 11.0</code></pre>
 
 <section id="s7">
 <h2>챕터 5. 경사하강법, 다중 선형회귀, 텐서플로 구현</h2>
-<div class="card">
-<p>이 챕터의 결론: 기울기를 미분하면서 오차가 최소인 지점(미분값 0)으로 조금씩 이동하는 게 경사하강법이고, 이걸 2000번 반복하면 최소제곱법 없이도 a = 2.3, b = 79에 도달함. 텐서플로에서는 이 전체가 Dense 한 줄, compile 한 줄, fit 한 줄로 끝남.</p>
+<div class="card key">
+<h3>꼭 기억할 것</h3>
+<ul class="keylist"><li class="must"><span class="star">★</span> <b>경사하강법</b>: 오차를 미분해서 기울기의 반대 방향으로 조금씩 이동하며, 미분값이 0인(오차가 최소인) 지점 m을 찾는 방법</li><li>기울기 a와 오차의 관계 = 2차함수(포물선). 찾는 곳 = 꼭짓점(미분값 0)</li><li>미분값 &gt; 0 → a를 작게(왼쪽) / 미분값 &lt; 0 → a를 크게(오른쪽). 왔다 갔다 하며 m에 수렴 → <a href="#calc9">풀이 ⑨</a></li><li>a와 b를 동시에 찾으므로 각각 편미분해서 업데이트: a ← a − 학습률 × ∂오차/∂a</li><li>왜 필요? 최소제곱법은 변수가 많아지면 쓰기 어려움 → 반복해서 오차를 줄이는 방식</li><li><b>학습률</b> = 한 번에 이동하는 보폭. 너무 크면 튕겨 나가 발산 / 너무 작으면 너무 느림</li><li><b>하이퍼파라미터</b> = epochs, 학습률처럼 사용자가 직접 정하는 값</li><li class="must"><span class="star">★</span> <b>단순 vs 다중 선형회귀</b>: 아래 표</li><li class="must"><span class="star">★</span> 변수가 많다고 항상 좋은 건 아님 → 결과와 연관성이 큰 변수를 골라야 함</li><li>용어 대응: 기울기 = 가중치(w) / 절편 = 편향(bias) / 평균제곱오차 = 손실 함수(loss) / 경사하강법 = 옵티마이저</li><li>선형회귀 코드: <code>activation='linear'</code>, <code>optimizer='sgd'</code>(경사하강법), <code>loss='mse'</code></li></ul>
+<div class="tbl"><table><tr><th>구분</th><th>단순 선형회귀</th><th>다중 선형회귀</th></tr><tr><td>독립변수</td><td>1개</td><td>2개 이상</td></tr><tr><td>식</td><td>y = ax + b</td><td>y = a₁x₁ + a₂x₂ + b</td></tr><tr><td>그래프</td><td>직선</td><td>평면</td></tr><tr><td>예</td><td>공부 시간 → 성적</td><td>공부 시간 + 과외 횟수 → 성적</td></tr><tr><td>케라스</td><td>input_dim=1</td><td>input_dim=2 (출력은 여전히 1개)</td></tr></table></div>
 </div>
 <div class="card">
-<h3>5-1. 경사하강법이란</h3>
+<h3><span class="star">★</span> 5-1. 경사하강법이란</h3>
 <ul><li>4장에서 직선을 긋기 위해 기울기(특히 기울기)를 계속 수정해 나간다고 했음</li><li>경사하강법은 <b>처음 기울기 a₁과 두 번째 기울기 a₂ 사이에 어떤 변화를 줄 것인가</b>를 다룸</li></ul>
 <p><b>기울기와 오차의 관계 = 2차함수</b></p>
 <ul><li>기울기 a를 너무 크게 잡아도, 너무 작게 잡아도 오차가 커짐 → 기울기와 오차는 연관(상관관계)이 있음</li><li>기울기가 무한대로 커지면 직선이 y축과 거의 나란해지고(세워짐), 무한대로 작아지면 x축과 거의 수평이 됨(눕혀짐). 어느 쪽이든 점들과의 오차도 무한히 커질 수 있음</li><li>그래서 <b>기울기 a와 오차 사이에는 2차함수 관계</b>가 있음<ul><li>x축 = 기울기 a, y축 = 오차인 포물선</li><li>기울기가 너무 크거나 작은 구간에서는 오차가 계속 커지고, 어떤 특정 기울기에서 오차가 최소가 됨</li></ul></li><li><b>오차가 가장 작은 지점 = 포물선의 꼭짓점</b>. 이때의 기울기를 <b>m</b>이라고 부름</li><li>4장에서 임의의 기울기를 넣고 MSE로 오차를 확인한 것도 결국 이 m을 찾기 위한 것</li></ul>
@@ -379,7 +376,7 @@ plt.show()</code></pre>
 <ul><li>epochs(반복 횟수), 학습률처럼 <b>사용자가 임의로 지정하는 값</b> = <b>하이퍼파라미터</b></li><li>강사 비유: "목마르다"고 생각하면 머릿속에서 "물" 또는 "커피"라는 결과가 나옴. 그런데 목마르다는 생각에서 물이라는 결과에 도달하기까지 머릿속에서 어떤 작용이 일어났는지는 다 알 수 없음</li><li>딥러닝도 마찬가지로, 내부에서 어떤 과정을 거쳐 그 결과에 도달했는지는 아직 연구 중이고 명확히 밝혀지지 않음 (점점 밝혀지는 중)</li><li>그래서 실제로 우리가 조정할 수 있는 파라미터는 많지 않음</li><li>지금 코드는 공식을 직접 짰으니 과정을 유추할 수 있지만, 나중에 딥러닝이 데이터를 학습하면 어떻게 공부했고 왜 그런 답을 냈는지까지는 잘 모를 수 있음</li></ul>
 </div>
 <div class="card">
-<h3>5-6. 다중 선형회귀</h3>
+<h3><span class="star">★</span> 5-6. 다중 선형회귀</h3>
 <p><b>왜 필요한가</b></p>
 <ul><li>4장의 직선 y = 2.3x + 79는 실제 성적과 약간의 오차가 있었음<ul><li>4시간 공부한 친구는 88점 예측이었는데 실제로 93점</li><li>6시간 공부한 친구는 93점 정도 예측이었는데 실제로 더 낮은 91점</li></ul></li><li>이유: 공부 시간 외의 다른 요소가 성적에 영향을 줬기 때문</li><li>더 정확한 예측을 하려면 <b>추가 정보, 즉 독립변수</b>가 있어야 함. 변수 개수를 늘리는 것 = 다중 선형회귀</li></ul>
 <p><b>예제: 과외 수업 횟수 추가</b></p>
@@ -448,17 +445,19 @@ model.fit(x, y, epochs=2000)</code></pre>
 
 <section id="s8">
 <h2>챕터 6. 로지스틱 회귀</h2>
-<div class="card">
-<p>이 챕터의 결론: 결과가 합격/불합격처럼 0과 1로 딱 떨어지면 직선 대신 S자 시그모이드 곡선을 쓰고, 오차는 평균제곱오차 대신 교차 엔트로피로 계산함. 코드에서는 activation='sigmoid', loss='binary_crossentropy' 두 줄만 바뀜.</p>
+<div class="card key">
+<h3>꼭 기억할 것</h3>
+<ul class="keylist"><li class="must"><span class="star">★</span> <b>로지스틱 회귀</b>: 참/거짓(1/0) 중 하나를 판단하는 예측 모델. 시그모이드 함수를 씀</li><li class="must"><span class="star">★</span> <b>시그모이드를 쓰는 이유</b>: 결과가 0 또는 1이라 직선으로 표현할 수 없음. 시그모이드는 S자로 0~1 사이 값을 냄(확률처럼 해석)</li><li>식: y = 1 / (1 + e^−(ax + b)) → a = 경사도(크면 가파름), b = 좌우 이동</li><li class="must"><span class="star">★</span> <b>오차 = 교차 엔트로피</b>. MSE를 안 쓰는 이유: 출력이 0~1이라 맞지 않음, 로그를 써서 정답에서 멀어질수록 오차가 급격히 커지게 함</li><li>교차 엔트로피 식(보충): 오차 = −{ y·log h + (1 − y)·log(1 − h) } (실제 1이면 −log h, 실제 0이면 −log(1 − h))</li><li>선형회귀 = 수치 예측(성적 몇 점) / 로지스틱 회귀 = 참·거짓 분류(합격 여부)</li></ul>
+<div class="tbl"><table><tr><th>케라스 설정</th><th>선형회귀</th><th>로지스틱 회귀</th></tr><tr><td>activation</td><td>linear</td><td>sigmoid</td></tr><tr><td>optimizer</td><td>sgd (경사하강법)</td><td>sgd (경사하강법)</td></tr><tr><td>loss</td><td>mse (평균제곱오차)</td><td>binary_crossentropy (교차 엔트로피)</td></tr></table></div>
 </div>
 <div class="card">
-<h3>6-1. 로지스틱 회귀란: 참/거짓 판단 모델</h3>
+<h3><span class="star">★</span> 6-1. 로지스틱 회귀란: 참/거짓 판단 모델</h3>
 <ul><li>기억할 세 가지: <b>로지스틱 회귀는 시그모이드 함수를 쓴다. 왜? S자 형태라서</b></li><li>예/아니오, 맞다/아니다 같은 상황에서 활용하는 예측 모델</li></ul>
 <p><b>법정 비유</b></p>
 <ul><li>법정 드라마나 영화에서 검사가 피고인을 다그치는 장면이 종종 나옴</li><li>검사의 예리한 질문에 피고인이 당황해서 변명을 늘어놓으면 "예, 아니오로만 대답하세요"라고 함</li><li>할 말이 많아도 예 혹은 아니오로만 답해야 할 때가 있음</li><li>딥러닝도 마찬가지: 전달받은 정보를 놓고 <b>참과 거짓 중 하나를 판단해서 다음 단계로 넘기는 장치들</b>이 내부에서 쉬지 않고 작동함</li><li>딥러닝을 수행한다는 건, 겉으로 드러나지 않는 <b>미니 판단 장치들</b>로 복잡한 연산을 해낸 끝에 최적의 예측값을 내놓는 작업</li><li>참/거짓 중 하나를 내놓는 과정이 로지스틱 회귀의 원리를 거쳐 이루어짐</li></ul>
 </div>
 <div class="card">
-<h3>6-2. 왜 직선으로 안 되는가</h3>
+<h3><span class="star">★</span> 6-2. 왜 직선으로 안 되는가</h3>
 <ul><li>4~5장에서 공부 시간과 성적의 관계는 좌표에 직선 형태로 찍혔고, 예측선을 직선으로 그었음. 이런 예측에는 선형회귀가 적절했음</li><li>그런데 직선으로 해결하기 적절하지 않은 경우가 있음: <b>결과가 점수가 아니라 합격/불합격</b>일 때</li><li>좌표평면에 그려보면, 공부 시간 어느 지점을 기준으로 **왼쪽은 불합격(0), 오른쪽은 합격(1)**으로 나뉨</li><li>이 점들을 직선으로 명확하게 표현하기는 힘듦. <b>1과 0 사이의 값이 없어서</b> 직선으로 그리기 어려움</li><li>점들의 특성을 정확히 담으려면 직선이 아니라 <b>S자 형태</b>여야 함</li></ul>
 <figure class="fig">{% include ml/fig/ebfceb90-ad3d.svg %}<figcaption>개념 그림 · 학생 8명 예시, 점 위치는 가상</figcaption></figure>
 </div>
@@ -474,7 +473,7 @@ model.fit(x, y, epochs=2000)</code></pre>
 <ul><li>a 값이 작아지면 오차는 <b>무한대로 커짐</b></li><li>a 값이 커지면 오차는 줄어들긴 하지만 <b>0이 되지는 않음</b></li><li>b 값이 너무 작거나 너무 크면 오차가 커짐 (선형회귀 때와 같음). 그래프는 2차함수와 비슷한 형태</li></ul>
 </div>
 <div class="card">
-<h3>6-4. 오차 공식: 교차 엔트로피</h3>
+<h3><span class="star">★</span> 6-4. 오차 공식: 교차 엔트로피</h3>
 <ul><li>주어진 과제는 또다시 a와 b 구하기. 시그모이드에서 a, b를 어떻게 구하냐? <b>답은 경사하강법</b></li><li>복습: 경사하강법은 오차를 구한 뒤 오차가 작은 쪽으로 이동시키는 방법 (티키타카)</li><li>이번에도 예측값과 실제값 사이 오차를 구하는 공식이 필요함. 그런데 <b>평균제곱오차를 쓸 수 없음</b></li></ul>
 <p><b>왜 MSE를 못 쓰나</b></p>
 <ul><li>시그모이드 그래프의 특징: y값이 끝없이 커지거나 작아지는 게 아니라 <b>0과 1 사이</b></li><li>오차가 커지는 경우:<ul><li>실제값이 1인데 예측값이 0에 가까워지면 오차가 커짐</li><li>실제값이 0인데 예측값이 1에 가까워져도 오차가 커짐</li></ul></li><li>이걸 공식으로 만들 수 있게 해주는 함수가 <b>로그 함수</b></li></ul>
@@ -525,15 +524,17 @@ print("%.f시간 공부할 경우 합격 예상 확률은 %.01f%%" % (hour, pred
 
 <section id="s9">
 <h2>챕터 7. 퍼셉트론</h2>
-<div class="card">
-<p>퍼셉트론은 입력에 가중치를 곱해 더하고(가중합) 바이어스를 더한 뒤, 활성화 함수로 출력을 정하는 신경망의 기본 단위임. 직선 하나로 나누는 것이라 AND·OR은 되지만 XOR은 못 함.</p>
+<div class="card key">
+<h3>꼭 기억할 것</h3>
+<ul class="keylist"><li>퍼셉트론: 뇌의 뉴런을 본떠 만든 인공 신경의 기본 단위. 여러 개가 모이면 신경망</li><li class="must"><span class="star">★</span> <b>가중합</b> = x₁w₁ + x₂w₂ + b → 활성화 함수에 넣어 출력 → <a href="#calc10">풀이 ⑩</a></li><li>가중치 w = 입력의 중요도(선형회귀의 기울기) / 바이어스 b = 선형회귀의 절편</li><li>활성화 함수 = 가중합을 보고 다음으로 내보낼지 정하는 관문 (계단 함수, 시그모이드, ReLU)</li><li>AND, OR은 직선 하나로 나눌 수 있음 → 퍼셉트론 하나로 가능 / XOR은 불가능 → 8장</li><li>강의에서 말한 '합성곱'은 7장 범위에서는 가중합(곱해서 더하기)으로 보면 됨</li></ul>
+<div class="tbl"><table><tr><th>x₁</th><th>x₂</th><th>AND</th><th>OR</th><th>XOR</th></tr><tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td></tr><tr><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td></tr><tr><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td></tr></table></div>
 </div>
 <div class="card">
 <h3>7-1. 퍼셉트론이란</h3>
 <ul><li>사람의 뇌는 뉴런 약 1천억 개가 촘촘히 연결된 구조. 뉴런과 뉴런 사이의 연결 부위가 <b>시냅스</b></li><li>자극을 받으면 시냅스에서 화학 물질이 나와 전위가 바뀌고, 전위가 <b>임계값을 넘으면</b> 다음 뉴런으로 신호를 전달, 못 넘으면 아무것도 안 함<ul><li>꼬집기 비유: 세게 꼬집으면 "아" 하고 반응, 살짝이면 모르고 지나감 → 이게 <b>활성화 함수(activation)</b></li></ul></li><li>이 메커니즘이 앞서 배운 <b>로지스틱 회귀와 많이 닮음</b>: 입력 → 활성화 함수 → 일정 수준을 넘으면 참, 아니면 거짓(예/아니요)</li><li>뉴런과 비슷한 구조를 많이 쌓으면 생각하는 무언가를 인공적으로 만들 수 있지 않을까? → <b>인공신경망(neural network)</b> 연구의 출발. 1943년 논문이 처음 그 가능성을 주장</li><li>그걸 실제 장치로 만들어 선보인 것이 <b>퍼셉트론(perceptron)</b> (강의: "이건 당연히 시험에 나옴")<ul><li>입력값을 여러 개 받아 출력을 만들고, 입력값의 <b>가중치를 조절</b>할 수 있게 해서 <b>최초로 학습</b>을 하게 함</li></ul></li><li>퍼셉트론이 여러 개 모여 복잡한 체계를 이룬 것 = <b>신경망</b> (8장 강의 첫 부분)</li></ul>
 </div>
 <div class="card key">
-<h3>7-2. 가중합과 활성화 함수 (출제 포인트)</h3>
+<h3><span class="star">★</span> 7-2. 가중합과 활성화 함수 (출제 포인트)</h3>
 <ul><li>입력값 x₁, x₂, …에 각각 <b>가중치 w</b>를 곱해서 모두 더하고, <b>바이어스 b</b>를 더함 = <b>가중합(weighted sum)</b></li></ul>
 <div class="math">{% raw %}<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord hangul_fallback">가중합</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span></span>{% endraw %}</div>
 <ul><li>가중합을 <b>활성화 함수</b>에 넣어 출력(0 또는 1 등)을 정함<ul><li>가장 단순한 형태: 가중합이 0보다 크면 1, 아니면 0 (계단 함수)</li><li>6장의 시그모이드도 활성화 함수 중 하나</li></ul></li><li>앞 챕터와의 연결: y = ax + b에서 a → 가중치 w, b → 바이어스. 독립변수가 두 개인 다중 선형회귀 식과 같은 모양이고, 입력이 100개, 1000개가 돼도 xₙwₙ까지 늘어날 뿐 똑같음</li><li>퍼셉트론 → 아달라인 → 로지스틱 회귀 (강의: "이 구조까지만 기억")<ul><li>가중합으로 선을 그어 보면 오차가 최소인 직선이 여러 개 있을 수 있음</li><li><b>아달라인(Adaline)</b>: 퍼셉트론 3년 뒤, <b>경사하강법</b>을 도입해 그중 가장 적절한 경계선 하나를 고르게 함. 이후 SVM(서포트 벡터 머신) 같은 머신러닝 알고리즘으로 발전</li><li><b>로지스틱 회귀</b>: 여기에 <b>시그모이드</b>를 활성화 함수로 써서 참/거짓을 판단한 것</li></ul></li><li>용어 정리:</li></ul>
@@ -553,8 +554,9 @@ print("%.f시간 공부할 경우 합격 예상 확률은 %.01f%%" % (hour, pred
 
 <section id="s10">
 <h2>챕터 8. 다층 퍼셉트론</h2>
-<div class="card">
-<p>다층 퍼셉트론은 단일 퍼셉트론이 못 푼 XOR 문제를 풀려고 나왔음. 입력층과 출력층 사이에 은닉층을 만들어 퍼셉트론 두 개를 동시에 계산하게 해서 해결함.</p>
+<div class="card key">
+<h3>꼭 기억할 것</h3>
+<ul class="keylist"><li class="must"><span class="star">★</span> <b>등장 이유</b>: 단일 퍼셉트론으로 XOR 문제를 풀 수 없어서</li><li>XOR은 1인 점과 0인 점이 대각선으로 엇갈려 있어 직선 하나로 나눌 수 없음</li><li>핵심 아이디어: 입력층과 출력층 사이에 <b>은닉층</b>을 만들어 퍼셉트론 두 개를 동시에 계산 (종이를 휘어 선 두 개를 긋는 것)</li><li>은닉층에서 NAND와 OR을 계산하고, 그 결과를 AND로 합치면 XOR이 됨 → <a href="#calc11">풀이 ⑪</a></li><li>층을 쌓을수록 더 복잡한 문제를 풀 수 있음 → 딥러닝의 기본 구조 (2장 '층 쌓기'와 연결)</li><li>가중치 = 선(연결) 수, 바이어스 = 입력층을 뺀 노드 수 → <a href="#calc12">풀이 ⑫</a></li><li>남은 문제: 은닉층 가중치를 어떻게 학습하나 → 오차 역전파(힌튼)로 해결</li></ul>
 </div>
 <div class="card">
 <h3>8-1. 신경망 복습</h3>
@@ -585,10 +587,98 @@ print("%.f시간 공부할 경우 합격 예상 확률은 %.01f%%" % (hour, pred
 </div>
 </section>
 
+<section id="s12">
+<h2>계산 문제 풀이</h2>
+<div class="card">
+<p>시험에서는 숫자만 바꿔 나올 수 있음. 순서를 외워 두고 연습 문제로 한 번씩 직접 풀어 볼 것. 번호(Q17 등)는 <b>문제</b> 메뉴의 예상 문제 번호.</p>
+</div>
+<div class="card" id="calc1">
+<h3>풀이 ① 두 점을 지나는 직선 <span class="qref">Q17</span></h3>
+<p>문제: (1, 4), (3, 10)을 지나는 직선의 식</p>
+<ol><li>기울기 a = (y 증가량) ÷ (x 증가량) = (10 − 4) ÷ (3 − 1) = 6 ÷ 2 = <b>3</b></li><li>한 점을 대입해 b 구하기: 4 = 3 × 1 + b → <b>b = 1</b></li><li>답: <b>y = 3x + 1</b> (검산: x = 3 → 9 + 1 = 10 ✓)</li></ol>
+<p class="practice"><b>연습</b> (2, 5), (4, 9) → a = 4 ÷ 2 = 2, 5 = 4 + b → b = 1 → y = 2x + 1</p>
+</div>
+<div class="card" id="calc2">
+<h3>풀이 ② 2차함수의 최솟값 <span class="qref">Q19, Q20</span></h3>
+<p><b>방법 A (완전제곱식 꼴)</b>: y = (x − 3)² + 2 → 괄호 안이 0일 때 가장 작음 → <b>x = 3, 최솟값 2</b></p>
+<p><b>방법 B (미분 = 0)</b>: y = x² − 6x + 10</p>
+<ol><li>미분: y′ = 2x − 6 (x² → 2x, −6x → −6, 10 → 0)</li><li>미분값 = 0: 2x − 6 = 0 → x = 3</li><li>대입: y = 9 − 18 + 10 = 1 → <b>최솟값 1</b></li></ol>
+<p class="practice"><b>연습</b> y = x² − 4x + 5 → y′ = 2x − 4 = 0 → x = 2 → y = 4 − 8 + 5 = 1</p>
+</div>
+<div class="card" id="calc3">
+<h3>풀이 ③ 편미분 <span class="qref">Q23</span></h3>
+<p>문제: f(x, y) = x² + 3xy 를 x에 대해 편미분</p>
+<ol><li>y는 숫자(상수)로 본다 → 3xy는 ‘3y × x’ 꼴</li><li>x² → 2x, 3y·x → 3y</li><li>답: <b>∂f/∂x = 2x + 3y</b></li></ol>
+<p>참고: y로 편미분하면 x²는 상수 → 0, 3x·y → 3x → ∂f/∂y = 3x</p>
+</div>
+<div class="card" id="calc4">
+<h3>풀이 ④ 시그모이드 값 <span class="qref">Q25</span></h3>
+<p>f(0) = 1 / (1 + e⁰) = 1 / (1 + 1) = <b>0.5</b> (어떤 수든 0제곱은 1)</p>
+<p>x가 매우 크면 e⁻ˣ → 0 이라 f → 1 / x가 매우 작으면 e⁻ˣ → 매우 큼 이라 f → 0</p>
+</div>
+<div class="card" id="calc5">
+<h3>풀이 ⑤ 최소제곱법 <span class="qref">Q28, Q29</span></h3>
+<p>문제: 공부 시간 x = 2, 4, 6, 8 / 성적 y = 81, 93, 91, 97</p>
+<ol><li>평균: x̄ = (2+4+6+8) ÷ 4 = 5, ȳ = (81+93+91+97) ÷ 4 = 362 ÷ 4 = 90.5</li><li>표를 만들어 편차, 곱, 제곱 계산</li></ol>
+<div class="tbl"><table><tr><th>x</th><th>y</th><th>x − x̄</th><th>y − ȳ</th><th>(x − x̄)(y − ȳ)</th><th>(x − x̄)²</th></tr><tr><td>2</td><td>81</td><td>−3</td><td>−9.5</td><td>28.5</td><td>9</td></tr><tr><td>4</td><td>93</td><td>−1</td><td>2.5</td><td>−2.5</td><td>1</td></tr><tr><td>6</td><td>91</td><td>1</td><td>0.5</td><td>0.5</td><td>1</td></tr><tr><td>8</td><td>97</td><td>3</td><td>6.5</td><td>19.5</td><td>9</td></tr><tr><td>합</td><td></td><td></td><td></td><td><b>46</b> (분자)</td><td><b>20</b> (분모)</td></tr></table></div>
+<ol start="3"><li>a = 46 ÷ 20 = <b>2.3</b></li><li>b = ȳ − a·x̄ = 90.5 − 2.3 × 5 = 90.5 − 11.5 = <b>79</b></li><li>답: <b>y = 2.3x + 79</b></li><li>[Q29] 7시간 공부 → 2.3 × 7 + 79 = 16.1 + 79 = <b>95.1점</b></li></ol>
+<p class="warn">주의: 분모는 x만 제곱. a를 먼저 구한 뒤 b를 구함.</p>
+</div>
+<div class="card" id="calc6">
+<h3>풀이 ⑥ 최소제곱법 (작은 숫자) <span class="qref">Q30</span></h3>
+<p>문제: x = 1, 2, 3 / y = 3, 5, 7</p>
+<div class="tbl"><table><tr><th>x</th><th>y</th><th>x − x̄</th><th>y − ȳ</th><th>곱</th><th>(x − x̄)²</th></tr><tr><td>1</td><td>3</td><td>−1</td><td>−2</td><td>2</td><td>1</td></tr><tr><td>2</td><td>5</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td>3</td><td>7</td><td>1</td><td>2</td><td>2</td><td>1</td></tr><tr><td>합</td><td></td><td></td><td></td><td><b>4</b></td><td><b>2</b></td></tr></table></div>
+<p>x̄ = 2, ȳ = 5 → a = 4 ÷ 2 = 2 → b = 5 − 2 × 2 = 1 → <b>y = 2x + 1</b></p>
+</div>
+<div class="card" id="calc7">
+<h3>풀이 ⑦ 평균제곱오차 <span class="qref">Q32</span></h3>
+<p>문제: 실제값 81, 93, 91, 97 / 예측값 82, 88, 94, 100 (직선 y = 3x + 76의 예측값)</p>
+<div class="tbl"><table><tr><th>실제 y</th><th>예측 ŷ</th><th>오차 (y − ŷ)</th><th>오차²</th></tr><tr><td>81</td><td>82</td><td>−1</td><td>1</td></tr><tr><td>93</td><td>88</td><td>5</td><td>25</td></tr><tr><td>91</td><td>94</td><td>−3</td><td>9</td></tr><tr><td>97</td><td>100</td><td>−3</td><td>9</td></tr><tr><td>합</td><td></td><td></td><td><b>44</b></td></tr></table></div>
+<p>MSE = 44 ÷ 4 = <b>11</b></p>
+<p class="warn">순서: 예측값 → 오차 → 제곱 → 합 → n으로 나누기</p>
+</div>
+<div class="card" id="calc8">
+<h3>풀이 ⑧ 평균제곱오차 (작은 숫자) <span class="qref">Q33</span></h3>
+<p>문제: x = 1, 2, 3 / y = 3, 5, 7 에 직선 y = 2x</p>
+<ol><li>예측값: 2, 4, 6</li><li>오차: 3 − 2 = 1, 5 − 4 = 1, 7 − 6 = 1</li><li>제곱의 합: 1 + 1 + 1 = 3</li><li>MSE = 3 ÷ 3 = <b>1</b></li></ol>
+<p>비교: 최소제곱법으로 구한 y = 2x + 1은 오차가 모두 0 → MSE = 0 (가장 좋은 직선)</p>
+</div>
+<div class="card" id="calc9">
+<h3>풀이 ⑨ 경사하강법 이동 방향 <span class="qref">Q36</span> <span class="qref soft">이해용 예시</span></h3>
+<p>오차 그래프를 y = a² 이라 하고, 지금 a = 3, 학습률 0.1 이라고 하면</p>
+<ol><li>미분값(기울기) = 2a = 6 → 0보다 큼 → 오른쪽이 올라가는 중</li><li>반대 방향으로 이동: a ← 3 − 0.1 × 6 = 2.4 (a가 작아짐)</li><li>다시: 미분값 4.8 → a ← 2.4 − 0.48 = 1.92 … → 최솟값 a = 0에 수렴</li></ol>
+<p>학습률이 1.1처럼 크면: a ← 3 − 1.1 × 6 = −3.6 → 반대편으로 더 멀리 튕김 → <b>발산</b></p>
+</div>
+<div class="card" id="calc10">
+<h3>풀이 ⑩ 퍼셉트론 가중합 <span class="qref">Q50</span></h3>
+<p>문제: x₁ = 1, x₂ = 0, w₁ = 0.6, w₂ = 0.4, b = −0.5, 계단 함수(0보다 크면 1)</p>
+<ol><li>가중합 = x₁w₁ + x₂w₂ + b = 1 × 0.6 + 0 × 0.4 + (−0.5) = <b>0.1</b></li><li>0.1 &gt; 0 → <b>출력 1</b></li></ol>
+<p class="practice"><b>연습</b> x₁ = 1, x₂ = 1, w₁ = 0.5, w₂ = 0.5, b = −0.7 → 0.5 + 0.5 − 0.7 = 0.3 → 출력 1</p>
+</div>
+<div class="card" id="calc11">
+<h3>풀이 ⑪ XOR을 다층 퍼셉트론으로 <span class="qref soft">8장 보충</span></h3>
+<p>은닉층 n₁ = NAND(w = −2, −2, b = 3), n₂ = OR(w = 2, 2, b = −1), 출력 y = AND(n₁, n₂)(w = 1, 1, b = −1)</p>
+<p>활성화: 가중합 &gt; 0 이면 1, 아니면 0</p>
+<div class="tbl"><table><tr><th>x₁</th><th>x₂</th><th>n₁ 가중합 → 출력</th><th>n₂ 가중합 → 출력</th><th>y = AND(n₁, n₂)</th></tr><tr><td>0</td><td>0</td><td>3 → 1</td><td>−1 → 0</td><td>1 + 0 − 1 = 0 → <b>0</b></td></tr><tr><td>0</td><td>1</td><td>1 → 1</td><td>1 → 1</td><td>1 + 1 − 1 = 1 → <b>1</b></td></tr><tr><td>1</td><td>0</td><td>1 → 1</td><td>1 → 1</td><td>1 → <b>1</b></td></tr><tr><td>1</td><td>1</td><td>−1 → 0</td><td>3 → 1</td><td>0 → <b>0</b></td></tr></table></div>
+<p>출력이 0, 1, 1, 0 → <b>XOR 완성</b></p>
+</div>
+<div class="card" id="calc12">
+<h3>풀이 ⑫ 가중치·바이어스 개수 <span class="qref">Q54</span></h3>
+<p>구조: 입력 2개 → 은닉 노드 2개 → 출력 1개</p>
+<ol><li>가중치 = 선(연결)의 개수: 입력→은닉 2 × 2 = 4개 + 은닉→출력 2 × 1 = 2개 → <b>6개</b></li><li>바이어스 = 입력층을 뺀 노드 수: 은닉 2개 + 출력 1개 → <b>3개</b></li></ol>
+<p class="practice"><b>연습</b> 입력 3, 은닉 4, 출력 1 → 가중치 3×4 + 4×1 = 16개, 바이어스 4 + 1 = 5개</p>
+</div>
+<div class="card" id="calc13">
+<h3>풀이 ⑬ 층 개수 세기 <span class="qref">Q13</span></h3>
+<p><code>model.add(Dense(...))</code>의 개수 = 층의 개수 (입력층은 따로 세지 않음)</p>
+<p><code>Dense(30, input_dim=16)</code> + <code>Dense(1)</code> → <b>층 2개</b> = 은닉층 1개 + 출력층 1개</p>
+</div>
+</section>
+
 <section id="s11">
 <h2>총정리</h2>
 <div class="card">
-<p>복습용으로 6개 챕터의 용어와 비교를 한곳에 모았음. 강의 내용 그대로이고 새로 추가한 개념은 없음.</p>
+<p>복습용으로 1~8장의 용어와 비교를 한곳에 모았음.</p>
 </div>
 <div class="card">
 <h3>용어 사전</h3>

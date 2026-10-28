@@ -121,6 +121,15 @@ section h2{font-size:1.6rem;line-height:1.35;letter-spacing:-.025em;font-weight:
 .card blockquote p:last-child{margin:0}
 .card pre.code{margin:0 0 14px;border:1px solid var(--line);border-radius:12px;line-height:1.65;white-space:pre}
 .card pre.code code{background:none;border:0;padding:0;font-size:inherit}
+/* ★ 무조건 출제 표시 */
+.star{color:#E0A100;font-weight:700}
+.card .keylist li.must{font-weight:500}
+h3 .star{font-size:.9em}
+.qref{display:inline-block;vertical-align:.15em;margin-left:6px;padding:1px 8px;border-radius:999px;font-size:.72rem;font-weight:600;color:var(--accent);background:var(--accent-soft)}
+.qref.soft{color:var(--muted);background:var(--surface)}
+.card p.practice{padding:10px 14px;border-radius:10px;background:var(--surface);font-size:.94rem}
+.card p.warn{color:var(--muted);font-size:.92rem}
+.card p.legend{color:var(--muted);font-size:.85rem}
 .card ul.check{list-style:none;padding-left:0}
 .card ul.check li{padding-left:1.7em;position:relative}
 .card ul.check li::before{content:"";position:absolute;left:0;top:.42em;width:1em;height:1em;border:1.5px solid var(--muted);border-radius:4px}

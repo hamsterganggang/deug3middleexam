@@ -17,7 +17,7 @@ assets/js/blank.js       코드 빈칸 엔진
 assets/js/qa.js          주관식(스스로 채점) 엔진
 index.html               홈
 ml/theory.html           머신러닝 이론 (딥러닝 입문 노트 1~8장) → /ml/theory/
-ml/quiz.html             머신러닝 예상 문제 54개 → /ml/quiz/
+ml/quiz.html             머신러닝 예상 문제 60개 → /ml/quiz/
 bigdata/theory.html      빅데이터 이론 (Ch10) → /bigdata/theory/
 bigdata/quiz.html        빅데이터 코드 빈칸 77개 → /bigdata/quiz/
 ```
