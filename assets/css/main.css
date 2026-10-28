@@ -129,6 +129,10 @@ h3 .star{font-size:.9em}
 .card p.practice{padding:10px 14px;border-radius:10px;background:var(--surface);font-size:.94rem}
 .card p.warn{color:var(--muted);font-size:.92rem}
 .card p.legend{color:var(--muted);font-size:.85rem}
+.card p.term{padding:10px 14px;border-left:3px solid #E0A100;border-radius:0 10px 10px 0;background:color-mix(in srgb,#E0A100 9%,transparent);font-size:.94rem}
+.term-tag{display:inline-block;margin-right:6px;padding:1px 8px;border-radius:999px;font-size:.72rem;font-weight:700;color:#8A5A00;background:color-mix(in srgb,#E0A100 22%,transparent)}
+:root[data-theme="dark"] .term-tag{color:#FFD36B}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .term-tag{color:#FFD36B}}
 .card ul.check{list-style:none;padding-left:0}
 .card ul.check li{padding-left:1.7em;position:relative}
 .card ul.check li::before{content:"";position:absolute;left:0;top:.42em;width:1em;height:1em;border:1.5px solid var(--muted);border-radius:4px}

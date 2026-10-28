@@ -56,6 +56,7 @@ toc:
 <div class="card">
 <h3>데이터 구조 용어</h3>
 <ul><li><b>속성</b>(attribute) = 입력, 대문자 <b>X</b> / <b>클래스</b>(class) = 결과, 소문자 <b>y</b> / <b>샘플</b> = 한 줄(환자 한 명)</li><li>입력층 = 데이터가 처음 들어옴 / 은닉층 = 입력층과 출력층 사이 / 출력층 = 최종 결과를 내보냄</li></ul>
+<p class="term"><span class="term-tag">용어 기억</span> 교수님: 딥러닝 <b>데이터 구조 용어</b>를 기억할 것 → <b>속성(X)</b>, <b>클래스(y)</b>, <b>샘플</b>, <b>입력층·은닉층·출력층</b></p>
 </div>
 <div class="card">
 <h3>텐서플로 · 케라스와 층 쌓기</h3>
@@ -81,6 +82,7 @@ model.fit(X, y, epochs=5, batch_size=16)</code></pre>
 <div class="card">
 <h3><span class="star">★</span> 편미분</h3>
 <ul><li class="must"><span class="star">★</span> 변수가 여러 개일 때 <b>한 변수만 미분</b>하고 나머지는 상수로 취급 (기호 ∂) → <a href="#calc3">풀이 ③</a></li></ul>
+<p class="term"><span class="term-tag">용어 기억</span> 교수님: <b>'편미분'이라는 용어</b> 자체를 기억할 것 (한 변수만 미분, 나머지는 상수)</p>
 </div>
 <div class="card">
 <h3><span class="star">★</span> 시그모이드 함수</h3>
@@ -123,6 +125,7 @@ model.fit(X, y, epochs=5, batch_size=16)</code></pre>
 <h3><span class="star">★</span> 단순 vs 다중 선형회귀</h3>
 <div class="tbl"><table><tr><th>구분</th><th>단순 선형회귀</th><th>다중 선형회귀</th></tr><tr><td>독립변수</td><td>1개</td><td>2개 이상</td></tr><tr><td>식</td><td>y = ax + b</td><td>y = a₁x₁ + a₂x₂ + b</td></tr><tr><td>그래프</td><td>직선</td><td>평면</td></tr><tr><td>예</td><td>공부 시간 → 성적</td><td>공부 시간 + 과외 횟수 → 성적</td></tr><tr><td>케라스</td><td>input_dim=1</td><td>input_dim=2 (출력은 여전히 1개)</td></tr></table></div>
 <ul><li class="must"><span class="star">★</span> 변수가 많다고 항상 좋은 건 아님 → 결과와 연관성이 큰 변수를 골라야 함</li><li>용어 대응: 기울기 = <b>가중치</b>(w) / 절편 = <b>편향</b>(bias) / 평균제곱오차 = <b>손실 함수</b>(loss) / 경사하강법 = <b>옵티마이저</b></li><li>선형회귀 코드: <code>activation='linear'</code>, <code>optimizer='sgd'</code>(경사하강법), <code>loss='mse'</code></li></ul>
+<p class="term"><span class="term-tag">용어 기억</span> 위 <b>용어 대응</b>(가중치 · 편향 · 손실 함수 · 옵티마이저)은 6장 옵티마이저 용어로 다시 나오니 꼭 기억할 것</p>
 </div>
 </section>
 
@@ -130,6 +133,7 @@ model.fit(X, y, epochs=5, batch_size=16)</code></pre>
 <h2>6장. 로지스틱 회귀</h2>
 <div class="card">
 <h3><span class="star">★</span> 로지스틱 회귀와 시그모이드</h3>
+<p class="term"><span class="term-tag">용어 기억</span> 교수님: 로지스틱 회귀가 무엇인지 <b>개념과 용어</b>에 익숙해질 것 → <b>로지스틱 회귀</b>, <b>시그모이드</b>, <b>교차 엔트로피</b>, <b>옵티마이저</b></p>
 <ul><li class="must"><span class="star">★</span> <b>로지스틱 회귀</b>: 참/거짓(1/0) 중 하나를 판단하는 예측 모델. 시그모이드 함수를 씀</li><li class="must"><span class="star">★</span> <b>시그모이드를 쓰는 이유</b>: 결과가 0 또는 1이라 직선으로 표현할 수 없음. 시그모이드는 S자로 0~1 사이 값을 냄(확률처럼 해석)</li><li>식: y = 1 / (1 + e^−(ax + b)) → <b>a = 경사도</b>(크면 가파름), <b>b = 좌우 이동</b></li><li>선형회귀 = 수치 예측(성적 몇 점) / 로지스틱 회귀 = 참·거짓 분류(합격 여부)</li></ul>
 <figure class="fig">{% include ml/fig/9493bb76-9760.svg %}<figcaption>왼쪽 a = 0.5 vs 3, 오른쪽 b = −2 vs +2 (a = 1)</figcaption></figure>
 </div>
@@ -140,6 +144,7 @@ model.fit(X, y, epochs=5, batch_size=16)</code></pre>
 <div class="card">
 <h3>케라스 설정 비교</h3>
 <div class="tbl"><table><tr><th>케라스 설정</th><th>선형회귀</th><th>로지스틱 회귀</th></tr><tr><td>activation</td><td>linear</td><td>sigmoid</td></tr><tr><td>optimizer</td><td>sgd (경사하강법)</td><td>sgd (경사하강법)</td></tr><tr><td>loss</td><td>mse (평균제곱오차)</td><td>binary_crossentropy (교차 엔트로피)</td></tr></table></div>
+<p class="term"><span class="term-tag">용어 기억</span> 교수님: 옵티마이저를 설명할 때 나오는 <b>로지스틱 회귀 용어 꼭 기억</b> → <b>시그모이드</b>(activation), <b>교차 엔트로피</b>(loss = binary_crossentropy), <b>경사하강법</b>(optimizer = sgd), 기울기 = <b>가중치</b>, 절편 = <b>편향</b>, 오차 = <b>손실 함수</b></p>
 </div>
 </section>
 
@@ -148,6 +153,7 @@ model.fit(X, y, epochs=5, batch_size=16)</code></pre>
 <div class="card">
 <h3><span class="star">★</span> 퍼셉트론과 가중합</h3>
 <ul><li>퍼셉트론: 뇌의 뉴런을 본떠 만든 인공 신경의 기본 단위. 여러 개가 모이면 신경망</li><li class="must"><span class="star">★</span> <b>가중합 = x₁w₁ + x₂w₂ + b</b> → 활성화 함수에 넣어 출력 → <a href="#calc10">풀이 ⑩</a></li><li>가중치 w = 입력의 중요도(선형회귀의 기울기) / 바이어스 b = 선형회귀의 절편</li><li>활성화 함수 = 가중합을 보고 다음으로 내보낼지 정하는 관문 (계단 함수, 시그모이드, ReLU)</li><li>강의에서 말한 '합성곱'은 7장 범위에서는 가중합(곱해서 더하기)으로 보면 됨</li></ul>
+<p class="term"><span class="term-tag">용어 기억</span> <b>가중합</b>이라는 용어를 기억할 것 (강의에서는 '합성곱 · 다중합'이라고도 부름) · 함께 나오는 용어: <b>가중치</b>, <b>바이어스</b>, <b>활성화 함수</b></p>
 <figure class="fig">{% include ml/fig/7bab1d19-0ad3.svg %}<figcaption>단일 퍼셉트론 구조 · 입력 2개</figcaption></figure>
 </div>
 <div class="card">
