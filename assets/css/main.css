@@ -123,7 +123,6 @@ section h2{font-size:1.6rem;line-height:1.35;letter-spacing:-.025em;font-weight:
 .card pre.code code{background:none;border:0;padding:0;font-size:inherit}
 /* ★ 무조건 출제 표시 */
 .star{color:#E0A100;font-weight:700}
-.card .keylist li.must{font-weight:500}
 h3 .star{font-size:.9em}
 .qref{display:inline-block;vertical-align:.15em;margin-left:6px;padding:1px 8px;border-radius:999px;font-size:.72rem;font-weight:600;color:var(--accent);background:var(--accent-soft)}
 .qref.soft{color:var(--muted);background:var(--surface)}
