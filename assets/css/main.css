@@ -252,6 +252,17 @@ main.home{max-width:1200px;margin:0 auto;padding:88px 24px 96px}
   .side-subjects a{flex:1;text-align:center;padding:8px;border-radius:9px;text-decoration:none;color:var(--muted);font-weight:600;font-size:.92rem}
   .side-subjects a[aria-current="page"]{background:var(--bg);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.08)}
 }
+
+/* ───────── 넓은 화면: 목차를 왼쪽에 고정, 본문은 읽기 좋은 폭으로 (위키 문서처럼) ───────── */
+@media (min-width:1200px){
+  .menu-btn{display:none}
+  .top-in{max-width:1280px;margin:0 auto}
+  .wrap{display:grid;grid-template-columns:250px minmax(0,1fr);column-gap:56px;max-width:1280px;margin:0 auto}
+  .side{position:sticky;z-index:auto;top:var(--head-h,59px);align-self:start;width:auto;height:calc(100vh - var(--head-h,59px));
+    padding:36px 8px 40px 0;transform:none;transition:none;box-shadow:none;background:none;border-right:1px solid var(--line)}
+  .scrim{display:none!important}
+  body.nav-open{overflow:auto}
+  main.doc{max-width:880px}
 }
 
 /* 터치 기기: iOS 입력 확대 방지(16px 이상), 터치 영역 키우기 */
@@ -340,4 +351,78 @@ details.guide[open] .chev{transform:rotate(180deg)}
   .guide-note{flex-basis:100%;order:3;padding-left:34px;font-size:.82rem}
   .guide-list{grid-template-columns:1fr;padding:10px}
   .guide-list>li{padding:12px 14px}
+}
+
+/* ───────── 출제 표시 (★ 출제 / 출제 예상 / 용어 이해 / 이해용 예시) ───────── */
+:root{--m-ink:#8A5A00;--m-bg:#FCEFC7;--e-ink:var(--accent);--e-bg:var(--accent-soft);--t-ink:var(--ok);--t-bg:var(--ok-bg);--x-ink:var(--muted);--x-bg:var(--surface)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--m-ink:#FFD36B;--m-bg:#3A2E10}}
+:root[data-theme="dark"]{--m-ink:#FFD36B;--m-bg:#3A2E10}
+.chip,[data-k]::before{display:inline-block;padding:0 8px;border-radius:6px;font-size:.72rem;font-weight:700;line-height:1.75;letter-spacing:0;white-space:nowrap;text-align:center}
+.chip.m,[data-k="m"]::before{color:var(--m-ink);background:var(--m-bg)}
+.chip.e,[data-k="e"]::before{color:var(--e-ink);background:var(--e-bg)}
+.chip.t,[data-k="t"]::before{color:var(--t-ink);background:var(--t-bg)}
+.chip.x,[data-k="x"]::before{color:var(--x-ink);background:var(--x-bg);border:1px solid var(--line)}
+[data-k="m"]::before{content:"★ 출제"}
+[data-k="e"]::before{content:"출제 예상"}
+[data-k="t"]::before{content:"용어 이해"}
+[data-k="x"]::before{content:"이해용 예시"}
+/* 목록: 표시를 왼쪽 열에 세워 글이 한 줄로 맞게 */
+.card ul:has(>li[data-k]){list-style:none;padding-left:0}
+.card li[data-k]{position:relative;padding-left:88px;margin:8px 0}
+.card li[data-k]::before{position:absolute;left:0;top:.28em;width:6.7em;box-sizing:border-box}
+.card li[data-k="m"]{font-weight:500}
+.card h3[data-k]::before{margin-right:10px;vertical-align:.18em}
+dfn{font-style:normal;font-weight:600;color:var(--ink);border-bottom:1.5px dotted color-mix(in srgb,var(--t-ink) 60%,transparent)}
+
+/* 장 머리 상자 (정리본 원문), 강의 원문 인용, 몰라도 되는 것 */
+section>p.scope{margin:-4px 0 28px;padding:12px 16px;border:1px solid var(--line);border-radius:12px;background:var(--surface);font-size:.93rem;color:var(--ink-2);line-height:1.7}
+.scope>span:first-child{display:inline-block;margin-right:10px;padding:0 8px;border-radius:6px;font-size:.72rem;font-weight:700;line-height:1.75;color:var(--m-ink);background:var(--m-bg)}
+.card p.said{margin:-2px 0 16px;padding:6px 0 6px 14px;border-left:2px solid var(--line);font-size:.87rem;color:var(--muted);line-height:1.65}
+.said>span{font-family:var(--mono);font-size:.74rem;font-weight:600;color:var(--ink-2);margin-right:6px}
+.said>span:not(:first-child){margin-left:6px}
+section>p.skip{margin:0 0 8px;padding:10px 16px;border:1px dashed var(--line);border-radius:12px;font-size:.88rem;color:var(--muted)}
+.skip>b{color:var(--ink-2);margin-right:8px}
+.card p.note{font-size:.88rem;color:var(--muted)}
+.card .formula{margin:0 0 16px;padding:12px 16px;border-radius:10px;background:var(--surface);border:1px solid var(--line);
+  text-align:center;font-size:1.05rem;font-weight:600;letter-spacing:.01em;overflow-x:auto;white-space:nowrap}
+
+/* 범례 · 원문 · 용어 사전 */
+dl.legend-list{margin:0 0 20px;display:grid;gap:8px}
+dl.legend-list>div{display:flex;gap:12px;align-items:baseline}
+dl.legend-list dt{flex:0 0 92px}
+dl.legend-list dt .chip{width:100%}
+dl.legend-list dd{margin:0;font-size:.94rem}
+details.src{margin-top:16px}
+blockquote.raw{margin:4px 0 0;padding:12px 16px;border-left:3px solid var(--m-ink);background:var(--surface);border-radius:0 10px 10px 0;font-size:.9rem;line-height:1.85;color:var(--ink-2)}
+dl.gloss{display:grid;grid-template-columns:minmax(130px,max-content) 1fr;gap:0;margin:0;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+dl.gloss dt,dl.gloss dd{margin:0;padding:9px 14px;border-bottom:1px solid var(--line-2)}
+dl.gloss dt{font-weight:700;background:var(--surface);display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+dl.gloss dt a{font-size:.75rem;font-weight:600;text-decoration:none;white-space:nowrap}
+dl.gloss dd{font-size:.93rem}
+dl.gloss dd dfn{border:0}
+
+/* 보기 필터 막대 */
+.lens{position:sticky;top:var(--head-h,58px);z-index:12;display:flex;align-items:center;gap:6px;margin:20px 0 0;padding:10px 0;
+  background:color-mix(in srgb,var(--bg) 92%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.lens-label{font-size:.8rem;font-weight:700;color:var(--muted);margin-right:4px}
+.lens button{padding:5px 13px;border-radius:999px;font-size:.86rem;white-space:nowrap}
+.lens .n{margin-left:6px;font-family:var(--mono);font-size:.74rem;color:var(--muted)}
+.lens button[aria-pressed="true"] .n{color:inherit}
+.lens+section h2{margin-top:40px}
+body[data-lens]:not([data-lens="all"]) .said,body[data-lens]:not([data-lens="all"]) .skip{display:none}
+body[data-lens]:not([data-lens="all"]) .lens{border-bottom-color:color-mix(in srgb,var(--accent) 40%,var(--line))}
+.toc a.has-m::after{content:" ★";color:#E0A100}
+.toc li[hidden]{display:none}
+
+@media (max-width:520px){
+  .card li[data-k]{padding-left:0}
+  .card li[data-k]::before{position:static;width:auto;margin-right:6px;vertical-align:.1em}
+  .lens{overflow-x:auto;scrollbar-width:none;margin-left:-16px;margin-right:-16px;padding:8px 16px}
+  .lens::-webkit-scrollbar{display:none}
+  .lens-label{display:none}
+  dl.gloss{grid-template-columns:1fr}
+  dl.gloss dt{border-bottom:0}
+  dl.legend-list>div{flex-direction:column;gap:2px}
+  dl.legend-list dt{flex:none}
+  dl.legend-list dt .chip{width:auto}
 }

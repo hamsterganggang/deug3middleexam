@@ -86,7 +86,8 @@ try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.docu
 <script>
 (function(){
   const root=document.documentElement, head=document.querySelector('header.top');
-  const fit=()=>root.style.scrollPaddingTop=(head.offsetHeight+16)+'px';
+  const lens=document.querySelector('.lens');
+  const fit=()=>{root.style.scrollPaddingTop=(head.offsetHeight+16+(lens?lens.offsetHeight:0))+'px'; root.style.setProperty('--head-h',head.offsetHeight+'px')};
   fit(); addEventListener('resize',fit);
 
   // 라이트/다크 전환 (처음엔 시스템 설정을 따름)
@@ -123,8 +124,8 @@ try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.docu
     // 지금 읽는 위치 표시
     let cur=null;
     const spy=()=>{
-      const y=head.offsetHeight+40; let hit=null, sec=null;
-      for(const m of marks){ if(m.el.getBoundingClientRect().top<=y){ hit=m; if(!m.sub) sec=m; } else break; }
+      const y=head.offsetHeight+(lens?lens.offsetHeight:0)+40; let hit=null, sec=null;
+      for(const m of marks){ if(m.el.offsetParent===null) continue; if(m.el.getBoundingClientRect().top<=y){ hit=m; if(!m.sub) sec=m; } else break; }
       if(hit===cur) return; cur=hit;
       toc.querySelectorAll('.on,.open').forEach(e=>e.classList.remove('on','open'));
       if(hit){ hit.a.classList.add('on'); hit.li.classList.add('open'); if(hit.sub&&sec) sec.a.classList.add('on'); }

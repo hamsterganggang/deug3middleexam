@@ -16,7 +16,7 @@ assets/css/main.css
 assets/js/blank.js       코드 빈칸 엔진
 assets/js/qa.js          주관식(스스로 채점) 엔진
 index.html               홈
-ml/theory.html           머신러닝 이론 (중간고사 정리 1~8장, ★ = 무조건 출제) → /ml/theory/
+ml/theory.html           머신러닝 이론 (정리본·강의 대본 기준 1~8장, ★ 출제 / 출제 예상 / 용어 이해) → /ml/theory/
 ml/quiz.html             머신러닝 예상 문제 60개 → /ml/quiz/
 bigdata/theory.html      빅데이터 이론 (Ch10) → /bigdata/theory/
 bigdata/quiz.html        빅데이터 코드 빈칸 77개 → /bigdata/quiz/
