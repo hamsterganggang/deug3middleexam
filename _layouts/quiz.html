@@ -6,10 +6,12 @@ layout: default
 {%- assign qkey = 'quiz-' | append: page.subject | append: '-v1' -%}
 {%- if quiz.key %}{% assign qkey = quiz.key %}{% endif -%}
 {%- if quiz -%}
-{%- if quiz.type == 'qa' -%}
+{%- if quiz.type == 'qa' and quiz.sections[0].items[0].choices -%}
+<p class="intro">보기를 누르면 바로 채점되고 해설이 나옵니다. 고른 답은 이 브라우저에 저장되고, <b>초기화</b>로 다시 풀 수 있습니다.</p>
+{%- elsif quiz.type == 'qa' -%}
 <p class="intro">먼저 답을 떠올리거나 적어 본 뒤 <b>정답 보기</b>로 확인하고, <b>○ 맞음 / × 틀림</b>을 표시하세요. 표시한 내용은 이 브라우저에 저장됩니다.</p>
 {%- else -%}
-<p class="intro">빈칸에 들어갈 코드를 입력하고 아래 <b>채점하기</b>를 누르세요. Enter를 누르면 다음 빈칸으로 넘어갑니다. 따옴표는 안 써도 됩니다. 입력한 내용은 이 브라우저에 저장됩니다.</p>
+<p class="intro">빈칸마다 <b>보기 4개 중 하나</b>를 고르면 바로 맞았는지 표시됩니다. 손코딩 연습을 하려면 <b>직접 입력</b>으로 바꿔 코드를 치고 <b>채점하기</b>를 누르세요(Enter = 다음 빈칸, 따옴표 생략 가능). 답은 이 브라우저에 저장됩니다.</p>
 {%- endif %}
 <div id="quiz"></div>
 {{ content }}

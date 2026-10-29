@@ -17,7 +17,7 @@ assets/js/blank.js       코드 빈칸 엔진
 assets/js/qa.js          주관식(스스로 채점) 엔진
 index.html               홈
 ml/theory.html           머신러닝 이론 (정리본·강의 대본 기준 1~8장, ★ 출제 / 출제 예상 / 용어 이해) → /ml/theory/
-ml/quiz.html             머신러닝 예상 문제 60개 → /ml/quiz/
+ml/quiz.html             머신러닝 객관식 예상 문제 58개 → /ml/quiz/
 bigdata/theory.html      빅데이터 이론 (파이썬 기초 · import 총정리 · Ch10~11 전체 코드 · 읽는 법 · 문법 카드) → /bigdata/theory/
 bigdata/quiz.html        빅데이터 코드 빈칸 239개 (이론의 형광 표시 = 빈칸, 문제마다 힌트) → /bigdata/quiz/
 assets/files/bigdata_midterm.hwpx  빅데이터 프린트용 한글 파일 (이론 + 빈칸 연습 + 정답)
