@@ -196,6 +196,17 @@ pre,code,.blank input,.score{font-variant-ligatures:none;font-feature-settings:"
 .qa-row button{font-size:.86rem;padding:6px 14px}
 .qa-row .mark.ok[aria-pressed="true"]{border-color:var(--ok);color:var(--ok);background:var(--ok-bg)}
 .qa-row .mark.bad[aria-pressed="true"]{border-color:var(--bad);color:var(--bad);background:var(--bad-bg)}
+.calc-fields{display:flex;flex-wrap:wrap;gap:10px 18px}
+.calc-fields label{display:inline-flex;align-items:center;gap:8px;position:relative;font-size:.93rem}
+.calc-fields label span{font-weight:600;white-space:nowrap}
+.calc-fields input{font:inherit;font-family:var(--mono);width:9ch;color:var(--ink);background:var(--input-bg);border:1.5px solid var(--line);border-radius:8px;padding:5px 10px}
+.calc-fields input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 22%,transparent)}
+.calc-fields label.ok input{border-color:var(--ok);background:var(--ok-bg)}
+.calc-fields label.bad input{border-color:var(--bad);background:var(--bad-bg)}
+.calc-fields em{display:none;font-style:normal;font-family:var(--mono);font-size:.82rem;color:var(--accent)}
+.calc-fields label.bad em,.q.calc.show-ans .calc-fields em{display:inline}
+.q.calc .qa-ans ol{margin:6px 0 0;padding-left:1.3em}
+.q.calc .qa-ans li{margin:2px 0}
 .mc-opts{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
 .mc-opts button{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;font:inherit;font-size:.93rem;font-weight:400;line-height:1.5;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:9px 12px;cursor:pointer;height:auto}
 .mc-opts button b{flex:0 0 auto;color:var(--muted);font-weight:600}

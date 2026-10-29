@@ -1,11 +1,12 @@
 // 문제 엔진. 페이지에 window.QUIZ = {key, sections:[{id,title,items:[{q,a,choices?,answer?}]}]} 가 있어야 합니다.
 // choices가 있으면 객관식: 보기를 누르면 바로 채점하고 해설(a)을 보여 줍니다.
-// 없으면 주관식: 답을 적고(선택) 정답을 확인한 뒤 스스로 맞음/틀림을 표시합니다.
+// fields가 있으면 계산 문제: 숫자를 적고 확인하면 칸마다 채점하고 풀이(steps)를 보여 줍니다.
+// 셋 다 없으면 주관식: 답을 적고(선택) 정답을 확인한 뒤 스스로 맞음/틀림을 표시합니다.
 (function(){
 const Q=window.QUIZ; if(!Q) return;
 const KEY=Q.key;
 
-let saved={notes:{},marks:{},picks:{}};
+let saved={notes:{},marks:{},picks:{},calc:{}};
 try{const s=JSON.parse(localStorage.getItem(KEY)||'null'); if(s&&s.notes&&s.marks) saved=Object.assign(saved,s)}catch(e){}
 const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(saved))}catch(e){}};
 
@@ -16,9 +17,19 @@ let qn=0;
 Q.sections.forEach(sec=>{
   const s=document.createElement('section'); s.id=sec.id;
   s.innerHTML=`<h2>${esc(sec.title)}</h2>`;
-  sec.items.forEach(({q,a,choices,answer})=>{
+  sec.items.forEach(({q,a,choices,answer,fields,steps})=>{
     const n=++qn;
     const d=document.createElement('div'); d.className='q qa'; d.dataset.n=n;
+    if(fields){
+      d.classList.add('calc'); const v=saved.calc[n]||[];
+      d.innerHTML=`<p><span>${n}</span>${esc(q)}</p>
+<div class="qa-body">
+  <div class="calc-fields">${fields.map((f,i)=>`<label><span>${esc(f.l)} =</span><input inputmode="decimal" autocomplete="off" spellcheck="false" data-i="${i}" data-v="${f.v}" value="${esc(v[i]||'')}" aria-label="${n}번 ${esc(f.l)}"><em>${esc(String(f.v).replace('-','−'))}</em></label>`).join('')}</div>
+  <div class="qa-row"><button type="button" class="check primary">확인</button><button type="button" class="show" aria-expanded="false">풀이 보기</button></div>
+  <div class="qa-ans" hidden><b>풀이</b><ol>${steps.map(t=>`<li>${esc(t)}</li>`).join('')}</ol></div>
+</div>`;
+      s.appendChild(d); return;
+    }
     if(choices){
       d.classList.add('mc'); d.dataset.answer=answer;
       d.innerHTML=`<p><span>${n}</span>${esc(q)}</p>
@@ -52,6 +63,14 @@ function paint(card){
   card.classList.toggle('marked-ok',m==='ok');
   card.classList.toggle('marked-bad',m==='bad');
   card.classList.toggle('allok',m==='ok');
+  if(card.classList.contains('calc')){
+    card.querySelectorAll('.calc-fields input').forEach(inp=>{
+      const done=m!==undefined;
+      inp.parentElement.classList.toggle('ok',done&&numOk(inp));
+      inp.parentElement.classList.toggle('bad',done&&!numOk(inp));
+    });
+    return;
+  }
   if(card.classList.contains('mc')){
     const pick=saved.picks[n], ans=+card.dataset.answer, done=pick!==undefined, show=done||card.classList.contains('show-ans');
     card.querySelectorAll('.mc-opts button').forEach(b=>{
@@ -67,7 +86,19 @@ function paint(card){
   card.querySelector('.mark.ok').setAttribute('aria-pressed',m==='ok');
   card.querySelector('.mark.bad').setAttribute('aria-pressed',m==='bad');
 }
+// 숫자 비교: −, 쉼표, 분수(1/2) 허용, 소수 둘째 자리까지 맞으면 정답
+function num(v){
+  v=String(v).trim().replace(/[−–]/g,'-').replace(/,/g,'').replace(/\s+/g,'');
+  const f=v.match(/^(-?\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)$/); if(f) return +f[1]/+f[2];
+  return v===''?NaN:Number(v);
+}
+const numOk=inp=>Math.abs(num(inp.value)-Number(inp.dataset.v))<0.005+1e-9;
 function setOpen(card,open){
+  if(card.classList.contains('calc')){
+    card.querySelector('.qa-ans').hidden=!open;
+    const b=card.querySelector('.show'); b.setAttribute('aria-expanded',open); b.textContent=open?'풀이 숨기기':'풀이 보기';
+    card.classList.toggle('show-ans',open); return;
+  }
   if(card.classList.contains('mc')){ card.classList.toggle('show-ans',open); paint(card); return; }
   card.querySelector('.qa-ans').hidden=!open;
   const b=card.querySelector('.show');
@@ -83,6 +114,21 @@ function tally(){
 cards.forEach(card=>{
   const n=card.dataset.n;
   paint(card);
+  if(card.classList.contains('calc')){
+    const ins=[...card.querySelectorAll('.calc-fields input')];
+    const check=()=>{
+      saved.calc[n]=ins.map(i=>i.value);
+      saved.marks[n]=ins.every(numOk)?'ok':'bad';
+      save(); paint(card); setOpen(card,true); tally();
+    };
+    ins.forEach((inp,i)=>{
+      inp.addEventListener('input',()=>{saved.calc[n]=ins.map(x=>x.value); save(); inp.parentElement.classList.remove('ok','bad');});
+      inp.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault(); if(ins[i+1]) ins[i+1].focus(); else check();}});
+    });
+    card.querySelector('.check').onclick=check;
+    card.querySelector('.show').onclick=()=>setOpen(card,card.querySelector('.qa-ans').hidden);
+    return;
+  }
   if(card.classList.contains('mc')){
     card.querySelectorAll('.mc-opts button').forEach(b=>b.onclick=()=>{
       const i=+b.dataset.i;
@@ -114,8 +160,8 @@ revBtn.onclick=()=>{
 };
 document.getElementById('reset').onclick=()=>{
   if(!confirm('고른 보기·적은 답과 맞음/틀림 표시를 모두 지울까요?')) return;
-  saved={notes:{},marks:{},picks:{}}; save();
-  cards.forEach(c=>{const t=c.querySelector('textarea'); if(t) t.value=''; setOpen(c,false); paint(c);});
+  saved={notes:{},marks:{},picks:{},calc:{}}; save();
+  cards.forEach(c=>{const t=c.querySelector('textarea'); if(t) t.value=''; c.querySelectorAll('.calc-fields input').forEach(i=>i.value=''); setOpen(c,false); paint(c);});
   document.body.classList.remove('only-wrong');
   wrongBtn.setAttribute('aria-pressed','false'); revBtn.setAttribute('aria-pressed','false');
   tally(); window.scrollTo(0,0);
