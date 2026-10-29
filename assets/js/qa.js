@@ -25,8 +25,8 @@ Q.sections.forEach(sec=>{
       d.innerHTML=`<p><span>${n}</span>${esc(q)}</p>
 <div class="qa-body">
   <div class="calc-fields">${fields.map((f,i)=>`<label><span>${esc(f.l)} =</span><input inputmode="decimal" autocomplete="off" spellcheck="false" data-i="${i}" data-v="${f.v}" value="${esc(v[i]||'')}" aria-label="${n}번 ${esc(f.l)}"><em>${esc(String(f.v).replace('-','−'))}</em></label>`).join('')}</div>
-  <div class="qa-row"><button type="button" class="check primary">확인</button></div>
-  <div class="qa-ans" hidden><b>풀이</b><ol>${steps.map(t=>`<li>${esc(t)}</li>`).join('')}</ol></div>
+  <div class="qa-row"><button type="button" class="check primary">확인</button><button type="button" class="steps-btn" aria-expanded="false" hidden>풀이 보기</button></div>
+  <div class="qa-ans steps" hidden><b>풀이</b><ol>${steps.map(t=>`<li>${esc(t)}</li>`).join('')}</ol></div>
 </div>`;
       s.appendChild(d); return;
     }
@@ -36,7 +36,7 @@ Q.sections.forEach(sec=>{
 <div class="qa-body">
   <ol class="mc-opts">${choices.map((c,i)=>`<li><button type="button" data-i="${i}"><b>${'①②③④⑤'[i]}</b>${esc(c)}</button></li>`).join('')}</ol>
   <div class="qa-ans" hidden><b>해설</b> ${esc(a)}</div>
-  ${steps?`<div class="qa-ans steps" hidden><b>풀이</b><ol>${steps.map(t=>`<li>${esc(t)}</li>`).join('')}</ol></div>`:''}
+  ${steps?`<div class="qa-row"><button type="button" class="steps-btn" aria-expanded="false" hidden>풀이 보기</button></div><div class="qa-ans steps" hidden><b>풀이</b><ol>${steps.map(t=>`<li>${esc(t)}</li>`).join('')}</ol></div>`:''}
 </div>`;
       s.appendChild(d); return;
     }
@@ -59,6 +59,14 @@ const cards=[...document.querySelectorAll('.q.qa')];
 const total=cards.length;
 const scoreEl=document.getElementById('score');
 
+// 풀이 보기 버튼: 답을 낸 뒤(또는 정답 모두 보기)에만 나타나고, 눌러야 풀이가 펼쳐짐
+function paintSteps(card,done){
+  const b=card.querySelector('.steps-btn'); if(!b) return;
+  const all=card.classList.contains('show-ans'), open=all||card.classList.contains('steps-open');
+  b.hidden=!(done||all);
+  b.setAttribute('aria-expanded',open); b.textContent=open?'풀이 숨기기':'풀이 보기';
+  card.querySelector('.qa-ans.steps').hidden=!open;
+}
 function paint(card){
   const n=card.dataset.n, m=saved.marks[n];
   card.classList.toggle('marked-ok',m==='ok');
@@ -70,6 +78,7 @@ function paint(card){
       inp.parentElement.classList.toggle('ok',done&&numOk(inp));
       inp.parentElement.classList.toggle('bad',done&&!numOk(inp));
     });
+    paintSteps(card,m!==undefined);
     return;
   }
   if(card.classList.contains('mc')){
@@ -81,7 +90,8 @@ function paint(card){
       b.setAttribute('aria-pressed',done&&i===pick);
       b.disabled=done;
     });
-    card.querySelectorAll('.qa-ans').forEach(x=>x.hidden=!show);
+    card.querySelector('.qa-ans').hidden=!show;
+    paintSteps(card,done);
     return;
   }
   card.querySelector('.mark.ok').setAttribute('aria-pressed',m==='ok');
@@ -95,10 +105,7 @@ function num(v){
 }
 const numOk=inp=>Math.abs(num(inp.value)-Number(inp.dataset.v))<0.005+1e-9;
 function setOpen(card,open){
-  if(card.classList.contains('calc')){
-    card.querySelector('.qa-ans').hidden=!open;
-    card.classList.toggle('show-ans',open); return;
-  }
+  if(card.classList.contains('calc')){ card.classList.toggle('show-ans',open); paint(card); return; }
   if(card.classList.contains('mc')){ card.classList.toggle('show-ans',open); paint(card); return; }
   card.querySelector('.qa-ans').hidden=!open;
   const b=card.querySelector('.show');
@@ -119,14 +126,13 @@ cards.forEach(card=>{
     const check=()=>{
       saved.calc[n]=ins.map(i=>i.value);
       saved.marks[n]=ins.every(numOk)?'ok':'bad';
-      save(); paint(card); setOpen(card,true); tally();
+      save(); paint(card); tally();
     };
     ins.forEach((inp,i)=>{
       inp.addEventListener('input',()=>{saved.calc[n]=ins.map(x=>x.value); save(); inp.parentElement.classList.remove('ok','bad');});
       inp.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault(); if(ins[i+1]) ins[i+1].focus(); else check();}});
     });
     card.querySelector('.check').onclick=check;
-    if(saved.marks[n]) setOpen(card,true);
     return;
   }
   if(card.classList.contains('mc')){
@@ -146,6 +152,10 @@ cards.forEach(card=>{
   });
 });
 tally();
+document.getElementById('quiz').addEventListener('click',e=>{
+  const b=e.target.closest('.steps-btn'); if(!b) return;
+  const card=b.closest('.q'); card.classList.toggle('steps-open'); paint(card);
+});
 
 const wrongBtn=document.getElementById('wrong');
 wrongBtn.onclick=()=>{
@@ -161,7 +171,7 @@ revBtn.onclick=()=>{
 document.getElementById('reset').onclick=()=>{
   if(!confirm('고른 보기·적은 답과 맞음/틀림 표시를 모두 지울까요?')) return;
   saved={notes:{},marks:{},picks:{},calc:{}}; save();
-  cards.forEach(c=>{const t=c.querySelector('textarea'); if(t) t.value=''; c.querySelectorAll('.calc-fields input').forEach(i=>i.value=''); setOpen(c,false); paint(c);});
+  cards.forEach(c=>{const t=c.querySelector('textarea'); if(t) t.value=''; c.querySelectorAll('.calc-fields input').forEach(i=>i.value=''); c.classList.remove('steps-open'); setOpen(c,false); paint(c);});
   document.body.classList.remove('only-wrong');
   wrongBtn.setAttribute('aria-pressed','false'); revBtn.setAttribute('aria-pressed','false');
   tally(); window.scrollTo(0,0);

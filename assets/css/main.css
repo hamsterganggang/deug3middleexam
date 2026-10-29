@@ -515,3 +515,4 @@ p.dl a{font-size:.9rem;font-weight:600}
   ol.walk>li>p.read span{left:9px}
   ol.walk>li>p.read+p::before{left:26px}
 }
+.steps-btn[hidden],.qa-row:not(:has(>button:not([hidden]))){display:none}
