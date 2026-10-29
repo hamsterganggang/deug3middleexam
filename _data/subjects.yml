@@ -6,5 +6,5 @@
   ready: true
 - id: bigdata
   name: 빅데이터
-  desc: Ch10~11 · 챕터별 import 정리 → 전체 예제 코드 → 한 줄씩 해석 → 주요 문법 · 코드 빈칸 239개
+  desc: Ch10~11 · 파이썬 기초부터 · 챕터별 import → 전체 코드 → 읽는 법·해석 · 문법 카드 · 코드 빈칸 239개 · 프린트용 한글 파일
   ready: true

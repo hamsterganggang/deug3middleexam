@@ -728,27 +728,195 @@
    "items": [
     {
      "desc": "기본 라이브러리 (별칭까지)",
-     "code": "import [[1]] as [[2]] # 표(DataFrame) 읽기·가공\nimport [[3]] as [[4]] # 배열·통계\nimport [[5]] as [[6]] # 박스플롯\nimport [[7]] as [[8]] # 산점도·선 그래프\nimport [[9]] as [[10]] # OLS 회귀 요약표"
+     "code": "import [[1]] as [[2]] # 표(DataFrame) 읽기·가공\nimport [[3]] as [[4]] # 배열·통계\nimport [[5]] as [[6]] # 박스플롯\nimport [[7]] as [[8]] # 산점도·선 그래프\nimport [[9]] as [[10]] # OLS 회귀 요약표",
+     "hints": [
+      [
+       1,
+       "표(DataFrame)를 다루는 라이브러리"
+      ],
+      [
+       2,
+       "판다스를 부를 때 쓰는 짧은 별칭"
+      ],
+      [
+       3,
+       "배열과 수치 계산(평균·분산 등) 라이브러리"
+      ],
+      [
+       4,
+       "넘파이를 부를 때 쓰는 짧은 별칭"
+      ],
+      [
+       5,
+       "박스플롯 같은 통계 그래프 라이브러리"
+      ],
+      [
+       6,
+       "시본을 부를 때 쓰는 짧은 별칭"
+      ],
+      [
+       7,
+       "패키지.모듈 형태로 그래프 모듈 가져오기"
+      ],
+      [
+       8,
+       "그래프 모듈의 짧은 별칭"
+      ],
+      [
+       9,
+       "회귀분석 결과표를 만드는 통계 패키지의 api 모듈"
+      ],
+      [
+       10,
+       "statsmodels.api의 별칭 (교재 표기)"
+      ]
+     ]
     },
     {
      "desc": "math 두 가지 방법",
-     "code": "import [[11]]\nmath.sqrt(variance(x)) # 모듈 이름을 붙여 호출\nfrom math import [[12]]\nsqrt(mean_error) # 이름만으로 호출"
+     "code": "import [[11]]\nmath.sqrt(variance(x)) # 모듈 이름을 붙여 호출\nfrom math import [[12]]\nsqrt(mean_error) # 이름만으로 호출",
+     "hints": [
+      [
+       11,
+       "제곱근 같은 수학 함수가 든 기본 모듈"
+      ],
+      [
+       12,
+       "제곱근"
+      ]
+     ]
     },
     {
      "desc": "의사결정나무 · 트리 그림 · 평가",
-     "code": "from sklearn.[[13]] import [[14]] # 의사결정나무\nfrom sklearn.tree import [[15]] # 트리를 .dot 파일로\nimport [[16]] # .dot을 그림으로\nfrom sklearn.[[17]] import [[18]], [[19]] # 정확도, 혼동행렬"
+     "code": "from sklearn.[[13]] import [[14]] # 의사결정나무\nfrom sklearn.tree import [[15]] # 트리를 .dot 파일로\nimport [[16]] # .dot을 그림으로\nfrom sklearn.[[17]] import [[18]], [[19]] # 정확도, 혼동행렬",
+     "hints": [
+      [
+       13,
+       "의사결정나무가 들어 있는 sklearn 모듈 (단수형)"
+      ],
+      [
+       14,
+       "의사결정나무 분류 모델 (클래스 → 객체를 만들어 fit)"
+      ],
+      [
+       15,
+       "학습한 트리를 .dot 파일로 내보내는 함수"
+      ],
+      [
+       16,
+       ".dot 파일을 그림으로 바꾸는 라이브러리"
+      ],
+      [
+       17,
+       "정확도·혼동행렬 같은 평가 도구 모듈"
+      ],
+      [
+       18,
+       "정확도(맞힌 비율)를 구하는 함수"
+      ],
+      [
+       19,
+       "혼동행렬(행 실제, 열 예측)을 만드는 함수"
+      ]
+     ]
     },
     {
      "desc": "linear_model 계열",
-     "code": "from sklearn.[[20]] import [[21]] # 로지스틱 회귀\nfrom sklearn.linear_model import [[22]] # 퍼셉트론\nfrom sklearn.linear_model import [[23]] # 확률적 경사하강법\nfrom sklearn import linear_model # 모듈째 가져오기 → linear_model.SGDClassifier()"
+     "code": "from sklearn.[[20]] import [[21]] # 로지스틱 회귀\nfrom sklearn.linear_model import [[22]] # 퍼셉트론\nfrom sklearn.linear_model import [[23]] # 확률적 경사하강법\nfrom sklearn import linear_model # 모듈째 가져오기 → linear_model.SGDClassifier()",
+     "hints": [
+      [
+       20,
+       "로지스틱 회귀·퍼셉트론·SGD가 든 sklearn 모듈 (밑줄)"
+      ],
+      [
+       21,
+       "확률을 계산해 0/1로 나누는 분류 모델"
+      ],
+      [
+       22,
+       "가중합으로 판단하는 가장 단순한 신경망 모델"
+      ],
+      [
+       23,
+       "확률적 경사하강법 분류 모델"
+      ]
+     ]
     },
     {
      "desc": "전처리 · 데이터 분할 · 교차검증",
-     "code": "from sklearn.[[24]] import [[25]], [[26]] # 정규화, 표준화\nfrom sklearn.[[27]] import [[28]] # 학습/테스트 나누기\nfrom sklearn.model_selection import [[29]] # 교차검증"
+     "code": "from sklearn.[[24]] import [[25]], [[26]] # 정규화, 표준화\nfrom sklearn.[[27]] import [[28]] # 학습/테스트 나누기\nfrom sklearn.model_selection import [[29]] # 교차검증",
+     "hints": [
+      [
+       24,
+       "정규화·표준화 같은 전처리 모듈"
+      ],
+      [
+       25,
+       "값을 0~1 범위로 바꾸는 정규화 도구"
+      ],
+      [
+       26,
+       "평균 0, 표준편차 1로 바꾸는 표준화 도구"
+      ],
+      [
+       27,
+       "데이터 나누기·교차검증 모듈 (밑줄)"
+      ],
+      [
+       28,
+       "데이터를 학습용/테스트용으로 나누는 함수"
+      ],
+      [
+       29,
+       "교차검증 점수들을 배열로 돌려주는 함수"
+      ]
+     ]
     },
     {
      "desc": "나머지 분류 모델",
-     "code": "from sklearn.[[30]] import [[31]] # 랜덤 포레스트\nfrom sklearn.[[32]] import [[33]] # KNN\nfrom sklearn.[[34]] import SVC, [[35]] # SVM\nfrom sklearn.[[36]] import [[37]] # 나이브 베이즈\nfrom [[38]] import [[39]] as plt # import matplotlib.pyplot as plt 와 같음"
+     "code": "from sklearn.[[30]] import [[31]] # 랜덤 포레스트\nfrom sklearn.[[32]] import [[33]] # KNN\nfrom sklearn.[[34]] import SVC, [[35]] # SVM\nfrom sklearn.[[36]] import [[37]] # 나이브 베이즈\nfrom [[38]] import [[39]] as plt # import matplotlib.pyplot as plt 와 같음",
+     "hints": [
+      [
+       30,
+       "여러 모델을 합치는 방법들이 든 sklearn 모듈"
+      ],
+      [
+       31,
+       "트리 여러 개의 다수결로 분류하는 모델"
+      ],
+      [
+       32,
+       "KNN이 든 sklearn 모듈 (복수형)"
+      ],
+      [
+       33,
+       "가까운 이웃 k개의 다수결 모델"
+      ],
+      [
+       34,
+       "서포트 벡터 머신 모듈 (약자)"
+      ],
+      [
+       35,
+       "선형 서포트 벡터 머신 분류 모델"
+      ],
+      [
+       36,
+       "나이브 베이즈 모듈 (밑줄)"
+      ],
+      [
+       37,
+       "정규분포를 가정한 나이브 베이즈 모델"
+      ],
+      [
+       38,
+       "그래프를 그리는 패키지 (pyplot을 담고 있음)"
+      ],
+      [
+       39,
+       "그래프 그리기 모듈 이름 (plt로 부름)"
+      ]
+     ]
     }
    ]
   },
@@ -758,51 +926,210 @@
    "items": [
     {
      "desc": "1. 작업용 파일 만들기 (한글 인코딩 변환)",
-     "code": "import pandas as pd\nwith [[40]]('bc_card.txt', mode='[[41]]') as f:\n  with open('bc_card_output.txt', mode='w') as w:\n    data=f.[[42]]()\n    print(type(data))\n    data=data.[[43]]('[[44]]')\n    print(type(data))\n    w.[[45]](data)"
+     "code": "import pandas as pd\nwith [[40]]('bc_card.txt', mode='[[41]]') as f:\n  with open('bc_card_output.txt', mode='w') as w:\n    data=f.[[42]]()\n    print(type(data))\n    data=data.[[43]]('[[44]]')\n    print(type(data))\n    w.[[45]](data)",
+     "hints": [
+      [
+       40,
+       "파일 열기 (내장 함수)"
+      ],
+      [
+       41,
+       "바이너리(bytes) 읽기 모드"
+      ],
+      [
+       42,
+       "파일 내용 전체 읽기"
+      ],
+      [
+       43,
+       "bytes → 문자열로 바꾸기"
+      ],
+      [
+       44,
+       "윈도우 한글 인코딩 이름"
+      ],
+      [
+       45,
+       "파일에 문자열 쓰기"
+      ]
+     ]
     },
     {
      "desc": "2. 탭으로 나누고 개수 확인",
-     "code": "with open('bc_card_output.txt', mode='r') as f:\n  data=f.read()\nlen(data)\nsplit_data=data.[[46]]('\\t')\nNo_Column=23\nlen(split_data)[[47]]No_Column"
+     "code": "with open('bc_card_output.txt', mode='r') as f:\n  data=f.read()\nlen(data)\nsplit_data=data.[[46]]('\\t')\nNo_Column=23\nlen(split_data)[[47]]No_Column",
+     "hints": [
+      [
+       46,
+       "구분자로 잘라 리스트 만들기"
+      ],
+      [
+       47,
+       "나눈 나머지"
+      ]
+     ]
     },
     {
      "desc": "3. 헤더 끝(CNT) 뒤에 탭 넣기",
-     "code": "data.[[48]]('CNT')\ndata=data[:260]+'\\t'+data[260:]\nsplit_data=data.split('\\t')\nsplit_data[22], split_data[23]"
+     "code": "data.[[48]]('CNT')\ndata=data[:260]+'\\t'+data[260:]\nsplit_data=data.split('\\t')\nsplit_data[22], split_data[23]",
+     "hints": [
+      [
+       48,
+       "문자열이 처음 나오는 위치 (없으면 -1)"
+      ]
+     ]
     },
     {
      "desc": "4. 레코드마다 '201906' 앞에 탭 넣기",
-     "code": "Cycle=22\ni=1\nwhile i < round((len(split_data)-Cycle)/Cycle):\n  target_index=split_data[No_Column+Cycle*i].[[49]]('[[50]]')\n  split_data[No_Column+Cycle*i]=split_data[No_Column+Cycle*i][:target_index]+'\\t'+split_data[No_Column+Cycle*i][target_index:]\n  i+=1"
+     "code": "Cycle=22\ni=1\nwhile i < round((len(split_data)-Cycle)/Cycle):\n  target_index=split_data[No_Column+Cycle*i].[[49]]('[[50]]')\n  split_data[No_Column+Cycle*i]=split_data[No_Column+Cycle*i][:target_index]+'\\t'+split_data[No_Column+Cycle*i][target_index:]\n  i+=1",
+     "hints": [
+      [
+       49,
+       "문자열이 처음 나오는 위치 (없으면 -1)"
+      ],
+      [
+       50,
+       "레코드 맨 앞의 기준 연월 값"
+      ]
+     ]
     },
     {
      "desc": "5. 합치고(join) 다시 나눠 23개씩 자르기",
-     "code": "join_split_data='\\t'.[[51]](split_data)\njoined_splited_data=join_split_data.split('\\t')\ntotal=[joined_splited_data[i: [[52]]] for i in [[53]](0, len(joined_splited_data), No_Column)]\nlen(total)"
+     "code": "join_split_data='\\t'.[[51]](split_data)\njoined_splited_data=join_split_data.split('\\t')\ntotal=[joined_splited_data[i: [[52]]] for i in [[53]](0, len(joined_splited_data), No_Column)]\nlen(total)",
+     "hints": [
+      [
+       51,
+       "리스트를 구분자로 이어 문자열 하나로"
+      ],
+      [
+       52,
+       "i부터 23개 뒤까지 자르기"
+      ],
+      [
+       53,
+       "연속된 정수들 (끝은 미포함)"
+      ]
+     ]
     },
     {
      "desc": "6. DataFrame 만들고 CSV로 저장·읽기",
-     "code": "total_df=pd.[[54]](total[1:], [[55]]=total[0])\ntotal_df.[[56]]('201906.csv', encoding='utf-8')\nbc_card=pd.[[57]]('201906.csv', encoding='utf-8', [[58]]=0)\nbc_card.[[59]]()"
+     "code": "total_df=pd.[[54]](total[1:], [[55]]=total[0])\ntotal_df.[[56]]('201906.csv', encoding='utf-8')\nbc_card=pd.[[57]]('201906.csv', encoding='utf-8', [[58]]=0)\nbc_card.[[59]]()",
+     "hints": [
+      [
+       54,
+       "행과 열로 된 표 만들기"
+      ],
+      [
+       55,
+       "열 이름(들)을 지정하는 매개변수"
+      ],
+      [
+       56,
+       "표를 CSV 파일로 저장"
+      ],
+      [
+       57,
+       "CSV(텍스트 표) 파일 읽기"
+      ],
+      [
+       58,
+       "몇 번 열을 인덱스로 쓸지"
+      ],
+      [
+       59,
+       "앞 5행만 보기"
+      ]
+     ]
     },
     {
      "desc": "7. 서울 거주 / 비거주 고객 나누기",
-     "code": "len(bc_card)\nindex1=bc_card[bc_card['CSTMR_MEGA_CTY_NM'] !='서울특별시'].[[60]]\nseoul_bc_card=bc_card.[[61]](index1)\nseoul_bc_card.[[62]]([[63]]=True, [[64]]=True)\nlen(seoul_bc_card)\nindex2=bc_card[bc_card['CSTMR_MEGA_CTY_NM']=='서울특별시'].index\nnonseoul_bc_card=bc_card.drop(index2)\nnonseoul_bc_card.reset_index(drop=True, inplace=True)\nlen(nonseoul_bc_card)"
+     "code": "len(bc_card)\nindex1=bc_card[bc_card['CSTMR_MEGA_CTY_NM'] !='서울특별시'].[[60]]\nseoul_bc_card=bc_card.[[61]](index1)\nseoul_bc_card.[[62]]([[63]]=True, [[64]]=True)\nlen(seoul_bc_card)\nindex2=bc_card[bc_card['CSTMR_MEGA_CTY_NM']=='서울특별시'].index\nnonseoul_bc_card=bc_card.drop(index2)\nnonseoul_bc_card.reset_index(drop=True, inplace=True)\nlen(nonseoul_bc_card)",
+     "hints": [
+      [
+       60,
+       "행 번호들 (속성이라 괄호 없음)"
+      ],
+      [
+       61,
+       "행이나 열을 지우기"
+      ],
+      [
+       62,
+       "인덱스를 0부터 다시 매기기"
+      ],
+      [
+       63,
+       "기존 인덱스를 열로 남기지 않고 버림"
+      ],
+      [
+       64,
+       "새로 만들지 않고 원본을 바로 바꿈"
+      ]
+     ]
     },
     {
      "desc": "8. 총 소비액 · 성별 소비액 · 이용 건수",
-     "code": "print(seoul_bc_card['AMT'].[[65]]([[66]]=0)) # 서울시 거주 고객의 소비액\nprint(nonseoul_bc_card['AMT'].sum(axis=0)) # 서울시 비거주 고객의 소비액\nseoulsex=pd.[[67]](seoul_bc_card, [[68]]=['SEX_CTGO_CD'], [[69]]='sum')\nseoulsex=seoulsex.drop(['ADMI_CTY_NO','CTY_RGN_NO','TP_GRP_NO','MAIN_BUZ_CODE','REG_YYMM','CNT','CSTMR_CTY_RGN_NO','CSTMR_MEGA_CTY_NO','FLC','MEGA_CTY_NO','TP_BUZ_NO'], [[70]]=1)\nseoulsex\nprint(seoul_bc_card['CNT'].sum(axis=0))\nprint(nonseoul_bc_card['CNT'].sum(axis=0))"
+     "code": "print(seoul_bc_card['AMT'].[[65]]([[66]]=0)) # 서울시 거주 고객의 소비액\nprint(nonseoul_bc_card['AMT'].sum(axis=0)) # 서울시 비거주 고객의 소비액\nseoulsex=pd.[[67]](seoul_bc_card, [[68]]=['SEX_CTGO_CD'], [[69]]='sum')\nseoulsex=seoulsex.drop(['ADMI_CTY_NO','CTY_RGN_NO','TP_GRP_NO','MAIN_BUZ_CODE','REG_YYMM','CNT','CSTMR_CTY_RGN_NO','CSTMR_MEGA_CTY_NO','FLC','MEGA_CTY_NO','TP_BUZ_NO'], [[70]]=1)\nseoulsex\nprint(seoul_bc_card['CNT'].sum(axis=0))\nprint(nonseoul_bc_card['CNT'].sum(axis=0))",
+     "hints": [
+      [
+       65,
+       "합계"
+      ],
+      [
+       66,
+       "방향 지정"
+      ],
+      [
+       67,
+       "기준별로 묶어 집계한 표"
+      ],
+      [
+       68,
+       "무엇을 기준으로 묶을지 (피벗의 행)"
+      ],
+      [
+       69,
+       "묶은 값을 어떻게 계산할지 (합계 등)"
+      ],
+      [
+       70,
+       "방향 지정"
+      ]
+     ]
     },
     {
      "desc": "9. 편의점 소비액 · 강남구 편의점",
-     "code": "bc_card_cov=bc_card[bc_card['TP_BUZ_NO']==4010] # 4010은 편의점\nbc_card_cov['AMT'].sum(axis=0)\nbc_card_gang_cov=bc_card[(bc_card['TP_BUZ_NO']==4010)[[71]](bc_card['CTY_RGN_NM']=='강남구')]\nbc_card_gang_cov['AMT'].sum(axis=0)"
+     "code": "bc_card_cov=bc_card[bc_card['TP_BUZ_NO']==4010] # 4010은 편의점\nbc_card_cov['AMT'].sum(axis=0)\nbc_card_gang_cov=bc_card[(bc_card['TP_BUZ_NO']==4010)[[71]](bc_card['CTY_RGN_NM']=='강남구')]\nbc_card_gang_cov['AMT'].sum(axis=0)",
+     "hints": [
+      [
+       71,
+       "그리고 (조건마다 괄호 필수)"
+      ]
+     ]
     },
     {
      "desc": "10. 강남구 편의점: 거주 고객 vs 비거주 고객",
-     "code": "index3=bc_card_gang_cov[bc_card_gang_cov['CSTMR_CTY_RGN_NM']=='강남구'].index\nbc_card_gang1=bc_card_gang_cov.drop(index3)\nbc_card_gang1.reset_index(drop=True, inplace=True)\nindex4=bc_card_gang_cov[bc_card_gang_cov['CSTMR_CTY_RGN_NM']!='강남구'].index\nbc_card_gang2=bc_card_gang_cov.drop(index4)\nbc_card_gang2.reset_index(drop=True, inplace=True)\nprint(bc_card_gang1['AMT'].sum(axis=0)) # 강남구 거주 고객의 강남구 소비액\nprint(bc_card_gang2['AMT'].sum(axis=0)) # 강남구 비거주 고객의 강남구 소비액"
+     "code": "index3=bc_card_gang_cov[bc_card_gang_cov['CSTMR_CTY_RGN_NM']=='강남구'].index\nbc_card_gang1=bc_card_gang_cov.drop(index3)\nbc_card_gang1.reset_index(drop=True, inplace=True)\nindex4=bc_card_gang_cov[bc_card_gang_cov['CSTMR_CTY_RGN_NM']!='강남구'].index\nbc_card_gang2=bc_card_gang_cov.drop(index4)\nbc_card_gang2.reset_index(drop=True, inplace=True)\nprint(bc_card_gang1['AMT'].sum(axis=0)) # 강남구 거주 고객의 강남구 소비액\nprint(bc_card_gang2['AMT'].sum(axis=0)) # 강남구 비거주 고객의 강남구 소비액",
+     "hints": []
     },
     {
      "desc": "11. 응용: 2020년 3월 데이터 (sep='\\t'로 바로 읽기)",
-     "code": "df=pd.read_csv('bc_card_out2020_03.txt', [[72]]='\\t', encoding='utf-8')\ndf1=pd.DataFrame(df)\ndf1=df1.drop(['CTY_RGN_NO','ADMI_CTY_NO','ADMI_CTY_NM','TP_GRP_NO','TP_GRP_NM','CSTMR_GUBUN'], axis=1)\nind2=df1[df1['CSTMR_MEGA_CTY_NM']!='서울특별시'].index # 서울시 비거주 고객 인덱스화\nseoul=df1.drop(ind2)\nseoul.reset_index(drop=True, inplace=True)\nind3=df1[df1['CSTMR_MEGA_CTY_NM']=='서울특별시'].index # 서울시 거주 고객만 추출\nnonseoul=df1.drop(ind3)\nnonseoul.reset_index(drop=True, inplace=True)\nprint(seoul['AMT'].sum(axis=0))\nprint(nonseoul['AMT'].sum(axis=0))"
+     "code": "df=pd.read_csv('bc_card_out2020_03.txt', [[72]]='\\t', encoding='utf-8')\ndf1=pd.DataFrame(df)\ndf1=df1.drop(['CTY_RGN_NO','ADMI_CTY_NO','ADMI_CTY_NM','TP_GRP_NO','TP_GRP_NM','CSTMR_GUBUN'], axis=1)\nind2=df1[df1['CSTMR_MEGA_CTY_NM']!='서울특별시'].index # 서울시 비거주 고객 인덱스화\nseoul=df1.drop(ind2)\nseoul.reset_index(drop=True, inplace=True)\nind3=df1[df1['CSTMR_MEGA_CTY_NM']=='서울특별시'].index # 서울시 거주 고객만 추출\nnonseoul=df1.drop(ind3)\nnonseoul.reset_index(drop=True, inplace=True)\nprint(seoul['AMT'].sum(axis=0))\nprint(nonseoul['AMT'].sum(axis=0))",
+     "hints": [
+      [
+       72,
+       "값 사이 구분자 (기본은 쉼표)"
+      ]
+     ]
     },
     {
      "desc": "12. 응용: 거주지 소재 편의점 소비액",
-     "code": "seoul_cov=seoul[seoul['TP_BUZ_NO']==4010] # 편의점\nseoul=seoul_cov\nindex1=seoul[seoul['CTY_RGN_NM'] [[73]] seoul['CSTMR_CTY_RGN_NM']].index\nresid=seoul.drop(index1)\nresid.reset_index(drop=True, inplace=True)\nindex2=seoul[seoul['CTY_RGN_NM'] == seoul['CSTMR_CTY_RGN_NM']].index\nnonresid=seoul.drop(index2)\nnonresid.reset_index(drop=True, inplace=True)\nprint(resid['AMT'].sum(axis=0)) # 거주지 내 소비액\nprint(nonresid['AMT'].sum(axis=0)) # 거주지 외 소비액"
+     "code": "seoul_cov=seoul[seoul['TP_BUZ_NO']==4010] # 편의점\nseoul=seoul_cov\nindex1=seoul[seoul['CTY_RGN_NM'] [[73]] seoul['CSTMR_CTY_RGN_NM']].index\nresid=seoul.drop(index1)\nresid.reset_index(drop=True, inplace=True)\nindex2=seoul[seoul['CTY_RGN_NM'] == seoul['CSTMR_CTY_RGN_NM']].index\nnonresid=seoul.drop(index2)\nnonresid.reset_index(drop=True, inplace=True)\nprint(resid['AMT'].sum(axis=0)) # 거주지 내 소비액\nprint(nonresid['AMT'].sum(axis=0)) # 거주지 외 소비액",
+     "hints": [
+      [
+       73,
+       "같지 않다"
+      ]
+     ]
     }
    ]
   },
@@ -812,55 +1139,312 @@
    "items": [
     {
      "desc": "1. 데이터 읽고 컬럼 정리",
-     "code": "import pandas as pd\nurl='https://raw.githubusercontent.com/sehakflower/data/main/titanic.csv'\ntitanic_df=pd.[[74]](url, [[75]]='\\t')\nnew_columns=['passengerId','survived','pclass','name','sex','age','sibsp','parch','ticket','fare','cabin','embarked']\ntitanic_df.[[76]]=new_columns\ntitanic_df1=titanic_df[['survived','pclass','name','sex','age','sibsp','parch','fare']]"
+     "code": "import pandas as pd\nurl='https://raw.githubusercontent.com/sehakflower/data/main/titanic.csv'\ntitanic_df=pd.[[74]](url, [[75]]='\\t')\nnew_columns=['passengerId','survived','pclass','name','sex','age','sibsp','parch','ticket','fare','cabin','embarked']\ntitanic_df.[[76]]=new_columns\ntitanic_df1=titanic_df[['survived','pclass','name','sex','age','sibsp','parch','fare']]",
+     "hints": [
+      [
+       74,
+       "CSV(텍스트 표) 파일 읽기"
+      ],
+      [
+       75,
+       "값 사이 구분자 (기본은 쉼표)"
+      ],
+      [
+       76,
+       "컬럼명 목록 (속성. 대입하면 이름이 바뀜)"
+      ]
+     ]
     },
     {
      "desc": "2. sex → gender (여성 0, 남성 1)",
-     "code": "tmp=[]\nfor each in titanic_df1['sex']:\n  if each=='female':\n    tmp.[[77]](0)\n  else:\n    tmp.append(1)\ntitanic_df1['gender']=tmp\ntitanic_df1.drop([[78]]='sex', inplace=True) # sex 열 삭제하기"
+     "code": "tmp=[]\nfor each in titanic_df1['sex']:\n  if each=='female':\n    tmp.[[77]](0)\n  else:\n    tmp.append(1)\ntitanic_df1['gender']=tmp\ntitanic_df1.drop([[78]]='sex', inplace=True) # sex 열 삭제하기",
+     "hints": [
+      [
+       77,
+       "리스트 끝에 값 추가"
+      ],
+      [
+       78,
+       "열 이름(들)을 지정하는 매개변수"
+      ]
+     ]
     },
     {
      "desc": "3. 이름에서 호칭 뽑아 숫자로 (Special 1, 나머지 0)",
-     "code": "condition=[[79]] x: x.split(',')[1].split('.')[0].[[80]]()\ntitanic_df1['title']=titanic_df1['name'].[[81]](condition) # name에서 호칭만 가져오기\nSpecial=['Master','Don','Rev']\nfor each in Special:\n  titanic_df1['title']=titanic_df1['title'].[[82]](each, 'Special')\ntitanic_df1=titanic_df1.drop('name', axis=1)\ndef convert_title(x):\n  if x==\"Special\":\n    return 1\n  else:\n    return 0\ntitanic_df1[\"special_title\"]=titanic_df1[\"title\"].[[83]](convert_title)\ntitanic_df1.drop('title', axis=1, inplace=True)"
+     "code": "condition=[[79]] x: x.split(',')[1].split('.')[0].[[80]]()\ntitanic_df1['title']=titanic_df1['name'].[[81]](condition) # name에서 호칭만 가져오기\nSpecial=['Master','Don','Rev']\nfor each in Special:\n  titanic_df1['title']=titanic_df1['title'].[[82]](each, 'Special')\ntitanic_df1=titanic_df1.drop('name', axis=1)\ndef convert_title(x):\n  if x==\"Special\":\n    return 1\n  else:\n    return 0\ntitanic_df1[\"special_title\"]=titanic_df1[\"title\"].[[83]](convert_title)\ntitanic_df1.drop('title', axis=1, inplace=True)",
+     "hints": [
+      [
+       79,
+       "한 줄짜리 이름 없는 함수"
+      ],
+      [
+       80,
+       "양쪽 공백 지우기"
+      ],
+      [
+       81,
+       "열의 값 하나하나를 바꾸기 (딕셔너리면 짝지어 변환)"
+      ],
+      [
+       82,
+       "특정 값을 다른 값으로 바꾸기 (리스트도 가능)"
+      ],
+      [
+       83,
+       "열의 값 하나하나에 함수 적용"
+      ]
+     ]
     },
     {
      "desc": "4. 동반자 수와 1인당 요금",
-     "code": "titanic_df1['sibpar']=titanic_df1['sibsp']+titanic_df1['parch']\ntitanic_df1.drop(['sibsp','parch'], axis=1, inplace=True)\ntitanic_df1['n_family']=titanic_df1['sibpar']+1\ntitanic_df1['avgfare']=titanic_df1['fare']/titanic_df1['n_family'] # 1인당 평균 탑승 요금\ntitanic_df1=titanic_df1.drop(['fare','sibpar'], axis=1)"
+     "code": "titanic_df1['sibpar']=titanic_df1['sibsp']+titanic_df1['parch']\ntitanic_df1.drop(['sibsp','parch'], axis=1, inplace=True)\ntitanic_df1['n_family']=titanic_df1['sibpar']+1\ntitanic_df1['avgfare']=titanic_df1['fare']/titanic_df1['n_family'] # 1인당 평균 탑승 요금\ntitanic_df1=titanic_df1.drop(['fare','sibpar'], axis=1)",
+     "hints": []
     },
     {
      "desc": "5. 컬럼명 바꾸기 · 순서 정하기 · 결측 삭제",
-     "code": "titanic_df1.[[84]](columns={'gender':'sex','special_title':'title','avgfare':'fare','n_family':'num_family'}, inplace=True)\ntitanic_df1=titanic_df1[['survived','pclass','sex','age','title','fare','num_family']]\ntitanic_df1=titanic_df1.[[85]]()\ntitanic_df1"
+     "code": "titanic_df1.[[84]](columns={'gender':'sex','special_title':'title','avgfare':'fare','n_family':'num_family'}, inplace=True)\ntitanic_df1=titanic_df1[['survived','pclass','sex','age','title','fare','num_family']]\ntitanic_df1=titanic_df1.[[85]]()\ntitanic_df1",
+     "hints": [
+      [
+       84,
+       "컬럼 이름 바꾸기"
+      ],
+      [
+       85,
+       "결측(NaN)이 있는 행 지우기"
+      ]
+     ]
     },
     {
      "desc": "6. numpy 배열로 바꿔 앞 100개 학습 / 나머지 테스트",
-     "code": "raw=titanic_df1\nnp_raw=raw.[[86]]\ntype(np_raw)\ntrain=np_raw[:100]\ntest=np_raw[100:]\ny_train=[i[[[87]]] for i in train]\nX_train=[j[[[88]]] for j in train]\ny_test=[i[0] for i in test]\nX_test=[j[1:] for j in test]"
+     "code": "raw=titanic_df1\nnp_raw=raw.[[86]]\ntype(np_raw)\ntrain=np_raw[:100]\ntest=np_raw[100:]\ny_train=[i[[[87]]] for i in train]\nX_train=[j[[[88]]] for j in train]\ny_test=[i[0] for i in test]\nX_test=[j[1:] for j in test]",
+     "hints": [
+      [
+       86,
+       "표 → numpy 배열 (속성이라 괄호 없음)"
+      ],
+      [
+       87,
+       "첫 번째 값 (인덱스는 0부터)"
+      ],
+      [
+       88,
+       "1번부터 끝까지 슬라이싱"
+      ]
+     ]
     },
     {
      "desc": "7. 의사결정나무 학습과 정확도",
-     "code": "from sklearn.[[89]] import [[90]]\nmodel=DecisionTreeClassifier([[91]]='entropy', [[92]]=3, [[93]]=5)\nmodel.[[94]](X_train, y_train)\nprint('Score:{}'.format(model.[[95]](X_train, y_train)))\nprint('Score:{}'.format(model.score(X_test, y_test)))"
+     "code": "from sklearn.[[89]] import [[90]]\nmodel=DecisionTreeClassifier([[91]]='entropy', [[92]]=3, [[93]]=5)\nmodel.[[94]](X_train, y_train)\nprint('Score:{}'.format(model.[[95]](X_train, y_train)))\nprint('Score:{}'.format(model.score(X_test, y_test)))",
+     "hints": [
+      [
+       89,
+       "의사결정나무가 들어 있는 sklearn 모듈 (단수형)"
+      ],
+      [
+       90,
+       "의사결정나무 분류 모델 (클래스 → 객체를 만들어 fit)"
+      ],
+      [
+       91,
+       "노드를 나누는 기준 (기본 gini)"
+      ],
+      [
+       92,
+       "트리의 최대 깊이"
+      ],
+      [
+       93,
+       "리프 노드에 있어야 할 최소 샘플 수"
+      ],
+      [
+       94,
+       "학습시키기 (스케일러는 변환 기준 계산)"
+      ],
+      [
+       95,
+       "예측해서 정답과 비교한 정확도(0~1)"
+      ]
+     ]
     },
     {
      "desc": "8. 트리를 그림으로 (export_graphviz)",
-     "code": "from sklearn.tree import [[96]]\nexport_graphviz(\n  model,\n  [[97]]=\"titanic.dot\",\n  [[98]]=['pclass','sex','age','title','fare','num_family'],\n  [[99]]=['0','1'],\n  rounded=True,\n  filled=True\n)\nimport [[100]]\nwith open(\"titanic.dot\") as f:\n  dot_graph=f.read()\ndot=graphviz.[[101]](dot_graph)\ndot.format='png'\ndot.render(filename='titanic_tree', directory='image/decision_trees', cleanup=True)\ndot"
+     "code": "from sklearn.tree import [[96]]\nexport_graphviz(\n  model,\n  [[97]]=\"titanic.dot\",\n  [[98]]=['pclass','sex','age','title','fare','num_family'],\n  [[99]]=['0','1'],\n  rounded=True,\n  filled=True\n)\nimport [[100]]\nwith open(\"titanic.dot\") as f:\n  dot_graph=f.read()\ndot=graphviz.[[101]](dot_graph)\ndot.format='png'\ndot.render(filename='titanic_tree', directory='image/decision_trees', cleanup=True)\ndot",
+     "hints": [
+      [
+       96,
+       "학습한 트리를 .dot 파일로 내보내는 함수"
+      ],
+      [
+       97,
+       "트리를 저장할 파일 이름"
+      ],
+      [
+       98,
+       "입력 열 이름 목록"
+      ],
+      [
+       99,
+       "클래스(정답) 이름 목록"
+      ],
+      [
+       100,
+       ".dot 파일을 그림으로 바꾸는 라이브러리"
+      ],
+      [
+       101,
+       "dot 문자열로 그래프 객체 만들기"
+      ]
+     ]
     },
     {
      "desc": "9. 예측 · 정확도 · 혼동행렬 · 확률",
-     "code": "from sklearn.[[102]] import [[103]]\ny_pred=model.[[104]](X_test)\nprint(\"Test Accuracy is \", accuracy_score([[105]], [[106]])*100)\nfrom sklearn.metrics import [[107]]\nconfusion_matrix(y_test, y_pred)\nfeature_names=['pclass','sex','age','title','fare','num_family']\nTom=[1,1,33,1,50,4]\nJane=[2,0,50,0,8,1]\nmodel.[[108]]([Tom])\nmodel.predict_proba([Jane])"
+     "code": "from sklearn.[[102]] import [[103]]\ny_pred=model.[[104]](X_test)\nprint(\"Test Accuracy is \", accuracy_score([[105]], [[106]])*100)\nfrom sklearn.metrics import [[107]]\nconfusion_matrix(y_test, y_pred)\nfeature_names=['pclass','sex','age','title','fare','num_family']\nTom=[1,1,33,1,50,4]\nJane=[2,0,50,0,8,1]\nmodel.[[108]]([Tom])\nmodel.predict_proba([Jane])",
+     "hints": [
+      [
+       102,
+       "정확도·혼동행렬 같은 평가 도구 모듈"
+      ],
+      [
+       103,
+       "정확도(맞힌 비율)를 구하는 함수"
+      ],
+      [
+       104,
+       "입력 X에 대한 예측값 구하기"
+      ],
+      [
+       105,
+       "테스트용 정답 (평가 함수의 첫 번째 자리)"
+      ],
+      [
+       106,
+       "모델이 예측한 값 (평가 함수의 두 번째 자리)"
+      ],
+      [
+       107,
+       "혼동행렬(행 실제, 열 예측)을 만드는 함수"
+      ],
+      [
+       108,
+       "클래스별 확률 [0일 확률, 1일 확률]"
+      ]
+     ]
     },
     {
      "desc": "10. 로지스틱 회귀 (표준화하지 않은 데이터)",
-     "code": "from sklearn.[[109]] import [[110]]\nlog_reg=LogisticRegression([[111]]=13, [[112]]='liblinear', [[113]]=10.)\nlog_reg.fit(X_train, y_train)\npred=log_reg.predict(X_train)\naccuracy_score(y_train, pred)\npred=log_reg.predict(X_test)\naccuracy_score(y_test, pred)\nconfusion_matrix(y_test, pred)"
+     "code": "from sklearn.[[109]] import [[110]]\nlog_reg=LogisticRegression([[111]]=13, [[112]]='liblinear', [[113]]=10.)\nlog_reg.fit(X_train, y_train)\npred=log_reg.predict(X_train)\naccuracy_score(y_train, pred)\npred=log_reg.predict(X_test)\naccuracy_score(y_test, pred)\nconfusion_matrix(y_test, pred)",
+     "hints": [
+      [
+       109,
+       "로지스틱 회귀·퍼셉트론·SGD가 든 sklearn 모듈 (밑줄)"
+      ],
+      [
+       110,
+       "확률을 계산해 0/1로 나누는 분류 모델"
+      ],
+      [
+       111,
+       "난수 고정 (매번 같은 결과)"
+      ],
+      [
+       112,
+       "최적화 알고리즘 선택"
+      ],
+      [
+       113,
+       "규제 강도의 역수 (클수록 규제 약함)"
+      ]
+     ]
     },
     {
      "desc": "11. 박스플롯 · 정규화와 표준화",
-     "code": "import [[114]] as [[115]]\nsns.[[116]](data=titanic_df1[['pclass','sex','age','title','fare','num_family']])\nX=titanic_df1\nfrom sklearn.[[117]] import [[118]], [[119]]\nMMS=MinMaxScaler()\nSS=StandardScaler()\nSS.[[120]](X)\nMMS.fit(X)\nX_ss=SS.[[121]](X)\nX_mms=MMS.transform(X)\nX_ss_pd=pd.DataFrame(X_ss, columns=X.columns)\nX_mms_pd=pd.DataFrame(X_mms, columns=X.columns)\nX_ss_pd.head()\nsns.boxplot(data=X_mms_pd[['pclass','sex','age','title','fare','num_family']])\nsns.boxplot(data=X_ss_pd[['pclass','sex','age','title','fare','num_family']])"
+     "code": "import [[114]] as [[115]]\nsns.[[116]](data=titanic_df1[['pclass','sex','age','title','fare','num_family']])\nX=titanic_df1\nfrom sklearn.[[117]] import [[118]], [[119]]\nMMS=MinMaxScaler()\nSS=StandardScaler()\nSS.[[120]](X)\nMMS.fit(X)\nX_ss=SS.[[121]](X)\nX_mms=MMS.transform(X)\nX_ss_pd=pd.DataFrame(X_ss, columns=X.columns)\nX_mms_pd=pd.DataFrame(X_mms, columns=X.columns)\nX_ss_pd.head()\nsns.boxplot(data=X_mms_pd[['pclass','sex','age','title','fare','num_family']])\nsns.boxplot(data=X_ss_pd[['pclass','sex','age','title','fare','num_family']])",
+     "hints": [
+      [
+       114,
+       "박스플롯 같은 통계 그래프 라이브러리"
+      ],
+      [
+       115,
+       "시본을 부를 때 쓰는 짧은 별칭"
+      ],
+      [
+       116,
+       "상자 그림 (값의 범위·중앙값 비교)"
+      ],
+      [
+       117,
+       "정규화·표준화 같은 전처리 모듈"
+      ],
+      [
+       118,
+       "값을 0~1 범위로 바꾸는 정규화 도구"
+      ],
+      [
+       119,
+       "평균 0, 표준편차 1로 바꾸는 표준화 도구"
+      ],
+      [
+       120,
+       "학습시키기 (스케일러는 변환 기준 계산)"
+      ],
+      [
+       121,
+       "기준대로 변환 (groupby 뒤에선 그룹 값을 원래 행 수만큼 펼침)"
+      ]
+     ]
     },
     {
      "desc": "12. train_test_split으로 8:2 나누기",
-     "code": "y=raw['survived']\nX=raw.drop(['survived'], axis=1)\nX.head()\nfrom sklearn.[[122]] import [[123]]\n[[124]], [[125]], [[126]], [[127]]=\\\ntrain_test_split(X, y, [[128]]=0.2, random_state=13)\nimport numpy as np\nnp.[[129]](y_train, [[130]]=True)"
+     "code": "y=raw['survived']\nX=raw.drop(['survived'], axis=1)\nX.head()\nfrom sklearn.[[122]] import [[123]]\n[[124]], [[125]], [[126]], [[127]]=\\\ntrain_test_split(X, y, [[128]]=0.2, random_state=13)\nimport numpy as np\nnp.[[129]](y_train, [[130]]=True)",
+     "hints": [
+      [
+       122,
+       "데이터 나누기·교차검증 모듈 (밑줄)"
+      ],
+      [
+       123,
+       "데이터를 학습용/테스트용으로 나누는 함수"
+      ],
+      [
+       124,
+       "반환 1번째: 학습용 입력"
+      ],
+      [
+       125,
+       "반환 2번째: 테스트용 입력"
+      ],
+      [
+       126,
+       "반환 3번째: 학습용 정답"
+      ],
+      [
+       127,
+       "테스트용 정답 (평가 함수의 첫 번째 자리)"
+      ],
+      [
+       128,
+       "테스트 데이터 비율"
+      ],
+      [
+       129,
+       "중복 없는 값들 (개수도 가능)"
+      ],
+      [
+       130,
+       "값마다 개수도 같이 돌려받기"
+      ]
+     ]
     },
     {
      "desc": "13. 정규화 / 표준화 데이터로 다시 로지스틱 회귀",
-     "code": "X_out=X_mms_pd\nX_train, X_test, y_train, y_test=\\\ntrain_test_split(X_out, y, test_size=0.2, random_state=13)\nlog_reg=LogisticRegression(random_state=13, solver='liblinear', C=10.)\nlog_reg.fit(X_train, y_train)\npred=log_reg.predict(X_test)\naccuracy_score(y_test, pred)\nX_out=X_ss_pd\nX_train, X_test, y_train, y_test=\\\ntrain_test_split(X_out, y, test_size=0.2, random_state=13)\nlog_reg=LogisticRegression(random_state=13, solver='liblinear', C=10.)\nlog_reg.fit(X_train, y_train)\npred=log_reg.predict(X_test)\naccuracy_score(y_test, pred)\nlog_reg.[[131]]"
+     "code": "X_out=X_mms_pd\nX_train, X_test, y_train, y_test=\\\ntrain_test_split(X_out, y, test_size=0.2, random_state=13)\nlog_reg=LogisticRegression(random_state=13, solver='liblinear', C=10.)\nlog_reg.fit(X_train, y_train)\npred=log_reg.predict(X_test)\naccuracy_score(y_test, pred)\nX_out=X_ss_pd\nX_train, X_test, y_train, y_test=\\\ntrain_test_split(X_out, y, test_size=0.2, random_state=13)\nlog_reg=LogisticRegression(random_state=13, solver='liblinear', C=10.)\nlog_reg.fit(X_train, y_train)\npred=log_reg.predict(X_test)\naccuracy_score(y_test, pred)\nlog_reg.[[131]]",
+     "hints": [
+      [
+       131,
+       "학습된 회귀계수 (속성이라 괄호 없음, 끝에 밑줄)"
+      ]
+     ]
     }
    ]
   },
@@ -870,55 +1454,277 @@
    "items": [
     {
      "desc": "1. 엑셀 읽고 학습 1000 / 테스트 309로 나누기",
-     "code": "import pandas as pd\ntitanic_url='https://github.com/sehakflower/data/blob/main/titanic_1309.xlsx?raw=true'\ntitanic=pd.[[132]](titanic_url, [[133]]='total')\ntrain_1000=titanic.[[134]][:1000]\ntest_309=titanic.iloc[1000:]\ntrain_1000.drop(['boat','body','home.dest'], [[135]]=1, [[136]]=True)\ntest_309.drop(['boat','body','home.dest'], axis=1, inplace=True)\ntrain_df=train_1000\ntest_df=test_309"
+     "code": "import pandas as pd\ntitanic_url='https://github.com/sehakflower/data/blob/main/titanic_1309.xlsx?raw=true'\ntitanic=pd.[[132]](titanic_url, [[133]]='total')\ntrain_1000=titanic.[[134]][:1000]\ntest_309=titanic.iloc[1000:]\ntrain_1000.drop(['boat','body','home.dest'], [[135]]=1, [[136]]=True)\ntest_309.drop(['boat','body','home.dest'], axis=1, inplace=True)\ntrain_df=train_1000\ntest_df=test_309",
+     "hints": [
+      [
+       132,
+       "엑셀 파일 읽기"
+      ],
+      [
+       133,
+       "읽을 엑셀 시트 이름"
+      ],
+      [
+       134,
+       "위치(번호)로 행 고르기"
+      ],
+      [
+       135,
+       "방향 지정"
+      ],
+      [
+       136,
+       "새로 만들지 않고 원본을 바로 바꿈"
+      ]
+     ]
     },
     {
      "desc": "2. 호칭을 5개로 묶어 숫자로",
-     "code": "total=[train_df, test_df]\ntitles={'Mr':1, 'Miss':2, 'Mrs':3, 'Master':4, 'Special':5}\nfor dataset in total:\n  dataset['title']=dataset.name.[[137]].[[138]]('([A-Za-z]+)\\.', [[139]]=False)\n  dataset['title']=dataset['title'].replace(['Lady','Countess','Capt','Col','Don','Dr','Major','Rev','Sir','Jonkheer','Dona'], 'Special')\n  dataset['title']=dataset['title'].[[140]]('Mlle', 'Miss')\n  dataset['title']=dataset['title'].replace('Ms', 'Miss')\n  dataset['title']=dataset['title'].replace('Mme', 'Mrs')\n  dataset['title']=dataset['title'].[[141]](titles) # 타이틀을 숫자로 변경\n  dataset['title']=dataset['title'].[[142]](0) # NaN을 0으로 변경\ntrain_df=train_df.drop(['name'], axis=1)\ntest_df=test_df.drop(['name'], axis=1)"
+     "code": "total=[train_df, test_df]\ntitles={'Mr':1, 'Miss':2, 'Mrs':3, 'Master':4, 'Special':5}\nfor dataset in total:\n  dataset['title']=dataset.name.[[137]].[[138]]('([A-Za-z]+)\\.', [[139]]=False)\n  dataset['title']=dataset['title'].replace(['Lady','Countess','Capt','Col','Don','Dr','Major','Rev','Sir','Jonkheer','Dona'], 'Special')\n  dataset['title']=dataset['title'].[[140]]('Mlle', 'Miss')\n  dataset['title']=dataset['title'].replace('Ms', 'Miss')\n  dataset['title']=dataset['title'].replace('Mme', 'Mrs')\n  dataset['title']=dataset['title'].[[141]](titles) # 타이틀을 숫자로 변경\n  dataset['title']=dataset['title'].[[142]](0) # NaN을 0으로 변경\ntrain_df=train_df.drop(['name'], axis=1)\ntest_df=test_df.drop(['name'], axis=1)",
+     "hints": [
+      [
+       137,
+       "문자열 열에서 문자열 기능을 쓰려고 붙이는 것"
+      ],
+      [
+       138,
+       "정규식 괄호 부분을 뽑아내기"
+      ],
+      [
+       139,
+       "False면 결과를 Series(한 열)로"
+      ],
+      [
+       140,
+       "특정 값을 다른 값으로 바꾸기 (리스트도 가능)"
+      ],
+      [
+       141,
+       "열의 값 하나하나를 바꾸기 (딕셔너리면 짝지어 변환)"
+      ],
+      [
+       142,
+       "결측(NaN)을 값으로 채우기"
+      ]
+     ]
     },
     {
      "desc": "3. age: 호칭별 중앙값으로 채우고 0~6 구간",
-     "code": "train_df['age'].fillna(train_df.[[143]]('title')['age'].[[144]]('[[145]]'), inplace=True)\ntest_df['age'].fillna(test_df.groupby('title')['age'].transform('median'), inplace=True)\ndata=[train_df, test_df]\nfor dataset1 in data:\n  dataset1['age']=dataset1['age'].[[146]](int)\n  dataset1.[[147]][ dataset1['age']<=11, 'age']=0\n  dataset1.loc[(dataset1['age']>11)&(dataset1['age']<=18), 'age']=1\n  dataset1.loc[(dataset1['age']>18)&(dataset1['age']<=22), 'age']=2\n  dataset1.loc[(dataset1['age']>22)&(dataset1['age']<=27), 'age']=3\n  dataset1.loc[(dataset1['age']>27)&(dataset1['age']<=33), 'age']=4\n  dataset1.loc[(dataset1['age']>33)&(dataset1['age']<=40), 'age']=5\n  dataset1.loc[(dataset1['age']>40)&(dataset1['age']<=66), 'age']=6\n  dataset1.loc[ dataset1['age']>66, 'age']=6"
+     "code": "train_df['age'].fillna(train_df.[[143]]('title')['age'].[[144]]('[[145]]'), inplace=True)\ntest_df['age'].fillna(test_df.groupby('title')['age'].transform('median'), inplace=True)\ndata=[train_df, test_df]\nfor dataset1 in data:\n  dataset1['age']=dataset1['age'].[[146]](int)\n  dataset1.[[147]][ dataset1['age']<=11, 'age']=0\n  dataset1.loc[(dataset1['age']>11)&(dataset1['age']<=18), 'age']=1\n  dataset1.loc[(dataset1['age']>18)&(dataset1['age']<=22), 'age']=2\n  dataset1.loc[(dataset1['age']>22)&(dataset1['age']<=27), 'age']=3\n  dataset1.loc[(dataset1['age']>27)&(dataset1['age']<=33), 'age']=4\n  dataset1.loc[(dataset1['age']>33)&(dataset1['age']<=40), 'age']=5\n  dataset1.loc[(dataset1['age']>40)&(dataset1['age']<=66), 'age']=6\n  dataset1.loc[ dataset1['age']>66, 'age']=6",
+     "hints": [
+      [
+       143,
+       "같은 값끼리 묶기"
+      ],
+      [
+       144,
+       "기준대로 변환 (groupby 뒤에선 그룹 값을 원래 행 수만큼 펼침)"
+      ],
+      [
+       145,
+       "중앙값"
+      ],
+      [
+       146,
+       "자료형 바꾸기"
+      ],
+      [
+       147,
+       "조건·이름으로 골라 값 바꾸기"
+      ]
+     ]
     },
     {
      "desc": "4. sex · embarked를 숫자로",
-     "code": "sex_mapping={'male':0, 'female':1}\nfor dataset in data:\n  dataset['sex']=dataset['sex'].map(sex_mapping)\nfor dataset in data:\n  dataset['embarked']=dataset['embarked'].fillna('S')\nembarked_mapping={'S':0, 'C':1, 'Q':2}\nfor dataset in data:\n  dataset['embarked']=dataset['embarked'].map(embarked_mapping)"
+     "code": "sex_mapping={'male':0, 'female':1}\nfor dataset in data:\n  dataset['sex']=dataset['sex'].map(sex_mapping)\nfor dataset in data:\n  dataset['embarked']=dataset['embarked'].fillna('S')\nembarked_mapping={'S':0, 'C':1, 'Q':2}\nfor dataset in data:\n  dataset['embarked']=dataset['embarked'].map(embarked_mapping)",
+     "hints": []
     },
     {
      "desc": "5. sibpar · n_alone (혼자 탔는지)",
-     "code": "for dataset in data:\n  dataset['sibpar']=dataset['sibsp']+dataset['parch']\n  dataset.loc[dataset['sibpar']>0, 'n_alone']=0\n  dataset.loc[dataset['sibpar']==0, 'n_alone']=1\n  dataset['n_alone']=dataset['n_alone'].astype(int)"
+     "code": "for dataset in data:\n  dataset['sibpar']=dataset['sibsp']+dataset['parch']\n  dataset.loc[dataset['sibpar']>0, 'n_alone']=0\n  dataset.loc[dataset['sibpar']==0, 'n_alone']=1\n  dataset['n_alone']=dataset['n_alone'].astype(int)",
+     "hints": []
     },
     {
      "desc": "6. fare: 등급별 중앙값, 1~5 구간, 1인당 요금",
-     "code": "train_df[\"fare\"].fillna(train_df.groupby('pclass')['fare'].transform('median'), inplace=True)\ntest_df[\"fare\"].fillna(test_df.groupby('pclass')['fare'].transform('median'), inplace=True)\nfor dataset in data:\n  dataset.loc[ dataset['fare']<=20, 'fare']=1\n  dataset.loc[(dataset['fare']>20)&(dataset['fare']<=30), 'fare']=2\n  dataset.loc[(dataset['fare']>30)&(dataset['fare']<=50), 'fare']=3\n  dataset.loc[(dataset['fare']>50)&(dataset['fare']<=100), 'fare']=4\n  dataset.loc[ dataset['fare']>100, 'fare']=5\nfor dataset1 in data:\n  dataset1['fare_person']=dataset1['fare']/(dataset1['sibpar']+1)\n  dataset1['fare_person']=dataset1['fare_person'].astype(int)"
+     "code": "train_df[\"fare\"].fillna(train_df.groupby('pclass')['fare'].transform('median'), inplace=True)\ntest_df[\"fare\"].fillna(test_df.groupby('pclass')['fare'].transform('median'), inplace=True)\nfor dataset in data:\n  dataset.loc[ dataset['fare']<=20, 'fare']=1\n  dataset.loc[(dataset['fare']>20)&(dataset['fare']<=30), 'fare']=2\n  dataset.loc[(dataset['fare']>30)&(dataset['fare']<=50), 'fare']=3\n  dataset.loc[(dataset['fare']>50)&(dataset['fare']<=100), 'fare']=4\n  dataset.loc[ dataset['fare']>100, 'fare']=5\nfor dataset1 in data:\n  dataset1['fare_person']=dataset1['fare']/(dataset1['sibpar']+1)\n  dataset1['fare_person']=dataset1['fare_person'].astype(int)",
+     "hints": []
     },
     {
      "desc": "7. 최종 X, y",
-     "code": "X_columns=['pclass','sex','age','embarked','title','sibpar','n_alone','fare_person']\ny_column=['survived']\nX_train=train_df[X_columns]\ny_train=train_df[y_column]\nX_test=test_df[X_columns]\ny_test=test_df[y_column]"
+     "code": "X_columns=['pclass','sex','age','embarked','title','sibpar','n_alone','fare_person']\ny_column=['survived']\nX_train=train_df[X_columns]\ny_train=train_df[y_column]\nX_test=test_df[X_columns]\ny_test=test_df[y_column]",
+     "hints": []
     },
     {
      "desc": "8. 필요한 라이브러리 import",
-     "code": "import numpy as np # 선형대수\nimport pandas as pd # 데이터 처리\nfrom sklearn import [[148]]\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.[[149]] import [[150]]\nfrom sklearn.linear_model import [[151]]\nfrom sklearn.linear_model import [[152]]\nfrom sklearn.tree import DecisionTreeClassifier\nfrom sklearn.[[153]] import [[154]]\nfrom sklearn.[[155]] import SVC, [[156]]\nfrom sklearn.[[157]] import [[158]]\nimport seaborn as sns\n%matplotlib inline\nfrom [[159]] import [[160]] as plt\nfrom matplotlib import style"
+     "code": "import numpy as np # 선형대수\nimport pandas as pd # 데이터 처리\nfrom sklearn import [[148]]\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.[[149]] import [[150]]\nfrom sklearn.linear_model import [[151]]\nfrom sklearn.linear_model import [[152]]\nfrom sklearn.tree import DecisionTreeClassifier\nfrom sklearn.[[153]] import [[154]]\nfrom sklearn.[[155]] import SVC, [[156]]\nfrom sklearn.[[157]] import [[158]]\nimport seaborn as sns\n%matplotlib inline\nfrom [[159]] import [[160]] as plt\nfrom matplotlib import style",
+     "hints": [
+      [
+       148,
+       "로지스틱 회귀·퍼셉트론·SGD가 든 sklearn 모듈 (밑줄)"
+      ],
+      [
+       149,
+       "여러 모델을 합치는 방법들이 든 sklearn 모듈"
+      ],
+      [
+       150,
+       "트리 여러 개의 다수결로 분류하는 모델"
+      ],
+      [
+       151,
+       "가중합으로 판단하는 가장 단순한 신경망 모델"
+      ],
+      [
+       152,
+       "확률적 경사하강법 분류 모델"
+      ],
+      [
+       153,
+       "KNN이 든 sklearn 모듈 (복수형)"
+      ],
+      [
+       154,
+       "가까운 이웃 k개의 다수결 모델"
+      ],
+      [
+       155,
+       "서포트 벡터 머신 모듈 (약자)"
+      ],
+      [
+       156,
+       "선형 서포트 벡터 머신 분류 모델"
+      ],
+      [
+       157,
+       "나이브 베이즈 모듈 (밑줄)"
+      ],
+      [
+       158,
+       "정규분포를 가정한 나이브 베이즈 모델"
+      ],
+      [
+       159,
+       "그래프를 그리는 패키지 (pyplot을 담고 있음)"
+      ],
+      [
+       160,
+       "그래프 그리기 모듈 이름 (plt로 부름)"
+      ]
+     ]
     },
     {
      "desc": "9. 의사결정나무 · 랜덤 포레스트",
-     "code": "decision_tree=DecisionTreeClassifier()\ndecision_tree.fit(X_train, y_train)\nY_pred=decision_tree.predict(X_test)\ntrain_acc_decision_tree=[[161]](decision_tree.score(X_train, y_train)*100, [[162]])\ntest_acc_decision_tree=round(decision_tree.score(X_test, y_test)*100, 2)\nrandom_forest=RandomForestClassifier([[163]]=100)\nrandom_forest.fit(X_train, y_train)\nY_prediction=random_forest.predict(X_test)\ntrain_acc_random_forest=round(random_forest.score(X_train, y_train)*100, 2)\ntest_acc_random_forest=round(random_forest.score(X_test, y_test)*100, 2)"
+     "code": "decision_tree=DecisionTreeClassifier()\ndecision_tree.fit(X_train, y_train)\nY_pred=decision_tree.predict(X_test)\ntrain_acc_decision_tree=[[161]](decision_tree.score(X_train, y_train)*100, [[162]])\ntest_acc_decision_tree=round(decision_tree.score(X_test, y_test)*100, 2)\nrandom_forest=RandomForestClassifier([[163]]=100)\nrandom_forest.fit(X_train, y_train)\nY_prediction=random_forest.predict(X_test)\ntrain_acc_random_forest=round(random_forest.score(X_train, y_train)*100, 2)\ntest_acc_random_forest=round(random_forest.score(X_test, y_test)*100, 2)",
+     "hints": [
+      [
+       161,
+       "반올림 (소수점 자리수 지정)"
+      ],
+      [
+       162,
+       "소수점 둘째 자리"
+      ],
+      [
+       163,
+       "만들 트리 개수"
+      ]
+     ]
     },
     {
      "desc": "10. 로지스틱 회귀 · 나이브 베이즈 · KNN",
-     "code": "log_reg=LogisticRegression()\nlog_reg.[[164]](X_train, y_train)\nY_pred=log_reg.[[165]](X_test)\ntrain_acc_log=round(log_reg.[[166]](X_train, y_train)*100, 2)\ntest_acc_log=round(log_reg.score(X_test, y_test)*100, 2)\ngaussian=[[167]]()\ngaussian.fit(X_train, y_train)\nY_pred=gaussian.predict(X_test)\ntrain_acc_gaussian=round(gaussian.score(X_train, y_train)*100, 2)\ntest_acc_gaussian=round(gaussian.score(X_test, y_test)*100, 2)\nknn=KNeighborsClassifier([[168]]=3)\nknn.fit(X_train, y_train)\nY_pred=knn.predict(X_test)\ntrain_acc_knn=round(knn.score(X_train, y_train)*100, 2)\ntest_acc_knn=round(knn.score(X_test, y_test)*100, 2)"
+     "code": "log_reg=LogisticRegression()\nlog_reg.[[164]](X_train, y_train)\nY_pred=log_reg.[[165]](X_test)\ntrain_acc_log=round(log_reg.[[166]](X_train, y_train)*100, 2)\ntest_acc_log=round(log_reg.score(X_test, y_test)*100, 2)\ngaussian=[[167]]()\ngaussian.fit(X_train, y_train)\nY_pred=gaussian.predict(X_test)\ntrain_acc_gaussian=round(gaussian.score(X_train, y_train)*100, 2)\ntest_acc_gaussian=round(gaussian.score(X_test, y_test)*100, 2)\nknn=KNeighborsClassifier([[168]]=3)\nknn.fit(X_train, y_train)\nY_pred=knn.predict(X_test)\ntrain_acc_knn=round(knn.score(X_train, y_train)*100, 2)\ntest_acc_knn=round(knn.score(X_test, y_test)*100, 2)",
+     "hints": [
+      [
+       164,
+       "학습시키기 (스케일러는 변환 기준 계산)"
+      ],
+      [
+       165,
+       "입력 X에 대한 예측값 구하기"
+      ],
+      [
+       166,
+       "예측해서 정답과 비교한 정확도(0~1)"
+      ],
+      [
+       167,
+       "정규분포를 가정한 나이브 베이즈 모델"
+      ],
+      [
+       168,
+       "참고할 이웃 수 k"
+      ]
+     ]
     },
     {
      "desc": "11. SVM · 퍼셉트론 · 확률적 경사하강법",
-     "code": "svc=[[169]]()\nsvc.fit(X_train, y_train)\nY_pred=svc.predict(X_test)\ntrain_acc_svc=round(svc.score(X_train, y_train)*100, 2)\ntest_acc_svc=round(svc.score(X_test, y_test)*100, 2)\nperceptron=Perceptron([[170]]=5)\nperceptron.fit(X_train, y_train)\nY_pred=perceptron.predict(X_test)\ntrain_acc_perceptron=round(perceptron.score(X_train, y_train)*100, 2)\ntest_acc_perceptron=round(perceptron.score(X_test, y_test)*100, 2)\nsgd=linear_model.SGDClassifier(max_iter=5, [[171]]=None)\nsgd.fit(X_train, y_train)\nY_pred=sgd.predict(X_test)\ntrain_acc_sgd=round(sgd.score(X_train, y_train)*100, 2)\ntest_acc_sgd=round(sgd.score(X_test, y_test)*100, 2)"
+     "code": "svc=[[169]]()\nsvc.fit(X_train, y_train)\nY_pred=svc.predict(X_test)\ntrain_acc_svc=round(svc.score(X_train, y_train)*100, 2)\ntest_acc_svc=round(svc.score(X_test, y_test)*100, 2)\nperceptron=Perceptron([[170]]=5)\nperceptron.fit(X_train, y_train)\nY_pred=perceptron.predict(X_test)\ntrain_acc_perceptron=round(perceptron.score(X_train, y_train)*100, 2)\ntest_acc_perceptron=round(perceptron.score(X_test, y_test)*100, 2)\nsgd=linear_model.SGDClassifier(max_iter=5, [[171]]=None)\nsgd.fit(X_train, y_train)\nY_pred=sgd.predict(X_test)\ntrain_acc_sgd=round(sgd.score(X_train, y_train)*100, 2)\ntest_acc_sgd=round(sgd.score(X_test, y_test)*100, 2)",
+     "hints": [
+      [
+       169,
+       "선형 서포트 벡터 머신 분류 모델"
+      ],
+      [
+       170,
+       "최대 반복 학습 횟수"
+      ],
+      [
+       171,
+       "멈춤 기준 (None이면 정해진 횟수만큼 끝까지)"
+      ]
+     ]
     },
     {
      "desc": "12. 모델 정확도 비교표",
-     "code": "results=pd.DataFrame({\n  'Model': ['Support Vector Machines','KNN','Logistic Regression','Random Forest','Naive Bayes','Perceptron','Stochastic Gradient Decent','Decision Tree'],\n  'train_Score': [train_acc_svc, train_acc_knn, train_acc_log, train_acc_random_forest, train_acc_gaussian, train_acc_perceptron, train_acc_sgd, train_acc_decision_tree],\n  'test_Score': [test_acc_svc, test_acc_knn, test_acc_log, test_acc_random_forest, test_acc_gaussian, test_acc_perceptron, test_acc_sgd, test_acc_decision_tree]})\nresult_df=results.[[172]]([[173]]='train_Score', [[174]]=False)\nresult_df=result_df.[[175]]('Model')\nresult_df.head(10)"
+     "code": "results=pd.DataFrame({\n  'Model': ['Support Vector Machines','KNN','Logistic Regression','Random Forest','Naive Bayes','Perceptron','Stochastic Gradient Decent','Decision Tree'],\n  'train_Score': [train_acc_svc, train_acc_knn, train_acc_log, train_acc_random_forest, train_acc_gaussian, train_acc_perceptron, train_acc_sgd, train_acc_decision_tree],\n  'test_Score': [test_acc_svc, test_acc_knn, test_acc_log, test_acc_random_forest, test_acc_gaussian, test_acc_perceptron, test_acc_sgd, test_acc_decision_tree]})\nresult_df=results.[[172]]([[173]]='train_Score', [[174]]=False)\nresult_df=result_df.[[175]]('Model')\nresult_df.head(10)",
+     "hints": [
+      [
+       172,
+       "값 기준으로 정렬"
+      ],
+      [
+       173,
+       "정렬 기준 열"
+      ],
+      [
+       174,
+       "True 오름차순 / False 내림차순"
+      ],
+      [
+       175,
+       "어떤 열을 인덱스로 만들기"
+      ]
+     ]
     },
     {
      "desc": "13. 랜덤 포레스트 교차검증",
-     "code": "from sklearn.[[176]] import [[177]]\nrf=RandomForestClassifier(n_estimators=100)\nscores=cross_val_score(rf, X_train, y_train, [[178]]=10, [[179]]=\"accuracy\")\nprint(\"Scores:\", scores)\nprint(\"Mean:\", scores.[[180]]())\nprint(\"Standard Deviation:\", scores.[[181]]())"
+     "code": "from sklearn.[[176]] import [[177]]\nrf=RandomForestClassifier(n_estimators=100)\nscores=cross_val_score(rf, X_train, y_train, [[178]]=10, [[179]]=\"accuracy\")\nprint(\"Scores:\", scores)\nprint(\"Mean:\", scores.[[180]]())\nprint(\"Standard Deviation:\", scores.[[181]]())",
+     "hints": [
+      [
+       176,
+       "데이터 나누기·교차검증 모듈 (밑줄)"
+      ],
+      [
+       177,
+       "교차검증 점수들을 배열로 돌려주는 함수"
+      ],
+      [
+       178,
+       "교차검증에서 나눌 조각 수"
+      ],
+      [
+       179,
+       "교차검증에서 쓸 점수 종류"
+      ],
+      [
+       180,
+       "평균"
+      ],
+      [
+       181,
+       "표준편차 (흩어진 정도)"
+      ]
+     ]
     }
    ]
   },
@@ -928,27 +1734,106 @@
    "items": [
     {
      "desc": "1. 데이터 (아파트 평수, 전기 사용량)",
-     "code": "train=[[25, 100], [52, 256], [38, 152], [32, 140], [25, 150]]\nx=[i[0] for i in train]\ny=[j[1] for j in train]\nx, y"
+     "code": "train=[[25, 100], [52, 256], [38, 152], [32, 140], [25, 150]]\nx=[i[0] for i in train]\ny=[j[1] for j in train]\nx, y",
+     "hints": []
     },
     {
      "desc": "2. 평균 · 개별 값과 평균의 차(편차)",
-     "code": "def mean(x):\n  return [[182]](x) / [[183]](x)\nmean(x), mean(y)\ndef d_mean(x):\n  x_mean=mean(x)\n  return [i - x_mean for i in x]\nd_mean(x), d_mean(y)\nx1=d_mean(x)\nmean(x1)"
+     "code": "def mean(x):\n  return [[182]](x) / [[183]](x)\nmean(x), mean(y)\ndef d_mean(x):\n  x_mean=mean(x)\n  return [i - x_mean for i in x]\nd_mean(x), d_mean(y)\nx1=d_mean(x)\nmean(x1)",
+     "hints": [
+      [
+       182,
+       "합계"
+      ],
+      [
+       183,
+       "개수(길이)"
+      ]
+     ]
     },
     {
      "desc": "3. 내적 · 제곱의 합",
-     "code": "def dot(x, y):\n  return sum([x*y for x, y in [[184]](x, y)])\ndot(x, y)\ndef sum_of_squares(v):\n  return dot(v, v)\nsum_of_squares(x), sum_of_squares(y)"
+     "code": "def dot(x, y):\n  return sum([x*y for x, y in [[184]](x, y)])\ndot(x, y)\ndef sum_of_squares(v):\n  return dot(v, v)\nsum_of_squares(x), sum_of_squares(y)",
+     "hints": [
+      [
+       184,
+       "같은 위치끼리 짝짓기"
+      ]
+     ]
     },
     {
      "desc": "4. 분산 · 표준편차",
-     "code": "def variance(x):\n  n=len(x)\n  d=d_mean(x)\n  return sum_of_squares(d) / ([[185]])\nvariance(x)\ndef standard_deviation(x):\n  return variance(x)[[186]]0.5\nstandard_deviation(x)\nimport [[187]]\ndef standard_deviation(x):\n  return math.[[188]](variance(x))\nstandard_deviation(x)"
+     "code": "def variance(x):\n  n=len(x)\n  d=d_mean(x)\n  return sum_of_squares(d) / ([[185]])\nvariance(x)\ndef standard_deviation(x):\n  return variance(x)[[186]]0.5\nstandard_deviation(x)\nimport [[187]]\ndef standard_deviation(x):\n  return math.[[188]](variance(x))\nstandard_deviation(x)",
+     "hints": [
+      [
+       185,
+       "표본분산의 분모 (개수 − 1)"
+      ],
+      [
+       186,
+       "거듭제곱 (0.5제곱 = 제곱근)"
+      ],
+      [
+       187,
+       "제곱근 같은 수학 함수가 든 기본 모듈"
+      ],
+      [
+       188,
+       "제곱근"
+      ]
+     ]
     },
     {
      "desc": "5. 공분산 · 상관계수",
-     "code": "def covariance(x, y):\n  n=len(x)\n  return [[189]](d_mean(x), d_mean(y)) / (n-1)\ncovariance(x, y)\ndef correlation(x, y):\n  stdev_x=standard_deviation(x) # 표준편차(x) 할당\n  stdev_y=standard_deviation(y) # 표준편차(y) 할당\n  if stdev_x > 0 and stdev_y > 0:\n    return covariance(x, y) / (stdev_x [[190]] stdev_y) # 상관계수 결과 반환\n  else:\n    return 0\ncorrelation(x, y)"
+     "code": "def covariance(x, y):\n  n=len(x)\n  return [[189]](d_mean(x), d_mean(y)) / (n-1)\ncovariance(x, y)\ndef correlation(x, y):\n  stdev_x=standard_deviation(x) # 표준편차(x) 할당\n  stdev_y=standard_deviation(y) # 표준편차(y) 할당\n  if stdev_x > 0 and stdev_y > 0:\n    return covariance(x, y) / (stdev_x [[190]] stdev_y) # 상관계수 결과 반환\n  else:\n    return 0\ncorrelation(x, y)",
+     "hints": [
+      [
+       189,
+       "직접 만든 내적 함수 (같은 위치끼리 곱해서 합)"
+      ],
+      [
+       190,
+       "곱하기"
+      ]
+     ]
     },
     {
      "desc": "6. numpy 함수로 한 번에",
-     "code": "import [[191]] as [[192]]\nx1=np.[[193]](x)\nx1.[[194]](), x1.[[195]](), x1.[[196]]()\nnp.[[197]](x1, y), np.[[198]](x1, y)\nnp.cov(x1, y)[0][1], np.corrcoef(x1, y)[0][1]"
+     "code": "import [[191]] as [[192]]\nx1=np.[[193]](x)\nx1.[[194]](), x1.[[195]](), x1.[[196]]()\nnp.[[197]](x1, y), np.[[198]](x1, y)\nnp.cov(x1, y)[0][1], np.corrcoef(x1, y)[0][1]",
+     "hints": [
+      [
+       191,
+       "배열과 수치 계산(평균·분산 등) 라이브러리"
+      ],
+      [
+       192,
+       "넘파이를 부를 때 쓰는 짧은 별칭"
+      ],
+      [
+       193,
+       "리스트 → numpy 배열"
+      ],
+      [
+       194,
+       "평균"
+      ],
+      [
+       195,
+       "분산 (numpy는 n으로 나눔)"
+      ],
+      [
+       196,
+       "표준편차 (흩어진 정도)"
+      ],
+      [
+       197,
+       "공분산 행렬"
+      ],
+      [
+       198,
+       "상관계수 행렬"
+      ]
+     ]
     }
    ]
   },
@@ -958,27 +1843,151 @@
    "items": [
     {
      "desc": "1. 회귀계수 구하기 (OLS)",
-     "code": "def OLS(x, y):\n  beta=[[199]](x, y)/[[200]](x) # 공분산(x,y)/분산(x)\n  alpha=mean(y)-beta*mean(x) # 평균(y)-beta*평균(x)\n  return [alpha, beta]\nOLS(x, y)\ndef OLS_fit(x, y):\n  beta=([[201]](x, y)*standard_deviation(y))/standard_deviation(x)\n  # beta=(상관계수(x,y)*표준편차(y))/표준편차(x)\n  alpha=mean(y)-beta*mean(x)\n  return [alpha, beta]\nOLS_fit(x, y)"
+     "code": "def OLS(x, y):\n  beta=[[199]](x, y)/[[200]](x) # 공분산(x,y)/분산(x)\n  alpha=mean(y)-beta*mean(x) # 평균(y)-beta*평균(x)\n  return [alpha, beta]\nOLS(x, y)\ndef OLS_fit(x, y):\n  beta=([[201]](x, y)*standard_deviation(y))/standard_deviation(x)\n  # beta=(상관계수(x,y)*표준편차(y))/표준편차(x)\n  alpha=mean(y)-beta*mean(x)\n  return [alpha, beta]\nOLS_fit(x, y)",
+     "hints": [
+      [
+       199,
+       "직접 만든 공분산 함수"
+      ],
+      [
+       200,
+       "직접 만든 분산 함수"
+      ],
+      [
+       201,
+       "직접 만든 상관계수 함수"
+      ]
+     ]
     },
     {
      "desc": "2. 예측값 구하기",
-     "code": "def predict(alpha, beta, train, test):\n  predictions=[[202]]() # 예측값 선언\n  x=[i[0] for i in train]\n  y=[j[1] for j in train]\n  alpha, beta=OLS_fit(x, y)\n  for i in test:\n    yhat=alpha+beta*i[0]\n    predictions.[[203]](yhat)\n  return predictions\ntrain=[[25,100],[52,256],[38,152],[32,140],[25,150]]\nalpha, beta=OLS_fit(x, y)\npr=predict(alpha, beta, train, train)\nprint(pr)"
+     "code": "def predict(alpha, beta, train, test):\n  predictions=[[202]]() # 예측값 선언\n  x=[i[0] for i in train]\n  y=[j[1] for j in train]\n  alpha, beta=OLS_fit(x, y)\n  for i in test:\n    yhat=alpha+beta*i[0]\n    predictions.[[203]](yhat)\n  return predictions\ntrain=[[25,100],[52,256],[38,152],[32,140],[25,150]]\nalpha, beta=OLS_fit(x, y)\npr=predict(alpha, beta, train, train)\nprint(pr)",
+     "hints": [
+      [
+       202,
+       "빈 리스트 만들기"
+      ],
+      [
+       203,
+       "리스트 끝에 값 추가"
+      ]
+     ]
     },
     {
      "desc": "3. 산점도와 회귀선 그리기 (matplotlib)",
-     "code": "import [[204]] as [[205]]\nplt.[[206]]('font', family='NanumGothic')\nplt.[[207]]('아파트 평수에 따른 전기 사용량') # 그래프 제목 설정\nplt.[[208]](x, y, [[209]]='red')\nplt.[[210]](x, pr)\nplt.[[211]]('아파트 평형') # x축 제목\nplt.[[212]]('전기사용량') # y축 제목\nplt.[[213]]()"
+     "code": "import [[204]] as [[205]]\nplt.[[206]]('font', family='NanumGothic')\nplt.[[207]]('아파트 평수에 따른 전기 사용량') # 그래프 제목 설정\nplt.[[208]](x, y, [[209]]='red')\nplt.[[210]](x, pr)\nplt.[[211]]('아파트 평형') # x축 제목\nplt.[[212]]('전기사용량') # y축 제목\nplt.[[213]]()",
+     "hints": [
+      [
+       204,
+       "패키지.모듈 형태로 그래프 모듈 가져오기"
+      ],
+      [
+       205,
+       "그래프 모듈의 짧은 별칭"
+      ],
+      [
+       206,
+       "그래프 기본 설정 (한글 글꼴 등)"
+      ],
+      [
+       207,
+       "그래프 제목"
+      ],
+      [
+       208,
+       "점으로 찍는 산점도"
+      ],
+      [
+       209,
+       "점 색깔"
+      ],
+      [
+       210,
+       "선 그래프"
+      ],
+      [
+       211,
+       "x축 이름"
+      ],
+      [
+       212,
+       "y축 이름"
+      ],
+      [
+       213,
+       "그래프를 화면에 표시"
+      ]
+     ]
     },
     {
      "desc": "4. SSE · SST · 결정계수",
-     "code": "def SSE(alpha, beta, train, test):\n  sse=0\n  for i in test:\n    error=(i[1]-(alpha+beta*i[0]))[[214]] # (실제값-예측값)의 제곱\n    sse=error+sse\n  return sse\nSSE(alpha, beta, train, train)\ndef SST(alpha, beta, train, test):\n  sst=0\n  x=[i[0] for i in train]\n  y=[j[1] for j in train]\n  for i in test:\n    sum_ds=(i[1]-[[215]](y))**2\n    sst=sum_ds+sst\n  return sst\nSST(alpha, beta, train, train)\ndef R_squared(alpha, beta, train, test):\n  return 1.0-([[216]](alpha, beta, train, test)/[[217]](alpha, beta, train, test))\nR_squared(alpha, beta, train, train)"
+     "code": "def SSE(alpha, beta, train, test):\n  sse=0\n  for i in test:\n    error=(i[1]-(alpha+beta*i[0]))[[214]] # (실제값-예측값)의 제곱\n    sse=error+sse\n  return sse\nSSE(alpha, beta, train, train)\ndef SST(alpha, beta, train, test):\n  sst=0\n  x=[i[0] for i in train]\n  y=[j[1] for j in train]\n  for i in test:\n    sum_ds=(i[1]-[[215]](y))**2\n    sst=sum_ds+sst\n  return sst\nSST(alpha, beta, train, train)\ndef R_squared(alpha, beta, train, test):\n  return 1.0-([[216]](alpha, beta, train, test)/[[217]](alpha, beta, train, test))\nR_squared(alpha, beta, train, train)",
+     "hints": [
+      [
+       214,
+       "제곱"
+      ],
+      [
+       215,
+       "평균"
+      ],
+      [
+       216,
+       "설명 못 한 오차 제곱합 Σ(실제−예측)²"
+      ],
+      [
+       217,
+       "전체 변동 Σ(실제−평균)²"
+      ]
+     ]
     },
     {
      "desc": "5. statsmodels로 확인",
-     "code": "train=[[25, 100], [52, 256], [38, 152], [32, 140], [25, 150]]\nx=[i[0] for i in train]\ny=[j[1] for j in train]\nimport [[218]] as [[219]]\n_X=sms.[[220]](x)\nmodel=sms.[[221]](y, _X).[[222]]()\nprint(model.[[223]]())"
+     "code": "train=[[25, 100], [52, 256], [38, 152], [32, 140], [25, 150]]\nx=[i[0] for i in train]\ny=[j[1] for j in train]\nimport [[218]] as [[219]]\n_X=sms.[[220]](x)\nmodel=sms.[[221]](y, _X).[[222]]()\nprint(model.[[223]]())",
+     "hints": [
+      [
+       218,
+       "회귀분석 결과표를 만드는 통계 패키지의 api 모듈"
+      ],
+      [
+       219,
+       "statsmodels.api의 별칭 (교재 표기)"
+      ],
+      [
+       220,
+       "x 앞에 1로 된 열을 붙여 절편도 추정하게 함"
+      ],
+      [
+       221,
+       "최소자승법 회귀 (statsmodels는 y가 먼저)"
+      ],
+      [
+       222,
+       "학습시키기 (스케일러는 변환 기준 계산)"
+      ],
+      [
+       223,
+       "회귀분석 결과 요약표"
+      ]
+     ]
     },
     {
      "desc": "6. 테스트 데이터로 예측력(RMSE) 구하기",
-     "code": "test=[[45,183],[40,175],[55,203],[28,152],[42,198]]\npredict(alpha, beta, train, test)\nactual=[j[1] for j in test]\npredicted=predict(alpha, beta, train, test)\nactual, predicted\nfrom [[224]] import [[225]]\ndef RMSE(actual, predicted):\n  sum_error=0.0\n  for i in [[226]](len(actual)):\n    prediction_error=predicted[i]-actual[i]\n    sum_error+=(prediction_error**2)\n  mean_error=sum_error/float(len(actual))\n  return sqrt(mean_error)\nRMSE(actual, predicted)"
+     "code": "test=[[45,183],[40,175],[55,203],[28,152],[42,198]]\npredict(alpha, beta, train, test)\nactual=[j[1] for j in test]\npredicted=predict(alpha, beta, train, test)\nactual, predicted\nfrom [[224]] import [[225]]\ndef RMSE(actual, predicted):\n  sum_error=0.0\n  for i in [[226]](len(actual)):\n    prediction_error=predicted[i]-actual[i]\n    sum_error+=(prediction_error**2)\n  mean_error=sum_error/float(len(actual))\n  return sqrt(mean_error)\nRMSE(actual, predicted)",
+     "hints": [
+      [
+       224,
+       "제곱근 같은 수학 함수가 든 기본 모듈"
+      ],
+      [
+       225,
+       "제곱근"
+      ],
+      [
+       226,
+       "연속된 정수들 (끝은 미포함)"
+      ]
+     ]
     }
    ]
   },
@@ -988,23 +1997,85 @@
    "items": [
     {
      "desc": "1. 데이터 나누기 · 계수 초기화",
-     "code": "dataset=[[25,100],[52,256],[38,152],[32,140],[25,150],[45,183],[40,175],[55,203],[28,152],[42,198]]\ntrain=dataset[:5]\ntest=dataset[5:]\nprint('학습 데이터(train): {}, 테스트 데이터(test): {}'.[[227]](train, test))\ncoef=[0.0 for i in [[228]](len(train[0]))] # 회귀계수 값 초기화\ncoef"
+     "code": "dataset=[[25,100],[52,256],[38,152],[32,140],[25,150],[45,183],[40,175],[55,203],[28,152],[42,198]]\ntrain=dataset[:5]\ntest=dataset[5:]\nprint('학습 데이터(train): {}, 테스트 데이터(test): {}'.[[227]](train, test))\ncoef=[0.0 for i in [[228]](len(train[0]))] # 회귀계수 값 초기화\ncoef",
+     "hints": [
+      [
+       227,
+       "{} 자리에 값을 끼워 넣은 문자열"
+      ],
+      [
+       228,
+       "연속된 정수들 (끝은 미포함)"
+      ]
+     ]
     },
     {
      "desc": "2. 예측 함수 predict(row, coef)",
-     "code": "def predict(row, coef):\n  yhat=coef[[[229]]] # 절편\n  for i in range(len(row)-1):\n    yhat+=coef[[[230]]]*row[i] # 회귀계수*학습 데이터\n  return yhat"
+     "code": "def predict(row, coef):\n  yhat=coef[[[229]]] # 절편\n  for i in range(len(row)-1):\n    yhat+=coef[[[230]]]*row[i] # 회귀계수*학습 데이터\n  return yhat",
+     "hints": [
+      [
+       229,
+       "첫 번째 값 (인덱스는 0부터)"
+      ],
+      [
+       230,
+       "절편(0번) 다음 칸부터 기울기"
+      ]
+     ]
     },
     {
      "desc": "3. 경사하강법으로 계수 구하기",
-     "code": "import math\ndef coefficients_sgd(train, l_rate, n_epoch):\n  coef=[0.0 for i in range(len(train[0]))] #초기 회귀계수 값\n  for epoch in range([[231]]):\n    sum_error=0\n    for row in train:\n      yhat=predict(row, coef)\n      error=row[[[232]]]-yhat\n      sum_error+=(error**2)\n      coef[0]=coef[0]+[[233]]*error\n      for i in range(len(row)-1):\n        coef[i+1]=coef[i+1]+l_rate*error*[[234]]\n  return coef, math.[[235]](sum_error/len(train))\nl_rate=0.0001\nn_epoch=10\ncoef=coefficients_sgd(train, l_rate, n_epoch)\ncoef"
+     "code": "import math\ndef coefficients_sgd(train, l_rate, n_epoch):\n  coef=[0.0 for i in range(len(train[0]))] #초기 회귀계수 값\n  for epoch in range([[231]]):\n    sum_error=0\n    for row in train:\n      yhat=predict(row, coef)\n      error=row[[[232]]]-yhat\n      sum_error+=(error**2)\n      coef[0]=coef[0]+[[233]]*error\n      for i in range(len(row)-1):\n        coef[i+1]=coef[i+1]+l_rate*error*[[234]]\n  return coef, math.[[235]](sum_error/len(train))\nl_rate=0.0001\nn_epoch=10\ncoef=coefficients_sgd(train, l_rate, n_epoch)\ncoef",
+     "hints": [
+      [
+       231,
+       "전체 데이터를 몇 번 반복 학습할지"
+      ],
+      [
+       232,
+       "맨 마지막 값"
+      ],
+      [
+       233,
+       "학습률 (한 번에 고치는 정도)"
+      ],
+      [
+       234,
+       "기울기 갱신에 곱하는 입력값 x"
+      ],
+      [
+       235,
+       "제곱근"
+      ]
+     ]
     },
     {
      "desc": "4. 예측값 구하고 RMSE로 평가",
-     "code": "actual=[j[1] for j in test]\nalpha, beta=coefficients_sgd(train, l_rate, n_epoch)[0][0], coefficients_sgd(train, l_rate, n_epoch)[0][1]\nalpha, beta\ndef predicted(train, test, alpha, beta):\n  predictions=list()\n  for i in test:\n    yhat=alpha+beta*i[0]\n    predictions.append(yhat)\n  return predictions\npred=predicted(train, test, alpha, beta)\npred\nfrom math import sqrt\ndef RMSE(actual, predicted):\n  sum_error=0.0\n  for i in range(len(actual)):\n    prediction_error=predicted[i]-actual[i]\n    sum_error+=(prediction_error**2)\n  mean_error=sum_error/[[236]](len(actual))\n  return [[237]](mean_error)\nRMSE(actual, pred)"
+     "code": "actual=[j[1] for j in test]\nalpha, beta=coefficients_sgd(train, l_rate, n_epoch)[0][0], coefficients_sgd(train, l_rate, n_epoch)[0][1]\nalpha, beta\ndef predicted(train, test, alpha, beta):\n  predictions=list()\n  for i in test:\n    yhat=alpha+beta*i[0]\n    predictions.append(yhat)\n  return predictions\npred=predicted(train, test, alpha, beta)\npred\nfrom math import sqrt\ndef RMSE(actual, predicted):\n  sum_error=0.0\n  for i in range(len(actual)):\n    prediction_error=predicted[i]-actual[i]\n    sum_error+=(prediction_error**2)\n  mean_error=sum_error/[[236]](len(actual))\n  return [[237]](mean_error)\nRMSE(actual, pred)",
+     "hints": [
+      [
+       236,
+       "실수로 바꾸기 (\"inf\"는 무한대)"
+      ],
+      [
+       237,
+       "제곱근"
+      ]
+     ]
     },
     {
      "desc": "5. 종합 및 심화: 학습률을 줄여 가는 경사하강법",
-     "code": "def sq_error(xi, yi, theta):\n  alpha, beta=theta\n  error=yi-(beta * xi + alpha)\n  sq_error=error**2\n  return sq_error\ndef sq_error_grad(xi, yi, theta):\n  alpha, beta=theta\n  return [-2 *(yi-(beta * xi + alpha)),-2 *(yi-(beta * xi + alpha)) * xi]\ndef vector_subtract(v, w):\n  return [vi - wi for vi, wi in zip(v,w)]\ndef scalar_multiply(c, v):\n  return [c * vi for vi in v]\ndef sgd1(sq_error, sq_error_grad, x, y, theta_0, l_rate_0):\n  data=list([[238]](x, y))\n  theta=theta_0\n  l_rate=l_rate_0\n  min_value=[[239]](\"inf\")\n  iterations=0\n  while iterations < 5:\n    value=sum(sq_error(xi, yi, theta) for xi, yi in data)\n    if value < min_value:\n      min_theta, min_value=theta, value\n      iterations=0\n      l_rate=l_rate_0\n    else:\n      iterations+=1\n      l_rate*=0.9\n    for xi, yi in data:\n      gradient_i=sq_error_grad(xi, yi, theta)\n      theta=vector_subtract(theta, scalar_multiply(l_rate, gradient_i))\n  return min_theta\nx=[i[0] for i in train]\ny=[j[1] for j in train]\nl_rate_0=0.001\ntheta_0=[0,0]\nsgd1(sq_error, sq_error_grad, x, y, theta_0, l_rate_0)"
+     "code": "def sq_error(xi, yi, theta):\n  alpha, beta=theta\n  error=yi-(beta * xi + alpha)\n  sq_error=error**2\n  return sq_error\ndef sq_error_grad(xi, yi, theta):\n  alpha, beta=theta\n  return [-2 *(yi-(beta * xi + alpha)),-2 *(yi-(beta * xi + alpha)) * xi]\ndef vector_subtract(v, w):\n  return [vi - wi for vi, wi in zip(v,w)]\ndef scalar_multiply(c, v):\n  return [c * vi for vi in v]\ndef sgd1(sq_error, sq_error_grad, x, y, theta_0, l_rate_0):\n  data=list([[238]](x, y))\n  theta=theta_0\n  l_rate=l_rate_0\n  min_value=[[239]](\"inf\")\n  iterations=0\n  while iterations < 5:\n    value=sum(sq_error(xi, yi, theta) for xi, yi in data)\n    if value < min_value:\n      min_theta, min_value=theta, value\n      iterations=0\n      l_rate=l_rate_0\n    else:\n      iterations+=1\n      l_rate*=0.9\n    for xi, yi in data:\n      gradient_i=sq_error_grad(xi, yi, theta)\n      theta=vector_subtract(theta, scalar_multiply(l_rate, gradient_i))\n  return min_theta\nx=[i[0] for i in train]\ny=[j[1] for j in train]\nl_rate_0=0.001\ntheta_0=[0,0]\nsgd1(sq_error, sq_error_grad, x, y, theta_0, l_rate_0)",
+     "hints": [
+      [
+       238,
+       "같은 위치끼리 짝짓기"
+      ],
+      [
+       239,
+       "실수로 바꾸기 (\"inf\"는 무한대)"
+      ]
+     ]
     }
    ]
   }

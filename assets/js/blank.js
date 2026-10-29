@@ -27,13 +27,21 @@ let qn=0;
 S.forEach(sec=>{
   const s=document.createElement('section'); s.id=sec.id;
   s.innerHTML=`<h2>${esc(sec.title)}</h2>`;
-  sec.items.forEach(({desc,code})=>{
+  sec.items.forEach(({desc,code,hints})=>{
     qn++;
     const d=document.createElement('div'); d.className='q';
-    d.innerHTML=`<p><span>${qn}</span>${esc(desc)}</p><pre>${code.split('\n').map(renderLine).join('\n')}</pre>`;
+    // hints: [[빈칸 번호, 뜻], ...] 가 있으면 힌트 버튼
+    const hb=hints&&hints.length?`<button type="button" class="hint-btn" aria-expanded="false">힌트</button>`:'';
+    const hl=hb?`<ol class="hints" hidden>${hints.map(([n,m])=>`<li><b>${n}</b>${esc(m)}</li>`).join('')}</ol>`:'';
+    d.innerHTML=`<p><span>${qn}</span>${esc(desc)}${hb}</p><pre>${code.split('\n').map(renderLine).join('\n')}</pre>${hl}`;
     s.appendChild(d);
   });
   quiz.appendChild(s);
+});
+
+quiz.addEventListener('click',e=>{
+  const b=e.target.closest('.hint-btn'); if(!b) return;
+  const l=b.closest('.q').querySelector('.hints'); l.hidden=!l.hidden; b.setAttribute('aria-expanded',!l.hidden);
 });
 
 const inputs=[...document.querySelectorAll('.blank input')];
