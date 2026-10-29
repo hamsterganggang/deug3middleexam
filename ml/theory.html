@@ -6,9 +6,10 @@ permalink: /ml/theory/
 ---
 <!-- 근거: ScriptsFolder/전 챕터 시험 문제 정리본.txt(교수님 출제 범위) + Chapter1~8.txt(강의 대본).
      data-k 표시: m = ★ 출제(정리본에 있거나 강의에서 시험에 나온다고 함), e = 출제 예상(강의에서 중요·기억하라고 강조, 직접 풀어 준 예제),
-     t = 용어 이해(★을 이해하려고 꼭 알아야 하는 용어), x = 이해용 예시(시험 범위 밖, 이해를 돕는 보충).
+     x = 참고(★·출제 예상을 이해하려고 넣은 설명·예시, 따로 출제되지 않음).
+     data-term = 용어 이해(정리본·강의에서 “용어를 알아두라/기억하라”고 한 항목). data-k와 함께 붙습니다.
      <dfn>으로 감싼 용어는 맨 아래 '용어 사전'에 자동으로 모입니다. 그림은 _includes/ml/fig/*.svg -->
-<p class="intro">교수님의 <b>시험 문제 정리본</b>과 <b>1~8장 강의 대본</b>을 기준으로 정리했습니다. 모든 항목 앞에 아래 셋 중 하나를 붙였고, 아래 보기 버튼으로 필요한 것만 골라 볼 수 있습니다.</p>
+<p class="intro">교수님의 <b>시험 문제 정리본</b>과 <b>1~8장 강의 대본</b>을 기준으로 정리했습니다. 모든 항목 앞에 <b>★ 출제 / 출제 예상 / 참고</b> 중 하나를 붙였고, 교수님이 <b>용어를 알아두라</b>고 한 항목에는 끝에 <span class="chip t">용어 이해</span>를 더 붙였습니다. 아래 보기 버튼으로 필요한 것만 골라 볼 수 있습니다.</p>
 
 <div class="lens" role="toolbar" aria-label="보기 필터">
   <span class="lens-label">보기</span>
@@ -24,8 +25,8 @@ permalink: /ml/theory/
 <dl class="legend-list">
   <div><dt><span class="chip m">★ 출제</span></dt><dd>교수님 <b>시험 문제 정리본</b>에 있거나, 강의에서 “시험에 나온다”고 한 것. <b>반드시 나옴</b></dd></div>
   <div><dt><span class="chip e">출제 예상</span></dt><dd>강의에서 “중요하다 · 기억해 두세요 · 알아두세요”라고 강조했거나, 직접 풀어 준 예제·숫자</dd></div>
-  <div><dt><span class="chip t">용어 이해</span></dt><dd>★ 내용을 이해하려면 꼭 알아야 해서 넣은 용어 (맨 아래 <a href="#glossary">용어 사전</a>에 모아 둠)</dd></div>
-  <div><dt><span class="chip x">이해용 예시</span></dt><dd>시험 범위는 아니지만 이해를 돕는 보충 예시</dd></div>
+  <div><dt><span class="chip t">용어 이해</span></dt><dd>정리본·강의에서 <b>“용어를 알아두라 · 기억하라”</b>고 한 것. 용어와 뜻을 그대로 외워 둘 것 (항목 끝에 붙음)</dd></div>
+  <div><dt><span class="chip x">참고</span></dt><dd>위 내용을 이해하려고 넣은 설명·예시. 따로 출제되지 않음 (용어는 맨 아래 <a href="#glossary">용어 사전</a>에도 모아 둠)</dd></div>
 </dl>
 <div class="tbl"><table>
 <tr><th>장</th><th><span class="star">★</span> 반드시 나오는 것</th><th>계산</th></tr>
@@ -60,12 +61,12 @@ permalink: /ml/theory/
 <div class="card">
 <h3>AI · 머신러닝 · 딥러닝의 포함 관계</h3>
 <ul>
-<li data-k="m"><b>인공지능(AI) ⊃ 머신러닝 ⊃ 딥러닝</b>: AI가 가장 큰 범위, 그 안에 머신러닝, 머신러닝의 일부분이 딥러닝</li>
-<li data-k="t"><dfn>머신러닝</dfn> = 데이터로 규칙을 찾아 예측하는 것. 데이터를 어떻게 쓸지는 사람이 수작업으로 정하는 부분이 있음</li>
-<li data-k="t"><dfn>딥러닝</dfn> = 머신러닝의 여러 알고리즘 중 하나로, 가장 좋은 효과를 내는 것. 사람이 하던 수작업 부분까지 기계가 학습으로 처리</li>
+<li data-k="m" data-term><b>인공지능(AI) ⊃ 머신러닝 ⊃ 딥러닝</b>: AI가 가장 큰 범위, 그 안에 머신러닝, 머신러닝의 일부분이 딥러닝</li>
+<li data-k="x"><dfn>머신러닝</dfn> = 데이터로 규칙을 찾아 예측하는 것. 데이터를 어떻게 쓸지는 사람이 수작업으로 정하는 부분이 있음</li>
+<li data-k="x"><dfn>딥러닝</dfn> = 머신러닝의 여러 알고리즘 중 하나로, 가장 좋은 효과를 내는 것. 사람이 하던 수작업 부분까지 기계가 학습으로 처리</li>
 <li data-k="e">음식 비유: AI = 먹을 수 있는 모든 음식, 머신러닝 = 고기 음식, 딥러닝 = 최고급 스테이크</li>
 </ul>
-<p class="said"><span>강의 0:32</span>“인공지능이 가장 큰 범위 그리고 그 안에 머신 러닝 그리고 이제 딥 러닝이 내포되어 있다”</p>
+<p class="said"><span>강의 0:24</span>“인공지능이나 머신러닝, 딥러닝 이런 것들 용어를 좀 혼동해서 쓰는 경우가 있는데” · <span>0:32</span>“인공지능이 가장 큰 범위 그리고 그 안에 머신 러닝 그리고 이제 딥 러닝이 내포되어 있다”</p>
 <figure class="fig">{% include ml/fig/d07692ae-a36c.svg %}<figcaption>AI, 머신러닝, 딥러닝의 포함 관계와 강의 비유</figcaption></figure>
 </div>
 <div class="card">
@@ -73,22 +74,21 @@ permalink: /ml/theory/
 <ul>
 <li data-k="m">① <b>데이터</b> ② <b>컴퓨터</b> ③ <b>프로그램</b></li>
 <li data-k="e">3요소 중 <b>가장 중요한 것 = 데이터</b>. 방대한 <b>양</b> + 질적으로 우수한 <b>질</b>이 필요. 컴퓨터·프로그램은 남들이 만들어 놓은 것을 가져다 쓸 수 있음</li>
-<li data-k="t"><dfn>GPU</dfn> = 고속 그래픽 처리에 특화된 전용 프로세서. 딥러닝 계산에 씀 (CPU보다 빠름, TPU는 구글 클라우드에서만 쓰는 하드웨어)</li>
-<li data-k="t">프로그램 = <b>파이썬</b> + <dfn>텐서플로</dfn>(구글이 만든 딥러닝 모듈) + <dfn>넘파이</dfn>(행렬 계산을 쉽게 해 주는 모듈)</li>
-<li data-k="t"><dfn>코랩</dfn> = 구글이 무료로 제공하는 실습 환경. 설치가 필요 없고 구글 드라이브에 저장, 확장자 .ipynb. 기본 런타임은 CPU, 이미지 학습은 GPU/TPU로 바꿈</li>
+<li data-k="x"><dfn>GPU</dfn> = 고속 그래픽 처리에 특화된 전용 프로세서. 딥러닝 계산에 씀 (CPU보다 빠름, TPU는 구글 클라우드에서만 쓰는 하드웨어)</li>
+<li data-k="x">프로그램 = <b>파이썬</b> + <dfn>텐서플로</dfn>(구글이 만든 딥러닝 모듈) + <dfn>넘파이</dfn>(행렬 계산을 쉽게 해 주는 모듈)</li>
 </ul>
 <p class="said"><span>강의 23:21</span>“제일 중요한 세 가지 요소. 첫 번째 데이터, 두 번째 뭐였나요? 컴퓨터 그다음에 세 번째 프로그램” · <span>24:36</span>“그래서 데이터가 제일 중요하다”</p>
 </div>
 <div class="card">
 <h3>지도 학습 · 비지도 학습</h3>
 <ul>
-<li data-k="t"><dfn>라벨링</dfn> = 데이터에 이름표(답)를 붙이는 것 (이미지 A → 고양이, B → 강아지)</li>
-<li data-k="t"><dfn>지도 학습</dfn> = 문제와 답(이름표)을 함께 주고 그 이름표를 맞히게 하는 것. 교재 예제는 대부분 지도 학습</li>
-<li data-k="t"><dfn>비지도 학습</dfn> = 이름표 없이 특징만으로 학습. 지도 학습보다 난도가 높음 (생성형 AI가 일종의 비지도)</li>
+<li data-k="x"><dfn>라벨링</dfn> = 데이터에 이름표(답)를 붙이는 것 (이미지 A → 고양이, B → 강아지)</li>
+<li data-k="x"><dfn>지도 학습</dfn> = 문제와 답(이름표)을 함께 주고 그 이름표를 맞히게 하는 것. 교재 예제는 대부분 지도 학습</li>
+<li data-k="x"><dfn>비지도 학습</dfn> = 이름표 없이 특징만으로 학습. 지도 학습보다 난도가 높음 (생성형 AI가 일종의 비지도)</li>
 <li data-k="e">학습 방법은 <b>지도 학습</b>과 <b>비지도 학습</b> 두 가지</li>
 </ul>
 </div>
-<p class="skip"><b>몰라도 되는 것</b> CNN·RNN(“참고만 하시고”), 코랩 텍스트 셀·주석, 세션 시간 같은 코랩 사용법 세부</p>
+<p class="skip"><b>몰라도 되는 것</b> <b>구글 코랩 관련 내용 전부</b>(코랩 문제는 출제하지 않음: 설치·런타임·드라이브 저장·텍스트 셀 등), CNN·RNN(“참고만 하시고”)</p>
 </section>
 
 <section id="s2">
@@ -100,7 +100,7 @@ permalink: /ml/theory/
 <ul>
 <li data-k="m">일반 프로그래밍은 <b>답을 구하는 데</b>, 머신러닝은 데이터와 답 사이의 <b>규칙을 발견하는 데</b> 초점</li>
 <li data-k="m">찾아낸 규칙으로 처음 보는 <b>신규 데이터의 답을 예측</b>하는 것이 딥러닝이 하는 일</li>
-<li data-k="t"><dfn>학습</dfn> = 데이터가 입력되고 패턴이 분석되는 과정 / <dfn>모델</dfn> = 학습 결과로 만들어져 새 데이터를 예측하는 것</li>
+<li data-k="x"><dfn>학습</dfn> = 데이터가 입력되고 패턴이 분석되는 과정 / <dfn>모델</dfn> = 학습 결과로 만들어져 새 데이터를 예측하는 것</li>
 <li data-k="e">예: 폐암 수술 환자 데이터로 학습 → 새 환자가 수술 1년 후 <b>생존(1)인지 사망(0)인지</b> 판정</li>
 </ul>
 <figure class="fig">{% include ml/fig/5aed54b9-9363.svg %}<figcaption>기존 프로그래밍과 머신러닝의 입출력 비교</figcaption></figure>
@@ -116,11 +116,11 @@ permalink: /ml/theory/
 <div class="card">
 <h3>딥러닝 데이터 구조 용어</h3>
 <ul>
-<li data-k="m"><dfn>속성</dfn> = 입력 항목, 대문자 <b>X</b> / <dfn>클래스</dfn> = 결과(답), 소문자 <b>y</b> / <dfn>샘플</dfn> = 데이터 한 줄(환자 한 명)</li>
-<li data-k="e"><dfn>입력층</dfn> = 데이터가 처음 들어오는 층 / <dfn>은닉층</dfn> = 입력층과 출력층 사이의 층 / <dfn>출력층</dfn> = 최종 결과를 내보내는 층</li>
+<li data-k="m" data-term><dfn>속성</dfn> = 입력 항목, 대문자 <b>X</b> / <dfn>클래스</dfn> = 결과(답), 소문자 <b>y</b> / <dfn>샘플</dfn> = 데이터 한 줄(환자 한 명)</li>
+<li data-k="e" data-term><dfn>입력층</dfn> = 데이터가 처음 들어오는 층 / <dfn>은닉층</dfn> = 입력층과 출력층 사이의 층 / <dfn>출력층</dfn> = 최종 결과를 내보내는 층</li>
 <li data-k="e">폐암 데이터: 환자 <b>470명</b>, 한 줄에 숫자 <b>17개 = 속성 16개 + 클래스 1개</b>(사망 0 / 생존 1) → X = 0~15번 열, y = 16번 열</li>
 <li data-k="e">정확도 0.85 = 100명 중 15명은 오진할 수 있다는 뜻. 실행할 때마다 결과가 조금씩 다른 이유 = 처음 가중치를 랜덤으로 정하기 때문</li>
-<li data-k="t"><dfn>가중치</dfn> = 입력마다 다르게 주는 중요도(성향·취향). 처음엔 랜덤으로 정하고, 음식 간을 맞추듯 반복해서 고쳐 나감</li>
+<li data-k="x"><dfn>가중치</dfn> = 입력마다 다르게 주는 중요도(성향·취향). 처음엔 랜덤으로 정하고, 음식 간을 맞추듯 반복해서 고쳐 나감</li>
 </ul>
 <p class="said"><span>강의 13:45</span>“중요한 부분만 입력 결과 한 개. 요때는 보통 여기를 입력층이라 부르고요 … 여기는 출력층이라고 부릅니다”</p>
 </div>
@@ -129,9 +129,9 @@ permalink: /ml/theory/
 <ul>
 <li data-k="m">텐서플로를 기본으로 하고 <b>케라스</b>로 모델을 만듦. 텐서플로 = 구글의 딥러닝 전용 라이브러리(<b>전투기</b>), <dfn>케라스</dfn> = 텐서플로를 쉽게 쓰게 해 주는 도구(<b>조종사</b>)</li>
 <li data-k="m"><b>층을 쌓아 고도화</b>: <code>model.add(Dense(...))</code>로 층을 계속 추가. 단, 은닉층이 두꺼울수록 좋을 수도 나쁠 수도 있음(휴지 비유, 출력이 안 나올 수 있음)</li>
-<li data-k="t"><dfn>Sequential</dfn> = “이제 구조 만들어요”라는 모델 선언 / <dfn>Dense</dfn> = 층 하나</li>
+<li data-k="x"><dfn>Sequential</dfn> = “이제 구조 만들어요”라는 모델 선언 / <dfn>Dense</dfn> = 층 하나</li>
 <li data-k="e"><dfn>compile</dfn> = 만든 구조를 최적화하는 설정(<code>loss</code> = 손실(오차) 함수, <code>optimizer</code> = 최적화 함수) / <dfn>fit</dfn> = 실제 학습 (옷을 몸에 맞추듯)</li>
-<li data-k="e"><dfn>epochs</dfn> = 전체 데이터를 몇 번 반복할지(500쪽 책을 5번) / <dfn>batch_size</dfn> = 한 번에 학습하는 양(16쪽씩)</li>
+<li data-k="e" data-term><dfn>epochs</dfn> = 전체 데이터를 몇 번 반복할지(500쪽 책을 5번) / <dfn>batch_size</dfn> = 한 번에 학습하는 양(16쪽씩)</li>
 </ul>
 <p class="said"><span>강의 14:15</span>“fit이라고 불리는 거 중요한 거. 요거랑 배치 사이즈를 알아두시는게…”</p>
 <pre class="code"><code>model = Sequential()
@@ -152,9 +152,9 @@ model.fit(X, y, epochs=5, batch_size=16)</code></pre>
 <h3>1차 함수: 기울기와 절편</h3>
 <ul>
 <li data-k="m"><b>y = ax + b</b>에서 <dfn>기울기</dfn> a = (y 증가량) ÷ (x 증가량). x가 1 늘 때 y가 a만큼 변함 → <a href="#calc1">풀이 ①</a></li>
-<li data-k="t"><dfn>절편</dfn> b = 그래프가 y축과 만나는 지점</li>
+<li data-k="x"><dfn>절편</dfn> b = 그래프가 y축과 만나는 지점</li>
 <li data-k="e">강의 예: x가 1 늘 때 y도 1 늘고, y축과 3에서 만남 → a = 1, b = 3 → <b>y = x + 3</b></li>
-<li data-k="t">딥러닝을 가장 간단하게 말하면 = x와 원하는 y가 있을 때 <b>가장 알맞은 a와 b를 찾는 것</b></li>
+<li data-k="x">딥러닝을 가장 간단하게 말하면 = x와 원하는 y가 있을 때 <b>가장 알맞은 a와 b를 찾는 것</b></li>
 </ul>
 <p class="said"><span>강의 26:29</span>“제일 중요한 거는 … ax + b 1차 함수고요. 그다음에 2차 함수 … 기울기 요런 부분들 … 그다음에 시그모이드 함수를 알아두시길 바랍니다”</p>
 </div>
@@ -162,7 +162,7 @@ model.fit(X, y, epochs=5, batch_size=16)</code></pre>
 <h3>2차 함수와 최솟값</h3>
 <ul>
 <li data-k="m">2차 함수 그래프는 <b>포물선</b>, 맨 아래 <b>꼭짓점이 최솟값</b> → 그래프·최솟값 계산 문제 → <a href="#calc2">풀이 ②</a></li>
-<li data-k="t">y = a(x − p)² + q → 꼭짓점 (p, q), 최솟값은 q</li>
+<li data-k="x">y = a(x − p)² + q → 꼭짓점 (p, q), 최솟값은 q</li>
 <li data-k="e">최솟값을 찾는 과정이 중요한 이유: 모델이 잘됐는지 확인하는 기준(오차)이 2차 함수 모양이라, 최솟값 = 오차가 가장 작은 곳 → 4·5장</li>
 </ul>
 <figure class="fig">{% include ml/fig/6e28f255-4a5e.svg %}<figcaption>y = x²의 세 점에서 그은 접선 · 꼭짓점에서 기울기 0</figcaption></figure>
@@ -172,7 +172,7 @@ model.fit(X, y, epochs=5, batch_size=16)</code></pre>
 <ul>
 <li data-k="e"><dfn>미분</dfn> = 한 점에서의 순간 변화율, 즉 <b>그 점의 접선의 기울기</b>를 구하는 것. “딥러닝에서 가장 중요한 수학 원리는 미분”</li>
 <li data-k="e">최솟값(꼭짓점)에서는 <b>기울기(미분값) = 0</b>, 접선이 x축과 평행</li>
-<li data-k="t"><dfn>평균 변화율</dfn> = 두 점을 이은 직선의 기울기 Δy ÷ Δx. Δx를 0에 가깝게 줄이면 순간 변화율(미분)</li>
+<li data-k="x"><dfn>평균 변화율</dfn> = 두 점을 이은 직선의 기울기 Δy ÷ Δx. Δx를 0에 가깝게 줄이면 순간 변화율(미분)</li>
 <li data-k="e">미분 공식 5가지: 상수 → 0 / x → 1 / ax → a / xⁿ → n·xⁿ⁻¹ / 합성함수 → 겉미분 × 속미분</li>
 </ul>
 <p class="said"><span>강의 17:45</span>“다섯 가지 미분 공식인데 … 시험 문제 내지는 않을 텐데 … 장담을 못 드리겠습니다. 그래도 한번은 봐 두시길 바랍니다”</p>
@@ -180,19 +180,19 @@ model.fit(X, y, epochs=5, batch_size=16)</code></pre>
 <div class="card">
 <h3>편미분</h3>
 <ul>
-<li data-k="m"><dfn>편미분</dfn> = 변수가 여러 개일 때 <b>원하는 한 변수만 미분</b>하고 나머지는 상수로 취급 (기호 ∂). <b>용어</b>를 기억할 것</li>
+<li data-k="m" data-term><dfn>편미분</dfn> = 변수가 여러 개일 때 <b>원하는 한 변수만 미분</b>하고 나머지는 상수로 취급 (기호 ∂). <b>용어</b>를 기억할 것</li>
 <li data-k="e">계산보다 <b>용어와 뜻</b>이 중요. 5장 경사하강법에서 a와 b를 각각 편미분할 때 다시 나옴</li>
 </ul>
-<p class="said"><span>강의 26:56</span>“편미분 이런 거 할 줄 알아? 아니요. 지금 당장은 모르셔도 상관은 없습니다” → 계산 예시는 <a href="#calc3">풀이 ③</a>(이해용)</p>
+<p class="said"><span>강의 26:56</span>“편미분 이런 거 할 줄 알아? 아니요. 지금 당장은 모르셔도 상관은 없습니다” → 계산 예시는 <a href="#calc3">풀이 ③</a>(참고)</p>
 </div>
 <div class="card">
 <h3>지수 함수와 시그모이드 함수</h3>
 <ul>
 <li data-k="m"><dfn>시그모이드 함수</dfn> f(x) = 1 / (1 + e⁻ˣ). <b>S자 모양</b>, 값은 항상 <b>0~1</b>. x가 크면 1에, 작으면 0에 가까워짐, x = 0이면 0.5 → <a href="#calc4">풀이 ④</a></li>
 <li data-k="e">0 또는 1, 둘 중 하나를 고를 때 유용 (강아지인가 아닌가) → 6장 로지스틱 회귀</li>
-<li data-k="t"><dfn>활성화 함수</dfn> = 출력값으로 얼마나 내보낼지 계산하는 함수. 시그모이드는 가장 먼저 배우는 활성화 함수</li>
-<li data-k="t"><dfn>지수 함수</dfn> = 변수 x가 지수 자리에 있는 함수 (aˣ, a = 밑). 시그모이드의 밑 e = 자연상수 ≈ 2.7</li>
-<li data-k="t"><dfn>로그 함수</dfn> = 지수 함수를 뒤집은 모양. 6장 교차 엔트로피에서 씀</li>
+<li data-k="x"><dfn>활성화 함수</dfn> = 출력값으로 얼마나 내보낼지 계산하는 함수. 시그모이드는 가장 먼저 배우는 활성화 함수</li>
+<li data-k="x"><dfn>지수 함수</dfn> = 변수 x가 지수 자리에 있는 함수 (aˣ, a = 밑). 시그모이드의 밑 e = 자연상수 ≈ 2.7</li>
+<li data-k="x"><dfn>로그 함수</dfn> = 지수 함수를 뒤집은 모양. 6장 교차 엔트로피에서 씀</li>
 <li data-k="e">딥러닝에 쓰는 기초 수학 7가지: 1차 함수, 2차 함수, 미분, 편미분, 지수, 시그모이드, 로그</li>
 </ul>
 <p class="said"><span>강의 21:08</span>“그다음에 이제 중요한게 시그모이드 함수 … 함수의 형태만 일단 알아두시길 바랍니다”</p>
@@ -207,11 +207,11 @@ model.fit(X, y, epochs=5, batch_size=16)</code></pre>
 <div class="card">
 <h3>선형회귀와 독립변수 · 종속변수</h3>
 <ul>
-<li data-k="t"><dfn>회귀</dfn> = ‘과거로 돌아가다’가 아니라 <b>‘예측하다’</b>. 딥러닝의 두 기본 원리 = 선형 회귀 + 로지스틱 회귀(6장)</li>
-<li data-k="m"><dfn>선형회귀</dfn> = 독립변수 x로 종속변수 y를 예측하도록, 점들의 특징을 가장 잘 나타내는 <b>직선</b>을 긋는 것. 즉 오차가 가장 적은 <b>최적의 a와 b</b>를 찾는 작업</li>
-<li data-k="m"><dfn>독립변수</dfn> x = 결과에 영향을 주는 정보(공부 시간) / <dfn>종속변수</dfn> y = x에 의해 영향을 받는 결과(성적)</li>
+<li data-k="x"><dfn>회귀</dfn> = ‘과거로 돌아가다’가 아니라 <b>‘예측하다’</b>. 딥러닝의 두 기본 원리 = 선형 회귀 + 로지스틱 회귀(6장)</li>
+<li data-k="m" data-term><dfn>선형회귀</dfn> = 독립변수 x로 종속변수 y를 예측하도록, 점들의 특징을 가장 잘 나타내는 <b>직선</b>을 긋는 것. 즉 오차가 가장 적은 <b>최적의 a와 b</b>를 찾는 작업</li>
+<li data-k="m" data-term><dfn>독립변수</dfn> x = 결과에 영향을 주는 정보(공부 시간) / <dfn>종속변수</dfn> y = x에 의해 영향을 받는 결과(성적)</li>
 <li data-k="m">x가 하나면 <b>단순 선형회귀</b>, 두 개 이상이면 <b>다중 선형회귀</b> → <a href="#s5">5장</a>에서 비교</li>
-<li data-k="t"><dfn>정보</dfn> = 성적은 [공부 시간 / 컨디션 / 사교육비]에 따라 다르다에서 괄호 안 내용. 머신러닝·딥러닝은 모두 이 정보가 필요함</li>
+<li data-k="x"><dfn>정보</dfn> = 성적은 [공부 시간 / 컨디션 / 사교육비]에 따라 다르다에서 괄호 안 내용. 머신러닝·딥러닝은 모두 이 정보가 필요함</li>
 </ul>
 </div>
 <div class="card">
@@ -229,9 +229,9 @@ model.fit(X, y, epochs=5, batch_size=16)</code></pre>
 <h3>오차와 평균제곱오차 (MSE)</h3>
 <div class="formula">MSE = (1/n) × Σ(실제값 − 예측값)²</div>
 <ul>
-<li data-k="t"><dfn>실제값</dfn> = 데이터에 있는 값 / <dfn>예측값</dfn> = 직선 식에 x를 넣어 구한 값 / <dfn>오차</dfn> = 실제값 − 예측값. 오차가 작을수록 모델 성능이 좋음</li>
-<li data-k="m"><dfn>평균제곱오차</dfn>(MSE, Mean Squared Error) = 오차를 제곱해 모두 더한 뒤 개수 n으로 나눈 값. 직선을 <b>평가</b>하는 기준, 작을수록 좋음</li>
-<li data-k="t">MSE는 <dfn>손실 함수</dfn>(오차 함수)의 하나이며 오차를 구할 때 가장 많이 쓰는 방법. 제곱하는 이유 = +, − 오차가 서로 지워지지 않게</li>
+<li data-k="x"><dfn>실제값</dfn> = 데이터에 있는 값 / <dfn>예측값</dfn> = 직선 식에 x를 넣어 구한 값 / <dfn>오차</dfn> = 실제값 − 예측값. 오차가 작을수록 모델 성능이 좋음</li>
+<li data-k="m" data-term><dfn>평균제곱오차</dfn>(MSE, Mean Squared Error) = 오차를 제곱해 모두 더한 뒤 개수 n으로 나눈 값. 직선을 <b>평가</b>하는 기준, 작을수록 좋음</li>
+<li data-k="x">MSE는 <dfn>손실 함수</dfn>(오차 함수)의 하나이며 오차를 구할 때 가장 많이 쓰는 방법. 제곱하는 이유 = +, − 오차가 서로 지워지지 않게</li>
 <li data-k="e">강의 예: 임의로 그은 직선 y = 3x + 76 → 오차 제곱의 합 44 → MSE = 44 ÷ 4 = <b>11</b> → <a href="#calc7">풀이 ⑦</a></li>
 <li data-k="e">딥러닝의 핵심 원리: 선을 긋고 → 오차를 계산하고 → 오차가 작아지는 쪽으로 고치고 → 반복</li>
 <li data-k="e">기울기를 너무 크게 잡아도, 너무 작게 잡아도 오차가 커짐 → 5장 포물선 그래프</li>
@@ -248,11 +248,11 @@ model.fit(X, y, epochs=5, batch_size=16)</code></pre>
 <div class="card">
 <h3>경사하강법</h3>
 <ul>
-<li data-k="t">기울기 a와 오차의 관계 = <b>2차 함수(포물선)</b>. 꼭짓점 m에서 오차가 가장 작고, 그곳의 미분값은 0</li>
+<li data-k="x">기울기 a와 오차의 관계 = <b>2차 함수(포물선)</b>. 꼭짓점 m에서 오차가 가장 작고, 그곳의 미분값은 0</li>
 <li data-k="m"><dfn>경사하강법</dfn> = 오차의 변화를 2차 함수 그래프로 보고, <b>적절한 학습률</b>을 정해서 <b>미분값이 0인 지점</b>(오차가 최소인 m)을 찾는 방법</li>
 <li data-k="m">움직이는 방법: 미분값(기울기)의 <b>반대 방향</b>으로 a₁ → a₂ → a₃ … 조금씩 옮겨 m으로 내려감(그래서 ‘하강’) → <a href="#calc9">풀이 ⑨</a></li>
 <li data-k="e"><dfn>학습률</dfn> = 한 번에 이동하는 거리(보폭). 너무 크면 튕겨 나가 <dfn>발산</dfn>, 적절하면 한 점으로 모이는 <dfn>수렴</dfn>. 최적의 학습률을 찾는 것도 중요한 최적화 과정</li>
-<li data-k="e">a와 b를 둘 다 찾아야 하므로 <b>a와 b로 각각 편미분</b> (“편미분도 중요한 포인트니까 … 용어만 알고 계시면 됩니다”)</li>
+<li data-k="e" data-term>a와 b를 둘 다 찾아야 하므로 <b>a와 b로 각각 편미분</b> (“편미분도 중요한 포인트니까 … 용어만 알고 계시면 됩니다”)</li>
 <li data-k="e">MSE + 경사하강법을 쓰면 최소제곱법 없이도 최적의 a, b를 찾을 수 있음 (독립변수가 많아도 가능)</li>
 <li data-k="e">강의 실습: a = 0, b = 0에서 시작, 학습률 0.03, 2000번 반복 → <b>a = 2.3, b = 79</b> (최소제곱법과 같은 결과)</li>
 </ul>
@@ -264,7 +264,7 @@ model.fit(X, y, epochs=5, batch_size=16)</code></pre>
 <h3>하이퍼파라미터</h3>
 <ul>
 <li data-k="e"><dfn>하이퍼파라미터</dfn> = 사용자가 임의로 정할 수 있는 값. 케라스에서 조정하는 4가지 = <b>activation, optimizer, loss, epochs</b></li>
-<li data-k="t"><dfn>에포크</dfn>(epoch) = 전체 데이터로 몇 번 반복해서 학습했는지</li>
+<li data-k="x"><dfn>에포크</dfn>(epoch) = 전체 데이터로 몇 번 반복해서 학습했는지</li>
 <li data-k="e">epochs가 크다고 정답은 아님: 1900번째에 이미 2.3과 79가 나왔으므로 거기서 끊는 게 나을 수 있음</li>
 </ul>
 <p class="said"><span>강의 38:27</span>“액티베이션 그다음에 옵티마이저, 로스 그리고 에포크 요런 네 가지들이 … 우리가 조정할 수 있는 하이퍼파라미터가 되더라”</p>
@@ -282,9 +282,9 @@ model.fit(X, y, epochs=5, batch_size=16)</code></pre>
 <h3>딥러닝 용어로 바꿔 부르기</h3>
 <div class="tbl"><table><tr><th>수학 이름</th><th>딥러닝 이름</th><th>케라스(선형회귀)</th></tr><tr><td>ax + b</td><td><dfn>가설 함수</dfn> H(x)</td><td>-</td></tr><tr><td>기울기 a</td><td>가중치 w (선호도)</td><td>-</td></tr><tr><td>절편 b</td><td>편향(바이어스) b</td><td>-</td></tr><tr><td>평균제곱오차</td><td>손실 함수</td><td><code>loss='mse'</code></td></tr><tr><td>경사하강법</td><td>옵티마이저</td><td><code>optimizer='sgd'</code></td></tr><tr><td>-</td><td>활성화 함수</td><td><code>activation='linear'</code></td></tr></table></div>
 <ul>
-<li data-k="t"><dfn>편향</dfn>(바이어스) = 절편 b. 그때그때 달라질 수 있는 일종의 보정 (중식 선호도가 가장 낮아도 비 오는 날엔 1등이 되는 것)</li>
-<li data-k="t"><dfn>옵티마이저</dfn> = 경사하강법처럼 오차를 줄여 최적값을 찾는 방법. compile 단계에 넣음 (sgd = 경사하강법, adam 등)</li>
-<li data-k="t">활성화 함수(activation) = 다음 층으로 넘길지 정하는 관문 (살살 꼬집으면 안 아프고 세게 꼬집으면 아픔). 선형회귀는 linear</li>
+<li data-k="x"><dfn>편향</dfn>(바이어스) = 절편 b. 그때그때 달라질 수 있는 일종의 보정 (중식 선호도가 가장 낮아도 비 오는 날엔 1등이 되는 것)</li>
+<li data-k="x"><dfn>옵티마이저</dfn> = 경사하강법처럼 오차를 줄여 최적값을 찾는 방법. compile 단계에 넣음 (sgd = 경사하강법, adam 등)</li>
+<li data-k="x">활성화 함수(activation) = 다음 층으로 넘길지 정하는 관문 (살살 꼬집으면 안 아프고 세게 꼬집으면 아픔). 선형회귀는 linear</li>
 <li data-k="e">강의 코드: <code>Dense(1, input_dim=1, activation='linear')</code>, <code>optimizer='sgd'</code>, <code>loss='mse'</code>, <code>epochs=2000</code> → 7시간 공부 예측 95.12점</li>
 </ul>
 <p class="note">이 용어들은 6장 로지스틱 회귀에서 그대로 다시 나옵니다 (정리본: “옵티마이즈 할 때 로지스틱 회귀 용어 꼭 기억”).</p>
@@ -298,9 +298,9 @@ model.fit(X, y, epochs=5, batch_size=16)</code></pre>
 <div class="card">
 <h3>로지스틱 회귀와 시그모이드</h3>
 <ul>
-<li data-k="m"><dfn>로지스틱 회귀</dfn> = <b>참/거짓</b>(예/아니오, 합격/불합격)을 판단하는 예측 모델. 직선 대신 <b>S자 곡선</b>으로 참과 거짓을 나눔</li>
+<li data-k="m" data-term><dfn>로지스틱 회귀</dfn> = <b>참/거짓</b>(예/아니오, 합격/불합격)을 판단하는 예측 모델. 직선 대신 <b>S자 곡선</b>으로 참과 거짓을 나눔</li>
 <li data-k="m">쓰는 함수 = <b>시그모이드 함수</b> / 쓰는 이유 = 결과가 0 또는 1뿐이라(사이 값이 없음) 직선으로 표현하기 어려움 → <b>S자 모양</b>으로 0~1 사이 값을 냄</li>
-<li data-k="t">식: y = 1 / (1 + e<sup>−(ax + b)</sup>). 핵심은 가운데의 <b>ax + b</b></li>
+<li data-k="x">식: y = 1 / (1 + e<sup>−(ax + b)</sup>). 핵심은 가운데의 <b>ax + b</b></li>
 <li data-k="e"><b>a</b> = 경사도: 작으면 완만, 크면 거의 수직으로 가파름(“형태만 기억”) / <b>b</b> = 그래프를 좌우로 이동</li>
 <li data-k="e">a가 너무 작아지면 오차가 무한대로 커지고, b가 너무 크거나 작아도 오차가 커짐 → a, b는 <b>경사하강법</b>으로 구함</li>
 </ul>
@@ -310,10 +310,10 @@ model.fit(X, y, epochs=5, batch_size=16)</code></pre>
 <div class="card">
 <h3>오차: 교차 엔트로피</h3>
 <ul>
-<li data-k="m">로지스틱 회귀의 오차(손실 함수) = <dfn>교차 엔트로피</dfn>(크로스 엔트로피). MSE를 못 쓰는 이유 = 시그모이드 출력이 <b>0~1 사이</b>라서</li>
+<li data-k="m" data-term>로지스틱 회귀의 오차(손실 함수) = <dfn>교차 엔트로피</dfn>(크로스 엔트로피). MSE를 못 쓰는 이유 = 시그모이드 출력이 <b>0~1 사이</b>라서</li>
 <li data-k="m"><b>선형 회귀 = 평균제곱오차</b>, <b>로지스틱 회귀 = 교차 엔트로피</b> (“지금은 두 개만 기억하셔도 됩니다”)</li>
-<li data-k="t">로그 함수를 씀: 실제값이 1인데 예측이 0에 가까우면 오차가 커짐(−log h), 실제값이 0인데 예측이 1에 가까우면 오차가 커짐(−log(1 − h)). 합친 식 = −{y·log h + (1 − y)·log(1 − h)}</li>
-<li data-k="t"><dfn>binary_crossentropy</dfn> = 이진(OX) 분류용 교차 엔트로피. 고양이·개·사자처럼 3개 이상이면 다른 것을 씀(나중에)</li>
+<li data-k="x">로그 함수를 씀: 실제값이 1인데 예측이 0에 가까우면 오차가 커짐(−log h), 실제값이 0인데 예측이 1에 가까우면 오차가 커짐(−log(1 − h)). 합친 식 = −{y·log h + (1 − y)·log(1 − h)}</li>
+<li data-k="x"><dfn>binary_crossentropy</dfn> = 이진(OX) 분류용 교차 엔트로피. 고양이·개·사자처럼 3개 이상이면 다른 것을 씀(나중에)</li>
 </ul>
 <p class="said"><span>강의 11:44</span>“교차 엔트로피도 알아두시고 … 선형 회귀는 평균제곱오차, 로지스틱 회귀는 교차 엔트로피 … 지금은 두 개만 기억하셔도 됩니다”</p>
 </div>
@@ -321,12 +321,12 @@ model.fit(X, y, epochs=5, batch_size=16)</code></pre>
 <h3>선형 회귀 vs 로지스틱 회귀 (옵티마이저 용어)</h3>
 <div class="tbl"><table><tr><th>구분</th><th>선형 회귀</th><th>로지스틱 회귀</th></tr><tr><td>예측</td><td>OX가 아닌 수치 (성적 몇 점)</td><td>OX로 딱 떨어지는 결과 (합격 여부)</td></tr><tr><td>선</td><td>직선</td><td>S자 곡선</td></tr><tr><td>activation (활성화 함수)</td><td>linear</td><td>sigmoid</td></tr><tr><td>loss (손실 함수)</td><td>mse (평균제곱오차)</td><td>binary_crossentropy (교차 엔트로피)</td></tr><tr><td>optimizer (옵티마이저)</td><td>sgd (경사하강법)</td><td>sgd (경사하강법)</td></tr></table></div>
 <ul>
-<li data-k="m">옵티마이저를 설명할 때 나오는 로지스틱 회귀 용어: <b>시그모이드</b>(activation) · <b>교차 엔트로피</b>(loss) · <b>경사하강법</b>(optimizer = sgd) · 가중치 · 편향 · 손실 함수</li>
+<li data-k="m" data-term>옵티마이저를 설명할 때 나오는 로지스틱 회귀 용어: <b>시그모이드</b>(activation) · <b>교차 엔트로피</b>(loss) · <b>경사하강법</b>(optimizer = sgd) · 가중치 · 편향 · 손실 함수</li>
 <li data-k="e">두 모델의 차이는 <b>손실 함수와 활성화 함수</b>뿐이고, 옵티마이저는 같음</li>
 <li data-k="e">선형 회귀와 로지스틱 회귀 = <b>딥러닝의 기본 요소</b></li>
 <li data-k="e">강의 실습: 공부 시간·합격 여부 8명 데이터, <code>Dense(1, input_dim=1, activation='sigmoid')</code>, sgd, binary_crossentropy, epochs 5000 → 7시간 공부했을 때 합격 확률(0.xx × 100 = %)</li>
 <li data-k="e">인공지능 학습에 가장 중요한 요인: ① 데이터의 <b>양</b> ② 데이터의 <b>질</b> (8명보다 800명) → 1장 3요소와 연결</li>
-<li data-k="t"><dfn>퍼셉트론</dfn> = 로지스틱 회귀 모델의 전신, 뇌의 신경망을 본뜬 것 → 7장</li>
+<li data-k="x"><dfn>퍼셉트론</dfn> = 로지스틱 회귀 모델의 전신, 뇌의 신경망을 본뜬 것 → 7장</li>
 </ul>
 <p class="said"><span>강의 18:06</span>“OX가 아닌 예측 … 선형 회귀를 쓴다 … OX 딱 떨어져야 되는 결과 … 로지스틱 회귀를 쓴다 … 손실함수 … 활성화 함수가 조금 차이가 있더라라는 것만 기억해 두시면 됩니다”</p>
 </div>
@@ -340,10 +340,10 @@ model.fit(X, y, epochs=5, batch_size=16)</code></pre>
 <h3>퍼셉트론이란</h3>
 <ul>
 <li data-k="m">퍼셉트론 = 입력값을 여러 개 받아 출력을 만드는데, 입력값에 <b>가중치를 조절</b>할 수 있게 해서 <b>최초로 학습</b>을 하게 한 것. 뇌의 뉴런을 본뜬 인공 신경망의 가장 작은 시작</li>
-<li data-k="t"><dfn>신경망</dfn>(뉴럴 네트워크) = 인간 뇌의 뉴런과 시냅스 연결을 모방한 구조</li>
+<li data-k="x"><dfn>신경망</dfn>(뉴럴 네트워크) = 인간 뇌의 뉴런과 시냅스 연결을 모방한 구조</li>
 <li data-k="e">뇌의 뉴런은 약 <b>1천억 개</b>. 신호가 <dfn>임계값</dfn>을 넘으면 다음 뉴런으로 전달하고, 못 넘으면 아무것도 하지 않음</li>
 <li data-k="e">역사: <b>1943년 논문</b>(신경을 그물망처럼 연결하면 뇌처럼 동작할 수 있다고 처음 주장) → 퍼셉트론 → 3년 후 <b>아달라인</b> → SVM, 로지스틱 회귀</li>
-<li data-k="t"><dfn>아달라인</dfn> = 퍼셉트론에 <b>경사하강법을 도입</b>해 오차가 최소인 여러 직선 중 가장 적절한 경계선을 고르게 한 것. 이 중 시그모이드를 활성화 함수로 쓴 것이 로지스틱 회귀</li>
+<li data-k="x"><dfn>아달라인</dfn> = 퍼셉트론에 <b>경사하강법을 도입</b>해 오차가 최소인 여러 직선 중 가장 적절한 경계선을 고르게 한 것. 이 중 시그모이드를 활성화 함수로 쓴 것이 로지스틱 회귀</li>
 </ul>
 <p class="said"><span>강의 5:00</span>“그것이 이제 퍼셉트론이라는 거더라. 이거는 뭐 당연히 시험이 나오겠죠. 알아두시면 좋고”</p>
 </div>
@@ -352,7 +352,7 @@ model.fit(X, y, epochs=5, batch_size=16)</code></pre>
 <div class="formula">가중합 y = x₁w₁ + x₂w₂ + b</div>
 <ul>
 <li data-k="m"><dfn>가중합</dfn> = 입력과 가중치를 <b>모두 곱한 뒤 바이어스를 더한 것</b> (곱하고, 더하고, 곱하고, 마지막에 b) → <a href="#calc10">풀이 ⑩</a></li>
-<li data-k="t">가중치 w = 입력마다 곱하는 중요도 / 바이어스(편향) b = 마지막에 더하는 값 (5장 용어와 같음)</li>
+<li data-k="x">가중치 w = 입력마다 곱하는 중요도 / 바이어스(편향) b = 마지막에 더하는 값 (5장 용어와 같음)</li>
 <li data-k="e">다중 선형회귀 식(y = a₁x₁ + a₂x₂ + b)과 같은 꼴. 입력이 100개, 1000개여도 xₙwₙ까지 똑같이 늘어남</li>
 <li data-k="e">구조: 가중합 → <b>활성화 함수</b>(내보낼지 말지 예스/노 판단) → 출력. 활성화 함수로 시그모이드를 쓰면 로지스틱 회귀</li>
 </ul>
@@ -363,7 +363,7 @@ model.fit(X, y, epochs=5, batch_size=16)</code></pre>
 <div class="card">
 <h3>퍼셉트론의 한계: XOR 문제</h3>
 <ul>
-<li data-k="t">게이트 = 0과 1을 넣어 하나의 값을 내는 회로. <dfn>AND</dfn> = 둘 다 1일 때만 1 / <dfn>OR</dfn> = 하나라도 1이면 1 / <dfn>XOR</dfn> = 서로 다를 때만 1</li>
+<li data-k="x">게이트 = 0과 1을 넣어 하나의 값을 내는 회로. <dfn>AND</dfn> = 둘 다 1일 때만 1 / <dfn>OR</dfn> = 하나라도 1이면 1 / <dfn>XOR</dfn> = 서로 다를 때만 1</li>
 <li data-k="e">AND·OR은 직선 하나로 나눌 수 있지만 <b>XOR은 직선 하나로 나눌 수 없음</b> (퍼셉트론·아달라인은 2차원 평면에서 직선만 그을 수 있음)</li>
 <li data-k="e">‘퍼셉트론즈’ 논문이 XOR도 못 푼다는 한계를 지적 → 인공지능 <b>침체기</b> → 해결: <b>다층 퍼셉트론 + 오차 역전파</b>(8장)</li>
 </ul>
@@ -382,7 +382,7 @@ model.fit(X, y, epochs=5, batch_size=16)</code></pre>
 <li data-k="m">단일 퍼셉트론으로 AND·OR은 풀 수 있지만 <b>XOR 문제를 풀 수 없어서</b>, 여러 개의 퍼셉트론을 이용해 해결하려고 고안한 것</li>
 <li data-k="e">핵심 발상: <b>종이를 휘어 선 두 개를 동시에 긋기</b> = 퍼셉트론 두 개를 한 번에 계산</li>
 <li data-k="e">성냥개비 6개로 정삼각형 4개: 평면에서는 불가능, 3차원(피라미드)이면 가능 → 차원을 바꿔 생각</li>
-<li data-k="t">은닉층 = 입력층과 출력층 사이에서 퍼셉트론 두 개를 각각 처리하는 층 / <dfn>노드</dfn> = 은닉층의 중간 정거장(n₁, n₂ …)</li>
+<li data-k="x">은닉층 = 입력층과 출력층 사이에서 퍼셉트론 두 개를 각각 처리하는 층 / <dfn>노드</dfn> = 은닉층의 중간 정거장(n₁, n₂ …)</li>
 </ul>
 <p class="said"><span>강의 0:31</span>“단일 퍼셉트론으로는 … AND OR은 해결할 수 있었지만 XOR 문제를 해결할 수가 없었기 때문에 이것을 다수의 퍼셉트론을 이용해서 해결하고자 고안된 것이다”</p>
 <figure class="fig">{% include ml/fig/284b17cc-e168.svg %}<figcaption>입력 2 · 은닉 노드 2 · 출력 1인 다층 퍼셉트론</figcaption></figure>
@@ -391,7 +391,7 @@ model.fit(X, y, epochs=5, batch_size=16)</code></pre>
 <h3>XOR을 푸는 구조</h3>
 <ul>
 <li data-k="e">은닉층에서 <b>NAND와 OR</b>을 계산하고, 그 결과를 <b>AND</b>로 합치면 XOR과 같은 결과 → <a href="#calc11">풀이 ⑪</a></li>
-<li data-k="t"><dfn>NAND</dfn> = AND의 부정 (AND 결과를 뒤집은 것)</li>
+<li data-k="x"><dfn>NAND</dfn> = AND의 부정 (AND 결과를 뒤집은 것)</li>
 <li data-k="e">은닉층 가중합: n₁ = x₁w₁₁ + x₂w₂₁ + b₁, n₂ = x₁w₁₂ + x₂w₂₂ + b₂ → 출력 y = n₁w₃₁ + n₂w₃₂ + b₃ → 활성화 함수 (같은 퍼셉트론 연산을 한 번 더)</li>
 <li data-k="e">입력 2 · 은닉 노드 2 · 출력 1 → <b>가중치 6개, 바이어스 3개</b> → <a href="#calc12">풀이 ⑫</a></li>
 <li data-k="e">가중치는 기하급수적으로 늘어남 (입력 100개 × 노드 100개 = 최소 1만 개). 은닉층을 여러 겹 두껍게 쌓으면 복잡한 신경망 → 2장 ‘층 쌓기’</li>
@@ -402,9 +402,9 @@ model.fit(X, y, epochs=5, batch_size=16)</code></pre>
 <h3>남은 문제와 오차 역전파</h3>
 <ul>
 <li data-k="e">다층 퍼셉트론만으로 완전히 해결된 건 아님: <b>은닉층의 가중치를 데이터로 학습하는 방법</b>이 아직 없었음</li>
-<li data-k="e"><dfn>인공지능의 겨울</dfn> = 이론은 나왔지만 그 뒤로 약 20년간 정체된 기간 (“이런 용어는 좀 알아두시면 좋을 거 같고요”)</li>
+<li data-k="e" data-term><dfn>인공지능의 겨울</dfn> = 이론은 나왔지만 그 뒤로 약 20년간 정체된 기간 (“이런 용어는 좀 알아두시면 좋을 거 같고요”)</li>
 <li data-k="e">연구가 두 그룹으로 나뉨: ① 아달라인 → SVM·로지스틱 회귀 ② 다층 퍼셉트론의 학습 방법 연구</li>
-<li data-k="t"><dfn>오차 역전파</dfn> = 입력·노드·출력 사이의 가중치들을 업데이트할 수 있게 한 알고리즘</li>
+<li data-k="x"><dfn>오차 역전파</dfn> = 입력·노드·출력 사이의 가중치들을 업데이트할 수 있게 한 알고리즘</li>
 <li data-k="e"><b>제프리 힌튼</b> = ‘딥러닝의 아버지’. 오차 역전파, 활성화 함수, 가중치 설정 등으로 딥러닝에 크게 기여</li>
 </ul>
 </div>
@@ -483,7 +483,7 @@ model.fit(X, y, epochs=5, batch_size=16)</code></pre>
 <p>은닉층 n₁ = NAND(w = −2, −2, b = 3), n₂ = OR(w = 2, 2, b = −1), 출력 y = AND(n₁, n₂)(w = 1, 1, b = −1)</p>
 <p>활성화: 가중합 &gt; 0 이면 1, 아니면 0</p>
 <div class="tbl"><table><tr><th>x₁</th><th>x₂</th><th>n₁ 가중합 → 출력</th><th>n₂ 가중합 → 출력</th><th>y = AND(n₁, n₂)</th></tr><tr><td>0</td><td>0</td><td>3 → 1</td><td>−1 → 0</td><td>1 + 0 − 1 = 0 → <b>0</b></td></tr><tr><td>0</td><td>1</td><td>1 → 1</td><td>1 → 1</td><td>1 + 1 − 1 = 1 → <b>1</b></td></tr><tr><td>1</td><td>0</td><td>1 → 1</td><td>1 → 1</td><td>1 → <b>1</b></td></tr><tr><td>1</td><td>1</td><td>−1 → 0</td><td>3 → 1</td><td>0 → <b>0</b></td></tr></table></div>
-<p>출력이 0, 1, 1, 0 → <b>XOR 완성</b> (가중치 숫자는 이해용 예시)</p>
+<p>출력이 0, 1, 1, 0 → <b>XOR 완성</b> (가중치 숫자는 참고용 예시)</p>
 </div>
 <div class="card" id="calc12">
 <h3 data-k="e">풀이 ⑫ 가중치·바이어스 개수 <span class="qref">Q54</span></h3>

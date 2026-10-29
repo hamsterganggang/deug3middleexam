@@ -1,9 +1,9 @@
 // 이론 페이지 보기 필터와 용어 사전.
-// 본문 항목의 data-k: m = ★ 출제, e = 출제 예상, t = 용어 이해, x = 이해용 예시. <dfn>은 용어 사전에 모읍니다.
+// 본문 항목의 data-k: m = ★ 출제, e = 출제 예상, x = 참고. data-term = 용어 이해(함께 붙음). <dfn>은 용어 사전에 모읍니다.
 (function(){
 const main=document.getElementById('main'); if(!main) return;
 const KEY='lens-'+location.pathname;
-const MODES={all:null,m:['m'],me:['m','e'],t:['t']};
+const MODES={all:null,m:e=>e.dataset.k==='m',me:e=>e.dataset.k==='m'||e.dataset.k==='e',t:e=>e.hasAttribute('data-term')};
 const items=[...main.querySelectorAll('[data-k]')].filter(e=>!e.closest('.keep'));
 
 // 용어 사전: 각 <dfn>이 들어 있는 문장(" / "로 나뉜 조각)을 정의로 씀
@@ -42,7 +42,7 @@ if(!bar) return;
 const btns=[...bar.querySelectorAll('[data-lens]')];
 btns.forEach(b=>{
   const allow=MODES[b.dataset.lens];
-  const c=allow?items.filter(e=>allow.includes(e.dataset.k)).length:items.length;
+  const c=allow?items.filter(allow).length:items.length;
   const s=document.createElement('span'); s.className='n'; s.textContent=c; b.appendChild(s);
 });
 
@@ -58,7 +58,7 @@ function apply(mode){
   const allow=MODES[mode];
   document.body.dataset.lens=mode;
   btns.forEach(b=>b.setAttribute('aria-pressed',b.dataset.lens===mode));
-  items.forEach(e=>e.hidden=allow?!allow.includes(e.dataset.k):false);
+  items.forEach(e=>e.hidden=allow?!allow(e):false);
   main.querySelectorAll('.card ul,.card ol').forEach(l=>{
     if(!l.querySelector(':scope>li[data-k]')) return;
     l.hidden=allow?![...l.children].some(li=>!li.hidden):false;

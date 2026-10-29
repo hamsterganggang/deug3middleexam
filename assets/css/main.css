@@ -365,7 +365,8 @@ details.guide[open] .chev{transform:rotate(180deg)}
 [data-k="m"]::before{content:"★ 출제"}
 [data-k="e"]::before{content:"출제 예상"}
 [data-k="t"]::before{content:"용어 이해"}
-[data-k="x"]::before{content:"이해용 예시"}
+[data-k="x"]::before{content:"참고"}
+[data-term]::after{content:"용어 이해";display:inline-block;margin-left:8px;padding:0 8px;border-radius:6px;font-size:.72rem;font-weight:700;line-height:1.75;white-space:nowrap;vertical-align:.1em;color:var(--t-ink);background:var(--t-bg)}
 /* 목록: 표시를 왼쪽 열에 세워 글이 한 줄로 맞게 */
 .card ul:has(>li[data-k]){list-style:none;padding-left:0}
 .card li[data-k]{position:relative;padding-left:88px;margin:8px 0}
