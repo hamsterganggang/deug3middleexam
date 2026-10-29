@@ -516,3 +516,7 @@ p.dl a{font-size:.9rem;font-weight:600}
   ol.walk>li>p.read+p::before{left:26px}
 }
 .steps-btn[hidden],.qa-row:not(:has(>button:not([hidden]))){display:none}
+.qa-ans.steps ol{margin:6px 0 0;padding-left:1.3em}
+.qa-ans.steps li{margin:2px 0}
+.qa-ans.steps .base{margin:0 0 12px;padding:10px 12px;border-radius:8px;background:var(--code-bg);border-left:3px solid var(--accent)}
+.qa-ans.steps .base ul{margin:6px 0 0;padding-left:1.2em}
