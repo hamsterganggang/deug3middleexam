@@ -427,3 +427,34 @@ body[data-lens]:not([data-lens="all"]) .lens{border-bottom-color:color-mix(in sr
   dl.legend-list dt{flex:none}
   dl.legend-list dt .chip{width:auto}
 }
+
+/* ───────── 빅데이터: 코드 해부 (핵심 문법 형광, 한 줄씩 해석) ───────── */
+:root{--mark:color-mix(in srgb,#FFD43B 42%,transparent)}
+:root[data-theme="dark"]{--mark:color-mix(in srgb,#FFD43B 26%,transparent)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--mark:color-mix(in srgb,#FFD43B 26%,transparent)}}
+pre.code mark,mark.demo{background:var(--mark);color:inherit;border-radius:4px;padding:0 1px}
+body.hide-k pre.code mark{color:transparent;background:var(--surface);outline:1.5px dashed var(--muted);outline-offset:-1.5px;cursor:pointer}
+body.hide-k pre.code mark.show{color:inherit;background:var(--mark);outline:0}
+.card pre.code{line-height:1.75}
+details.full{padding:0;border-radius:12px;overflow:hidden;margin:0 0 14px}
+details.full>summary{padding:8px 14px;font-size:.84rem;color:var(--muted);background:var(--surface);border-bottom:1px solid var(--line)}
+details.full[open]>summary{margin:0}
+details.full pre.code{margin:0;border:0;border-radius:0;max-height:70vh;overflow:auto}
+.card h4{display:flex;align-items:center;gap:10px;margin:26px 0 10px;font-size:1.02rem;font-weight:700;letter-spacing:-.01em}
+.card h3+h4{margin-top:4px}
+.card h4 span{flex:0 0 auto;min-width:24px;height:24px;padding:0 6px;border-radius:7px;background:var(--accent-soft);color:var(--accent);
+  font-family:var(--mono);font-size:.78rem;display:inline-flex;align-items:center;justify-content:center}
+ol.walk{list-style:none;margin:0 0 8px;padding:0;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+ol.walk>li{margin:0;border-top:1px solid var(--line)}
+ol.walk>li:first-child{border-top:0}
+.card ol.walk pre.code{margin:0;border:0;border-radius:0;padding:10px 16px;font-size:.84rem}
+ol.walk>li>p{margin:0;padding:9px 16px 11px 34px;font-size:.93rem;line-height:1.65;position:relative}
+ol.walk>li>p::before{content:"→";position:absolute;left:14px;color:var(--accent);font-weight:700}
+.go-quiz{margin:-8px 0 0}
+.go-quiz a{display:inline-block;padding:9px 16px;border-radius:10px;background:var(--accent);color:var(--accent-ink);font-weight:600;font-size:.92rem;text-decoration:none}
+.go-quiz a:hover{background:color-mix(in srgb,var(--accent) 88%,#000)}
+@media (max-width:520px){
+  .card ol.walk pre.code{padding:9px 12px;font-size:.78rem}
+  ol.walk>li>p{padding:8px 12px 10px 30px;font-size:.9rem}
+  ol.walk>li>p::before{left:11px}
+}

@@ -18,8 +18,8 @@ assets/js/qa.js          주관식(스스로 채점) 엔진
 index.html               홈
 ml/theory.html           머신러닝 이론 (정리본·강의 대본 기준 1~8장, ★ 출제 / 출제 예상 / 용어 이해) → /ml/theory/
 ml/quiz.html             머신러닝 예상 문제 60개 → /ml/quiz/
-bigdata/theory.html      빅데이터 이론 (Ch10) → /bigdata/theory/
-bigdata/quiz.html        빅데이터 코드 빈칸 77개 → /bigdata/quiz/
+bigdata/theory.html      빅데이터 이론 (Ch10~11, 챕터별 import · 전체 코드 · 한 줄 해석 · 문법) → /bigdata/theory/
+bigdata/quiz.html        빅데이터 코드 빈칸 239개 (이론의 형광 표시 = 빈칸) → /bigdata/quiz/
 ```
 
 ## 내용 추가하는 법

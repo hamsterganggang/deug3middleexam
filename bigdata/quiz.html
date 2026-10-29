@@ -4,13 +4,14 @@ subject: bigdata
 mode: quiz
 permalink: /bigdata/quiz/
 ---
-<!-- 문제 데이터: _data/bigdata/quiz.json -->
+<!-- 문제 데이터: _data/bigdata/quiz.json (이론 페이지의 형광 표시와 같은 곳이 빈칸) -->
 <div class="tips">
   <h2>자주 틀리는 것</h2>
   <ul>
-    <li><code>values</code>, <code>coef_</code>, <code>index</code>는 괄호 없는 속성입니다.</li>
+    <li>모듈명 복수형: <code>neighbors</code>, <code>naive_bayes</code> / 단수형: <code>tree</code>, <code>svm</code>, <code>ensemble</code>, <code>metrics</code> · 밑줄: <code>linear_model</code>, <code>model_selection</code></li>
+    <li><code>values</code>, <code>index</code>, <code>columns</code>, <code>coef_</code>는 괄호 없는 속성입니다.</li>
     <li><code>iloc</code>은 위치 기반, <code>loc</code>은 조건·라벨 기반입니다.</li>
-    <li>모듈명 복수형: <code>naive_bayes</code>, <code>neighbors</code> / 단수형: <code>tree</code>, <code>svm</code>, <code>ensemble</code></li>
-    <li>성별 인코딩: Section 02는 female 0 · male 1, Section 03은 male 0 · female 1</li>
+    <li>순서: <code>accuracy_score(y_test, y_pred)</code> · <code>X_train, X_test, y_train, y_test</code> · statsmodels는 <code>OLS(y, X)</code></li>
+    <li>성별 인코딩: 10-2는 female 0 · male 1, 10-3은 male 0 · female 1</li>
   </ul>
 </div>
