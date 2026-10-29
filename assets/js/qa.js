@@ -25,7 +25,7 @@ Q.sections.forEach(sec=>{
       d.innerHTML=`<p><span>${n}</span>${esc(q)}</p>
 <div class="qa-body">
   <div class="calc-fields">${fields.map((f,i)=>`<label><span>${esc(f.l)} =</span><input inputmode="decimal" autocomplete="off" spellcheck="false" data-i="${i}" data-v="${f.v}" value="${esc(v[i]||'')}" aria-label="${n}번 ${esc(f.l)}"><em>${esc(String(f.v).replace('-','−'))}</em></label>`).join('')}</div>
-  <div class="qa-row"><button type="button" class="check primary">확인</button><button type="button" class="show" aria-expanded="false">풀이 보기</button></div>
+  <div class="qa-row"><button type="button" class="check primary">확인</button></div>
   <div class="qa-ans" hidden><b>풀이</b><ol>${steps.map(t=>`<li>${esc(t)}</li>`).join('')}</ol></div>
 </div>`;
       s.appendChild(d); return;
@@ -36,7 +36,7 @@ Q.sections.forEach(sec=>{
 <div class="qa-body">
   <ol class="mc-opts">${choices.map((c,i)=>`<li><button type="button" data-i="${i}"><b>${'①②③④⑤'[i]}</b>${esc(c)}</button></li>`).join('')}</ol>
   <div class="qa-ans" hidden><b>해설</b> ${esc(a)}</div>
-  ${steps?`<div class="qa-row"><button type="button" class="steps-btn" aria-expanded="false">풀이 보기</button></div><div class="qa-ans steps" hidden><b>풀이</b><ol>${steps.map(t=>`<li>${esc(t)}</li>`).join('')}</ol></div>`:''}
+  ${steps?`<div class="qa-ans steps" hidden><b>풀이</b><ol>${steps.map(t=>`<li>${esc(t)}</li>`).join('')}</ol></div>`:''}
 </div>`;
       s.appendChild(d); return;
     }
@@ -81,17 +81,11 @@ function paint(card){
       b.setAttribute('aria-pressed',done&&i===pick);
       b.disabled=done;
     });
-    card.querySelector('.qa-ans').hidden=!show;
+    card.querySelectorAll('.qa-ans').forEach(x=>x.hidden=!show);
     return;
   }
   card.querySelector('.mark.ok').setAttribute('aria-pressed',m==='ok');
   card.querySelector('.mark.bad').setAttribute('aria-pressed',m==='bad');
-}
-// 객관식 계산 문제의 단계별 풀이
-function setSteps(card,open){
-  const st=card.querySelector('.qa-ans.steps'); if(!st) return;
-  st.hidden=!open; const b=card.querySelector('.steps-btn');
-  b.setAttribute('aria-expanded',open); b.textContent=open?'풀이 숨기기':'풀이 보기';
 }
 // 숫자 비교: −, 쉼표, 분수(1/2) 허용, 소수 둘째 자리까지 맞으면 정답
 function num(v){
@@ -103,10 +97,9 @@ const numOk=inp=>Math.abs(num(inp.value)-Number(inp.dataset.v))<0.005+1e-9;
 function setOpen(card,open){
   if(card.classList.contains('calc')){
     card.querySelector('.qa-ans').hidden=!open;
-    const b=card.querySelector('.show'); b.setAttribute('aria-expanded',open); b.textContent=open?'풀이 숨기기':'풀이 보기';
     card.classList.toggle('show-ans',open); return;
   }
-  if(card.classList.contains('mc')){ card.classList.toggle('show-ans',open); setSteps(card,open); paint(card); return; }
+  if(card.classList.contains('mc')){ card.classList.toggle('show-ans',open); paint(card); return; }
   card.querySelector('.qa-ans').hidden=!open;
   const b=card.querySelector('.show');
   b.setAttribute('aria-expanded',open); b.textContent=open?'정답 숨기기':'정답 보기';
@@ -133,12 +126,10 @@ cards.forEach(card=>{
       inp.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault(); if(ins[i+1]) ins[i+1].focus(); else check();}});
     });
     card.querySelector('.check').onclick=check;
-    card.querySelector('.show').onclick=()=>setOpen(card,card.querySelector('.qa-ans').hidden);
+    if(saved.marks[n]) setOpen(card,true);
     return;
   }
   if(card.classList.contains('mc')){
-    const sb=card.querySelector('.steps-btn');
-    if(sb) sb.onclick=()=>setSteps(card,card.querySelector('.qa-ans.steps').hidden);
     card.querySelectorAll('.mc-opts button').forEach(b=>b.onclick=()=>{
       const i=+b.dataset.i;
       saved.picks[n]=i; saved.marks[n]=i===+card.dataset.answer?'ok':'bad';
