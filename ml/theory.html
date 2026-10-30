@@ -413,68 +413,68 @@ model.fit(X, y, epochs=5, batch_size=16)</code></pre>
 <section id="calc">
 <h2>계산 문제 풀이</h2>
 <div class="card">
-<p>시험에서는 숫자만 바꿔 나올 수 있습니다. 순서를 외우고 연습 문제를 한 번씩 직접 풀어 보세요. 오른쪽 Q 번호는 <b>문제</b> 메뉴의 예상 문제 번호입니다. 숫자만 바꾼 새 문제 17개는 <a href="{{ '/ml/quiz/#calc' | relative_url }}">문제 → 계산 문제 풀어보기</a>(59~75번)에서 직접 적고 채점해 볼 수 있습니다.</p>
+<p>시험에서는 숫자만 바꿔 나올 수 있습니다. 순서를 외우고 연습 문제를 한 번씩 직접 풀어 보세요. 오른쪽 Q 번호는 <b>문제</b> 메뉴의 예상 문제 번호입니다. 숫자만 바꾼 새 문제 17개는 <a href="{{ '/ml/quiz/#calc' | relative_url }}">문제 → 계산 문제 풀어보기</a>(58~74번)에서 직접 적고 채점해 볼 수 있습니다.</p>
 </div>
 <div class="card" id="calc1">
-<h3 data-k="m">풀이 ① 두 점을 지나는 직선 <span class="qref">Q15</span></h3>
+<h3 data-k="m">풀이 ① 두 점을 지나는 직선 <span class="qref">Q14</span></h3>
 <p>문제: (1, 4), (3, 10)을 지나는 직선의 식</p>
 <ol><li>기울기 a = (y 증가량) ÷ (x 증가량) = (10 − 4) ÷ (3 − 1) = 6 ÷ 2 = <b>3</b></li><li>한 점을 대입해 b 구하기: 4 = 3 × 1 + b → <b>b = 1</b></li><li>답: <b>y = 3x + 1</b> (검산: x = 3 → 9 + 1 = 10 ✓)</li></ol>
 <p class="practice"><b>연습</b> (2, 5), (4, 9) → a = 4 ÷ 2 = 2, 5 = 4 + b → b = 1 → y = 2x + 1</p>
 </div>
 <div class="card" id="calc2">
-<h3 data-k="m">풀이 ② 2차함수의 최솟값 <span class="qref">Q17, Q18</span></h3>
+<h3 data-k="m">풀이 ② 2차함수의 최솟값 <span class="qref">Q16, Q17</span></h3>
 <p><b>방법 A (꼭짓점 꼴)</b>: y = (x − 3)² + 2 → 괄호 안이 0일 때 가장 작음 → <b>x = 3, 최솟값 2</b></p>
 <p><b>방법 B (미분 = 0)</b>: y = x² − 6x + 10</p>
 <ol><li>미분: y′ = 2x − 6 (x² → 2x, −6x → −6, 10 → 0)</li><li>미분값 = 0: 2x − 6 = 0 → x = 3</li><li>대입: y = 9 − 18 + 10 = 1 → <b>최솟값 1</b></li></ol>
 <p class="practice"><b>연습</b> y = x² − 4x + 5 → y′ = 2x − 4 = 0 → x = 2 → y = 4 − 8 + 5 = 1</p>
 </div>
 <div class="card" id="calc3">
-<h3 data-k="x">풀이 ③ 편미분 <span class="qref">Q21</span></h3>
+<h3 data-k="x">풀이 ③ 편미분 <span class="qref">Q20</span></h3>
 <p>강의 예: f(x, y) = x² + xy</p>
 <ol><li>x로 편미분: y는 숫자로 봄 → x² → 2x, xy → y → <b>∂f/∂x = 2x + y</b></li><li>y로 편미분: x는 숫자로 봄 → x² → 0, xy → x → <b>∂f/∂y = x</b></li></ol>
 <p class="practice"><b>연습</b> f(x, y) = x² + 3xy 를 x로 편미분 → 2x + 3y</p>
 </div>
 <div class="card" id="calc4">
-<h3 data-k="e">풀이 ④ 시그모이드 값 <span class="qref">Q23</span></h3>
+<h3 data-k="e">풀이 ④ 시그모이드 값 <span class="qref">Q22</span></h3>
 <p>f(0) = 1 / (1 + e⁰) = 1 / (1 + 1) = <b>0.5</b> (어떤 수든 0제곱은 1)</p>
 <p>x가 매우 크면 e⁻ˣ → 0 이라 f → 1 / x가 매우 작으면 e⁻ˣ → 매우 큼 이라 f → 0</p>
 </div>
 <div class="card" id="calc5">
-<h3 data-k="m">풀이 ⑤ 최소제곱법 <span class="qref">Q26, Q27</span></h3>
+<h3 data-k="m">풀이 ⑤ 최소제곱법 <span class="qref">Q25, Q26</span></h3>
 <p>문제: 공부 시간 x = 2, 4, 6, 8 / 성적 y = 81, 93, 91, 97 (강의 예제)</p>
 <ol><li>평균: x̄ = (2+4+6+8) ÷ 4 = 5, ȳ = (81+93+91+97) ÷ 4 = 362 ÷ 4 = 90.5</li><li>표를 만들어 편차, 곱, 제곱 계산</li></ol>
 <div class="tbl"><table><tr><th>x</th><th>y</th><th>x − x̄</th><th>y − ȳ</th><th>(x − x̄)(y − ȳ)</th><th>(x − x̄)²</th></tr><tr><td>2</td><td>81</td><td>−3</td><td>−9.5</td><td>28.5</td><td>9</td></tr><tr><td>4</td><td>93</td><td>−1</td><td>2.5</td><td>−2.5</td><td>1</td></tr><tr><td>6</td><td>91</td><td>1</td><td>0.5</td><td>0.5</td><td>1</td></tr><tr><td>8</td><td>97</td><td>3</td><td>6.5</td><td>19.5</td><td>9</td></tr><tr><td>합</td><td></td><td></td><td></td><td><b>46</b> (분자)</td><td><b>20</b> (분모)</td></tr></table></div>
-<ol start="3"><li>a = 46 ÷ 20 = <b>2.3</b></li><li>b = ȳ − a·x̄ = 90.5 − 2.3 × 5 = 90.5 − 11.5 = <b>79</b></li><li>답: <b>y = 2.3x + 79</b></li><li>[Q27] 7시간 공부 → 2.3 × 7 + 79 = 16.1 + 79 = <b>95.1점</b></li><li>참고: 예측값 83.6, 88.2, 92.8, 97.4 → 오차(실제 − 예측) −2.6, 4.8, −1.8, −0.4</li></ol>
+<ol start="3"><li>a = 46 ÷ 20 = <b>2.3</b></li><li>b = ȳ − a·x̄ = 90.5 − 2.3 × 5 = 90.5 − 11.5 = <b>79</b></li><li>답: <b>y = 2.3x + 79</b></li><li>[Q26] 7시간 공부 → 2.3 × 7 + 79 = 16.1 + 79 = <b>95.1점</b></li><li>참고: 예측값 83.6, 88.2, 92.8, 97.4 → 오차(실제 − 예측) −2.6, 4.8, −1.8, −0.4</li></ol>
 <p class="warn">주의: 분모는 x만 제곱. a를 먼저 구한 뒤 b를 구함.</p>
 </div>
 <div class="card" id="calc6">
-<h3 data-k="m">풀이 ⑥ 최소제곱법 (작은 숫자) <span class="qref">Q28</span></h3>
+<h3 data-k="m">풀이 ⑥ 최소제곱법 (작은 숫자) <span class="qref">Q27</span></h3>
 <p>문제: x = 1, 2, 3 / y = 3, 5, 7</p>
 <div class="tbl"><table><tr><th>x</th><th>y</th><th>x − x̄</th><th>y − ȳ</th><th>곱</th><th>(x − x̄)²</th></tr><tr><td>1</td><td>3</td><td>−1</td><td>−2</td><td>2</td><td>1</td></tr><tr><td>2</td><td>5</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td>3</td><td>7</td><td>1</td><td>2</td><td>2</td><td>1</td></tr><tr><td>합</td><td></td><td></td><td></td><td><b>4</b></td><td><b>2</b></td></tr></table></div>
 <p>x̄ = 2, ȳ = 5 → a = 4 ÷ 2 = 2 → b = 5 − 2 × 2 = 1 → <b>y = 2x + 1</b></p>
 </div>
 <div class="card" id="calc7">
-<h3 data-k="m">풀이 ⑦ 평균제곱오차 <span class="qref">Q30</span></h3>
+<h3 data-k="m">풀이 ⑦ 평균제곱오차 <span class="qref">Q29</span></h3>
 <p>문제: 강의 예제 데이터에 임의의 직선 y = 3x + 76을 그었을 때의 MSE</p>
 <div class="tbl"><table><tr><th>x</th><th>실제 y</th><th>예측 3x + 76</th><th>오차 (실제 − 예측)</th><th>오차²</th></tr><tr><td>2</td><td>81</td><td>82</td><td>−1</td><td>1</td></tr><tr><td>4</td><td>93</td><td>88</td><td>5</td><td>25</td></tr><tr><td>6</td><td>91</td><td>94</td><td>−3</td><td>9</td></tr><tr><td>8</td><td>97</td><td>100</td><td>−3</td><td>9</td></tr><tr><td>합</td><td></td><td></td><td></td><td><b>44</b></td></tr></table></div>
 <p>MSE = 44 ÷ 4 = <b>11</b></p>
 <p class="warn">순서: 예측값 → 오차 → 제곱 → 합 → n으로 나누기</p>
 </div>
 <div class="card" id="calc8">
-<h3 data-k="m">풀이 ⑧ 평균제곱오차 (작은 숫자) <span class="qref">Q31</span></h3>
+<h3 data-k="m">풀이 ⑧ 평균제곱오차 (작은 숫자) <span class="qref">Q30</span></h3>
 <p>문제: x = 1, 2, 3 / y = 3, 5, 7 에 직선 y = 2x</p>
 <ol><li>예측값: 2, 4, 6</li><li>오차: 3 − 2 = 1, 5 − 4 = 1, 7 − 6 = 1</li><li>제곱의 합: 1 + 1 + 1 = 3</li><li>MSE = 3 ÷ 3 = <b>1</b></li></ol>
 <p>비교: 최소제곱법으로 구한 y = 2x + 1은 오차가 모두 0 → MSE = 0 (가장 좋은 직선)</p>
 </div>
 <div class="card" id="calc9">
-<h3 data-k="x">풀이 ⑨ 경사하강법 이동 방향 <span class="qref">Q34</span></h3>
+<h3 data-k="x">풀이 ⑨ 경사하강법 이동 방향 <span class="qref">Q33</span></h3>
 <p><b>문제 이해</b> 오차 그래프는 가로축 a, 세로축 오차인 U자 모양 → 바닥(m)에서 오차가 가장 작음. 미분값(접선 기울기)이 0보다 크면 지금 오르막 위 → 바닥은 a가 작은 쪽. 그래서 기울기의 <b>반대 방향</b>으로 이동 (식: 다음 a = a − 학습률 × 미분값, 양수를 빼니 a가 작아짐).</p>
 <p>오차 그래프를 y = a² 이라 하고, 지금 a = 3, 학습률 0.1 이라고 하면</p>
 <ol><li>미분값(기울기) = 2a = 6 → 0보다 큼 → 오른쪽이 올라가는 중</li><li>반대 방향으로 이동: a ← 3 − 0.1 × 6 = 2.4 (a가 작아짐)</li><li>다시: 미분값 4.8 → a ← 2.4 − 0.48 = 1.92 … → 최솟값 a = 0에 수렴</li></ol>
 <p>학습률이 1.1처럼 크면: a ← 3 − 1.1 × 6 = −3.6 → 반대편으로 더 멀리 튕김 → <b>발산</b></p>
 </div>
 <div class="card" id="calc10">
-<h3 data-k="e">풀이 ⑩ 퍼셉트론 가중합 <span class="qref">Q48</span></h3>
+<h3 data-k="e">풀이 ⑩ 퍼셉트론 가중합 <span class="qref">Q47</span></h3>
 <p>문제: x₁ = 1, x₂ = 0, w₁ = 0.6, w₂ = 0.4, b = −0.5, 계단 함수(0보다 크면 1)</p>
 <ol><li>가중합 = x₁w₁ + x₂w₂ + b = 1 × 0.6 + 0 × 0.4 + (−0.5) = <b>0.1</b></li><li>계단 함수는 가중합을 <b>0</b>과 비교 (0.1이 기준이 아님): 0.1 &gt; 0 → <b>출력 1</b></li></ol>
 <p>계단 함수는 "양수면 1, 0 이하면 0"만 따지므로 0.1처럼 조금만 넘어도 1. 바이어스 b = −0.5가 문턱 역할 → 입력 쪽 합(0.6)이 0.5를 넘었으니 1이라고 봐도 같음.</p>
@@ -488,13 +488,13 @@ model.fit(X, y, epochs=5, batch_size=16)</code></pre>
 <p>출력이 0, 1, 1, 0 → <b>XOR 완성</b> (가중치 숫자는 참고용 예시)</p>
 </div>
 <div class="card" id="calc12">
-<h3 data-k="e">풀이 ⑫ 가중치·바이어스 개수 <span class="qref">Q52</span></h3>
+<h3 data-k="e">풀이 ⑫ 가중치·바이어스 개수 <span class="qref">Q51</span></h3>
 <p>구조: 입력 2개 → 은닉 노드 2개 → 출력 1개 (강의: “총 가중치 여섯 개와 바이어스 세 개가 필요”)</p>
 <ol><li>가중치 = 선(연결)의 개수: 입력→은닉 2 × 2 = 4개 + 은닉→출력 2 × 1 = 2개 → <b>6개</b></li><li>바이어스 = 입력층을 뺀 노드 수: 은닉 2개 + 출력 1개 → <b>3개</b></li></ol>
 <p class="practice"><b>연습</b> 입력 3, 은닉 4, 출력 1 → 가중치 3×4 + 4×1 = 16개, 바이어스 4 + 1 = 5개</p>
 </div>
 <div class="card" id="calc13">
-<h3 data-k="e">풀이 ⑬ 층 개수 세기 <span class="qref">Q11</span></h3>
+<h3 data-k="e">풀이 ⑬ 층 개수 세기 <span class="qref">Q10</span></h3>
 <p><code>model.add(Dense(...))</code>의 개수 = 층의 개수 (입력층은 따로 세지 않음)</p>
 <p><code>Dense(30, input_dim=16)</code> + <code>Dense(1)</code> → <b>층 2개</b> = 은닉층 1개 + 출력층 1개</p>
 </div>

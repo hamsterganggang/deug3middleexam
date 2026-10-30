@@ -7,6 +7,15 @@ const Q=window.QUIZ; if(!Q) return;
 const KEY=Q.key;
 
 let saved={notes:{},marks:{},picks:{},calc:{}};
+// 문제를 지워 번호가 바뀌었으면 예전 기록을 새 번호로 옮김 (migrate: {from, drop})
+try{
+  const M=Q.migrate, old=M&&!localStorage.getItem(KEY)&&JSON.parse(localStorage.getItem(M.from)||'null');
+  if(old){
+    const shift=o=>{const r={}; Object.keys(o||{}).forEach(k=>{const n=+k; if(n!==M.drop) r[n>M.drop?n-1:n]=o[k];}); return r;};
+    ['notes','marks','picks','calc'].forEach(f=>old[f]=shift(old[f]));
+    localStorage.setItem(KEY,JSON.stringify(old));
+  }
+}catch(e){}
 try{const s=JSON.parse(localStorage.getItem(KEY)||'null'); if(s&&s.notes&&s.marks) saved=Object.assign(saved,s)}catch(e){}
 const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(saved))}catch(e){}};
 
@@ -169,6 +178,21 @@ revBtn.onclick=()=>{
   const on=revBtn.getAttribute('aria-pressed')!=='true';
   revBtn.setAttribute('aria-pressed',on);
   cards.forEach(c=>setOpen(c,on));
+};
+// 틀린 문제만 안 푼 상태로 되돌림
+document.getElementById('reset-wrong').onclick=()=>{
+  const bad=cards.filter(c=>saved.marks[c.dataset.n]==='bad');
+  if(!bad.length){ alert('틀린 문제가 없어요.'); return; }
+  if(!confirm(`틀린 문제 ${bad.length}개를 안 푼 상태로 되돌릴까요?`)) return;
+  bad.forEach(c=>{
+    const n=c.dataset.n;
+    delete saved.marks[n]; delete saved.picks[n]; delete saved.calc[n]; delete saved.notes[n];
+    const t=c.querySelector('textarea'); if(t) t.value='';
+    c.querySelectorAll('.calc-fields input').forEach(i=>i.value='');
+    c.classList.remove('steps-open'); setOpen(c,revBtn.getAttribute('aria-pressed')==='true'); paint(c);
+  });
+  save(); tally();
+  bad[0].scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'});
 };
 document.getElementById('reset').onclick=()=>{
   if(!confirm('고른 보기·적은 답과 맞음/틀림 표시를 모두 지울까요?')) return;

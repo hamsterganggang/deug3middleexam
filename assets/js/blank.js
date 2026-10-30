@@ -137,6 +137,16 @@ revBtn.onclick=()=>{
   const on=document.body.classList.toggle('reveal');
   revBtn.setAttribute('aria-pressed',on);
 };
+// 틀린 빈칸만 비워서 다시 풀기 (채점 전이면 먼저 채점)
+document.getElementById('reset-wrong').onclick=()=>{
+  if(!graded) grade();
+  const bad=inputs.filter(i=>i.parentElement.classList.contains('bad'));
+  if(!bad.length){ alert('틀린 빈칸이 없어요.'); return; }
+  if(!confirm(`틀린 빈칸 ${bad.length}개를 비울까요?`)) return;
+  bad.forEach(i=>{i.value=''; delete saved[i.dataset.n]; i.parentElement.classList.remove('bad');});
+  save(); progress();
+  bad[0].closest('.q').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'});
+};
 document.getElementById('reset').onclick=()=>{
   if(!confirm('입력한 답을 모두 지울까요?')) return;
   saved={}; save();

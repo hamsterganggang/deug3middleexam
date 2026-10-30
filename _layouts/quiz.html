@@ -23,12 +23,16 @@ layout: default
   {%- endunless %}
   <button id="wrong" aria-pressed="false">{% if quiz.type == 'qa' %}<span class="lg">맞힌 문제 숨기기</span><span class="sm">틀린 것만</span>{% else %}<span class="lg">틀린 문제만</span><span class="sm">오답만</span>{% endif %}</button>
   <button id="reveal" aria-pressed="false">정답<span class="lg"> 모두 보기</span></button>
+  <button id="reset-wrong"><span class="lg">틀린 문제 초기화</span><span class="sm">오답 초기화</span></button>
   <button id="reset">초기화</button>
 </div></div>
 
 <script>
 window.QUIZ={
   key:"{{ qkey }}",
+  {%- if quiz.migrate %}
+  migrate:{{ quiz.migrate | jsonify }},
+  {%- endif %}
   {%- if quiz.answers %}
   answers:{{ quiz.answers | jsonify }},
   {%- endif %}
