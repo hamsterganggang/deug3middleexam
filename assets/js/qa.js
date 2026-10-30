@@ -12,14 +12,14 @@ const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(saved))}catch(e){}};
 
 const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 
-// 풀이: 기본식(공식)을 먼저 보여 주고 그 아래 단계별 풀이
-const stepsHtml=(base,steps)=>(base?`<div class="base"><b>기본식</b><ul>${base.map(t=>`<li>${esc(t)}</li>`).join('')}</ul></div>`:'')+`<b>풀이</b><ol>${steps.map(t=>`<li>${esc(t)}</li>`).join('')}</ol>`;
+// 풀이: 기본식(공식) → 그래프 → 단계별 풀이 순서. graph.svg는 우리가 만든 데이터라 그대로 넣음
+const stepsHtml=(base,graph,steps)=>(base?`<div class="base"><b>기본식</b><ul>${base.map(t=>`<li>${esc(t)}</li>`).join('')}</ul></div>`:'')+(graph?`<figure class="fig graph">${graph.svg}<figcaption>${esc(graph.cap)}</figcaption></figure>`:'')+`<b>풀이</b><ol>${steps.map(t=>`<li>${esc(t)}</li>`).join('')}</ol>`;
 const quiz=document.getElementById('quiz');
 let qn=0;
 Q.sections.forEach(sec=>{
   const s=document.createElement('section'); s.id=sec.id;
   s.innerHTML=`<h2>${esc(sec.title)}</h2>`;
-  sec.items.forEach(({q,a,choices,answer,fields,base,steps})=>{
+  sec.items.forEach(({q,a,choices,answer,fields,base,graph,steps})=>{
     const n=++qn;
     const d=document.createElement('div'); d.className='q qa'; d.dataset.n=n;
     if(fields){
@@ -28,7 +28,7 @@ Q.sections.forEach(sec=>{
 <div class="qa-body">
   <div class="calc-fields">${fields.map((f,i)=>`<label><span>${esc(f.l)} =</span><input inputmode="decimal" autocomplete="off" spellcheck="false" data-i="${i}" data-v="${f.v}" value="${esc(v[i]||'')}" aria-label="${n}번 ${esc(f.l)}"><em>${esc(String(f.v).replace('-','−'))}</em></label>`).join('')}</div>
   <div class="qa-row"><button type="button" class="check primary">확인</button><button type="button" class="steps-btn" aria-expanded="false" hidden>풀이 보기</button></div>
-  <div class="qa-ans steps" hidden>${stepsHtml(base,steps)}</div>
+  <div class="qa-ans steps" hidden>${stepsHtml(base,graph,steps)}</div>
 </div>`;
       s.appendChild(d); return;
     }
@@ -38,7 +38,7 @@ Q.sections.forEach(sec=>{
 <div class="qa-body">
   <ol class="mc-opts">${choices.map((c,i)=>`<li><button type="button" data-i="${i}"><b>${'①②③④⑤'[i]}</b>${esc(c)}</button></li>`).join('')}</ol>
   <div class="qa-ans" hidden><b>해설</b> ${esc(a)}</div>
-  ${steps?`<div class="qa-row"><button type="button" class="steps-btn" aria-expanded="false" hidden>풀이 보기</button></div><div class="qa-ans steps" hidden>${stepsHtml(base,steps)}</div>`:''}
+  ${steps?`<div class="qa-row"><button type="button" class="steps-btn" aria-expanded="false" hidden>풀이 보기</button></div><div class="qa-ans steps" hidden>${stepsHtml(base,graph,steps)}</div>`:''}
 </div>`;
       s.appendChild(d); return;
     }

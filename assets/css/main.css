@@ -520,3 +520,6 @@ p.dl a{font-size:.9rem;font-weight:600}
 .qa-ans.steps li{margin:2px 0}
 .qa-ans.steps .base{margin:0 0 12px;padding:10px 12px;border-radius:8px;background:var(--code-bg);border-left:3px solid var(--accent)}
 .qa-ans.steps .base ul{margin:6px 0 0;padding-left:1.2em}
+.qa-ans.steps .fig.graph{margin:0 0 12px;padding:10px}
+.qa-ans.steps .fig.graph svg{max-width:520px;min-width:0}
+.qa-ans.steps .fig.graph figcaption{text-align:left}
